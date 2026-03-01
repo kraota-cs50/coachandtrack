@@ -677,6 +677,69 @@
   .feature-text h4 { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
   .feature-text p { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
+  /* WAITLIST */
+  .waitlist {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 80px 32px;
+    text-align: center;
+  }
+  .waitlist-inner { max-width: 560px; margin: 0 auto; }
+  .waitlist-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: 2px;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .waitlist-sub {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+  .waitlist-form {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+  }
+  .waitlist-input {
+    flex: 1;
+    padding: 14px 18px;
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .waitlist-input::placeholder { color: var(--muted); }
+  .waitlist-input:focus { border-color: var(--accent); }
+  .waitlist-btn {
+    padding: 14px 28px;
+    background: var(--accent);
+    color: var(--black);
+    border: none;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .waitlist-btn:hover { background: var(--accent-hover); transform: scale(1.03); }
+  .waitlist-success {
+    display: none;
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
   @media (max-width: 1024px) {
     .hero { grid-template-columns: 1fr; padding: 100px 32px 60px; }
     .hero-visual { display: none; }
@@ -721,6 +784,11 @@
     .footer-top { grid-template-columns: 1fr; }
     .pricing-cards { padding: 0; }
     .price-card { width: 100%; max-width: 100%; }
+
+    /* Waitlist form stacks vertically on mobile */
+    .waitlist { padding: 64px 16px; }
+    .waitlist-form { flex-direction: column; }
+    .waitlist-btn { width: 100%; }
   }
 </style>
 
@@ -1260,6 +1328,19 @@
   </div>
 </section>
 
+<!-- WAITLIST -->
+<section class="waitlist">
+  <div class="waitlist-inner">
+    <h2 class="waitlist-headline">Be First. Get Early Access.</h2>
+    <p class="waitlist-sub">Join our waitlist and get founding member pricing when we launch. No spam. Unsubscribe anytime.</p>
+    <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xbdaeqaj" method="POST">
+      <input class="waitlist-input" type="email" name="email" placeholder="Enter your email address" required>
+      <button class="waitlist-btn" type="submit">Join the Waitlist</button>
+    </form>
+    <p class="waitlist-success" id="waitlist-success">You're on the list! We'll be in touch soon.</p>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -1334,6 +1415,22 @@
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
+  });
+
+  // Waitlist form submission
+  document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    try {
+      const res = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        this.style.display = 'none';
+        document.getElementById('waitlist-success').style.display = 'block';
+      }
+    } catch(err) {}
   });
 </script>
 </body>
