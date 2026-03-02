@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CoachAndTrack — Train With The Best</title>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -31,7 +35,7 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { overflow-x: hidden; }
+  html { overflow-x: hidden; scroll-behavior: smooth; }
 
   body {
     background: #ffffff;
@@ -813,11 +817,11 @@
 <nav>
   <div class="logo">COACH<span>AND</span>TRACK</div>
   <div class="nav-links">
-    <a href="#">Explore</a>
-    <a href="#">Trainers</a>
-    <a href="#">Programs</a>
-    <a href="#">Nutrition</a>
-    <a href="#">Community</a>
+    <a href="#programs">Explore</a>
+    <a href="#trainers">Trainers</a>
+    <a href="#programs">Programs</a>
+    <a href="#nutrition">Nutrition</a>
+    <a href="#community">Community</a>
   </div>
   <a href="#waitlist" class="nav-cta">Start Free Trial</a>
 </nav>
@@ -946,7 +950,7 @@
 </section>
 
 <!-- TRAINERS -->
-<section>
+<section id="trainers">
   <div class="trainers-header">
     <div>
       <div class="section-label">World-Class Coaches</div>
@@ -1039,7 +1043,7 @@
 </section>
 
 <!-- PROGRAMS -->
-<section class="programs">
+<section class="programs" id="programs">
   <div class="section-label">Trending Right Now</div>
   <h2 class="section-title">TOP PROGRAMS</h2>
   <div class="prog-grid">
@@ -1293,7 +1297,7 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials">
+<section class="testimonials" id="community">
   <div class="section-label">Real Results</div>
   <h2 class="section-title">WHAT MEMBERS<br>ARE SAYING</h2>
   <div class="test-grid">
@@ -1334,6 +1338,7 @@
 </section>
 
 <!-- WAITLIST -->
+<span id="nutrition" style="display:block;"></span>
 <section class="waitlist" id="waitlist">
   <div class="waitlist-inner">
     <h2 class="waitlist-headline">Be First. Get Early Access.</h2>
@@ -1372,8 +1377,8 @@
     <div class="footer-col">
       <h4>Support</h4>
       <a href="#">Help Center</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
       <a href="#">Contact</a>
     </div>
   </div>
