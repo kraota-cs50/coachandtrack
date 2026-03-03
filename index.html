@@ -149,6 +149,7 @@
 
   .hero-actions { display: flex; gap: 16px; align-items: center; margin-bottom: 56px; }
   .btn-primary {
+    display: inline-block;
     background: var(--accent);
     color: var(--black);
     border: none;
@@ -158,6 +159,7 @@
     font-weight: 700;
     font-size: 16px;
     cursor: pointer;
+    text-decoration: none;
     transition: transform 0.15s;
   }
   .btn-primary:hover { transform: translateY(-2px); }
@@ -465,12 +467,10 @@
     border-color: var(--accent);
     background: linear-gradient(160deg, rgba(232,255,61,0.07) 0%, var(--card) 60%);
   }
-  .popular-badge {
+  .popular-badge, .coming-soon-badge, .available-now-badge {
     position: absolute;
     top: -14px; left: 50%;
     transform: translateX(-50%);
-    background: var(--accent);
-    color: var(--black);
     font-size: 11px;
     font-weight: 700;
     padding: 4px 16px;
@@ -478,6 +478,17 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     white-space: nowrap;
+  }
+  .popular-badge { background: var(--accent); color: var(--black); }
+  .available-now-badge { background: var(--accent); color: var(--black); }
+  .coming-soon-badge { background: #6B7280; color: #fff; }
+  .plan-btn.disabled {
+    background: #6B7280;
+    color: #fff;
+    border: none;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.85;
   }
   .plan-name { font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 20px; }
   .plan-price { font-family: 'Bebas Neue', sans-serif; font-size: 64px; color: var(--white); line-height: 1; margin-bottom: 4px; }
@@ -837,7 +848,7 @@
     </h1>
     <p class="hero-sub">CoachAndTrack connects you with world-class fitness coaches and gives you the tools to track every workout, every milestone, and every victory — all in one place.</p>
     <div class="hero-actions">
-      <button class="btn-primary">Start Your Journey</button>
+      <a href="#waitlist" class="btn-primary">Start Your Journey</a>
       <button class="btn-ghost">Browse Free</button>
     </div>
     <div class="hero-stats">
@@ -1255,6 +1266,7 @@
   <p class="section-sub">Unlimited access to 500+ elite trainers, thousands of programs, and the entire CoachAndTrack community.</p>
   <div class="pricing-cards">
     <div class="price-card">
+      <div class="available-now-badge">Available Now</div>
       <div class="plan-name">Starter</div>
       <div class="plan-price">Free</div>
       <div class="plan-period">7-day full access trial</div>
@@ -1268,7 +1280,7 @@
       <a href="#waitlist" class="plan-btn primary">Get Started Free</a>
     </div>
     <div class="price-card featured-price">
-      <div class="popular-badge">Most Popular</div>
+      <div class="coming-soon-badge">Coming Soon</div>
       <div class="plan-name">Pro</div>
       <div class="plan-price"><span>$</span>14<span style="font-size:24px">/month</span></div>
       <div class="plan-period">$108/year ($9/month, save 35%)</div>
@@ -1279,9 +1291,10 @@
         <li>Progress analytics</li>
         <li>Priority support</li>
       </ul>
-      <a href="https://buy.stripe.com/test_3cIcN7eCR1eKeP0e5P1sQ00" class="plan-btn primary" target="_blank">Start Free Trial</a>
+      <button class="plan-btn disabled" disabled>Coming Soon</button>
     </div>
     <div class="price-card">
+      <div class="coming-soon-badge">Coming Soon</div>
       <div class="plan-name">Elite</div>
       <div class="plan-price"><span>$</span>29<span style="font-size:24px">/month</span></div>
       <div class="plan-period">$228/year ($19/month, save 34%)</div>
@@ -1292,7 +1305,7 @@
         <li>Nutrition guidance</li>
         <li>Early access to new features</li>
       </ul>
-      <a href="https://buy.stripe.com/test_cNi4gBamBbTo36i4vf1sQ01" class="plan-btn primary" target="_blank">Start Free Trial</a>
+      <button class="plan-btn disabled" disabled>Coming Soon</button>
     </div>
   </div>
 </section>
