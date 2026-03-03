@@ -811,6 +811,21 @@
     .waitlist-form { flex-direction: column; }
     .waitlist-btn { width: 100%; }
   }
+
+  /* Force disabled plan button styles — high specificity override */
+  .plan-btn.disabled,
+  button.plan-btn.disabled,
+  .price-card .plan-btn.disabled {
+    background: #6B7280 !important;
+    background-color: #6B7280 !important;
+    color: #D1D5DB !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+    pointer-events: none !important;
+    border: 2px solid #6B7280 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -1294,18 +1309,6 @@
     </div>
     <div class="price-card featured-price">
       <div class="coming-soon-badge">Coming Soon</div>
-      <span style="
-        display: inline-block;
-        background: #6B7280;
-        color: white;
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 0.2rem 0.8rem;
-        border-radius: 20px;
-        margin-bottom: 0.5rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      ">Coming Soon</span>
       <div class="plan-name">Pro</div>
       <div class="plan-price"><span>$</span>14<span style="font-size:24px">/month</span></div>
       <div class="plan-period">$108/year ($9/month, save 35%)</div>
@@ -1320,18 +1323,6 @@
     </div>
     <div class="price-card">
       <div class="coming-soon-badge">Coming Soon</div>
-      <span style="
-        display: inline-block;
-        background: #6B7280;
-        color: white;
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 0.2rem 0.8rem;
-        border-radius: 20px;
-        margin-bottom: 0.5rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      ">Coming Soon</span>
       <div class="plan-name">Elite</div>
       <div class="plan-price"><span>$</span>29<span style="font-size:24px">/month</span></div>
       <div class="plan-period">$228/year ($19/month, save 34%)</div>
