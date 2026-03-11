@@ -11,26 +11,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #0a0a0a;
-    --dark: #f5f5f0;
-    --card: #ffffff;
-    --border: #2A2A2A;
+    --dark:          #0D0D14;
+    --dark-card:     #13131E;
+    --dark-elevated: #1A1A2E;
+    --border:        #2A2A3E;
+    --orange:        #F97316;
+    --orange-glow:   rgba(249,115,22,0.10);
+    --green:         #22C55E;
+    --text:          #F3F4F6;
+    --text-muted:    #94A3B8;
+    --text-dim:      #64748B;
+    /* legacy aliases kept so existing rules don't break */
+    --black: #0D0D14;
+    --card: #13131E;
     --accent: #F97316;
     --accent-hover: #EA580C;
     --accent2: #22C55E;
-    --white: #1a1a1a;
-    --muted: #666666;
+    --white: #F3F4F6;
+    --muted: #94A3B8;
     --radius: 16px;
-    --text-primary: #F3F4F6;
-    --text-muted: #9CA3AF;
-    --text-disabled: #6B7280;
-    --bg: #0B0F1A;
-    --surface: #121A2A;
-    --surface-elevated: #1F1F1F;
-    --success: #22C55E;
-    --warning: #F59E0B;
-    --error: #EF4444;
-    --info: #38BDF8;
+    --bg: #0D0D14;
+    --surface: #13131E;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -887,6 +888,209 @@
     align-items: center;
   }
 }
+
+/* ── GLOBAL ── */
+body {
+  background: var(--dark) !important;
+}
+
+/* ── NAVBAR ── */
+nav, .navbar {
+  background: rgba(13,13,20,0.97) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* ── HERO ── */
+.hero, #hero {
+  background: radial-gradient(
+    ellipse at 65% 50%,
+    rgba(249,115,22,0.07) 0%,
+    var(--dark) 65%
+  ) !important;
+}
+.hero h1, #hero h1 {
+  font-size: clamp(3rem, 8vw, 6.5rem) !important;
+  letter-spacing: 2px !important;
+  line-height: 1.0 !important;
+}
+.hero-tagline, .tagline {
+  color: var(--orange) !important;
+  font-style: italic !important;
+}
+
+/* ── SECTION BADGES ── */
+.section-badge {
+  display: inline-block !important;
+  background: var(--orange) !important;
+  color: white !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  padding: 0.22rem 0.85rem !important;
+  border-radius: 4px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* ── SECTION BACKGROUNDS ── */
+.trainers-section, #trainers,
+.testimonials-section, #community {
+  background: var(--dark-card) !important;
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.programs-section, #programs,
+.pricing-section, .pricing,
+.waitlist-section, #waitlist {
+  background: var(--dark) !important;
+}
+
+/* ── TRAINER CARDS ── */
+.trainer-card, .coach-card {
+  background: var(--dark-elevated) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 4px solid var(--orange) !important;
+  border-radius: 12px !important;
+  transition: transform 0.2s, border-color 0.2s !important;
+}
+.trainer-card:hover, .coach-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(249,115,22,0.5) !important;
+}
+.trainer-name, .coach-name {
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+.trainer-specialty, .coach-specialty,
+.trainer-title, .coach-title {
+  color: var(--orange) !important;
+}
+
+/* ── PROGRAM CARDS ── */
+.program-card, .category-card {
+  background: var(--dark-elevated) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 4px solid var(--orange) !important;
+  border-radius: 12px !important;
+  transition: transform 0.2s !important;
+}
+.program-card:hover, .category-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(249,115,22,0.4) !important;
+}
+
+/* ── PRICING CARDS ── */
+.price-card {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+}
+.price-card.featured-price {
+  background: var(--dark-elevated) !important;
+  border: 1px solid rgba(249,115,22,0.25) !important;
+}
+.plan-price, .price-amount {
+  color: var(--orange) !important;
+  font-size: 3.2rem !important;
+  font-weight: 800 !important;
+}
+.plan-name {
+  color: var(--text) !important;
+  font-weight: 700 !important;
+  font-size: 1.3rem !important;
+}
+.plan-features li {
+  color: var(--text-muted) !important;
+}
+.plan-features li::before {
+  content: "✓ " !important;
+  color: var(--orange) !important;
+  font-weight: 700 !important;
+}
+
+/* ── TESTIMONIAL CARDS ── */
+.testimonial-card, .review-card {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 4px solid var(--orange) !important;
+  border-radius: 12px !important;
+}
+.testimonial-text, .review-text {
+  color: var(--text-muted) !important;
+  font-style: italic !important;
+}
+.testimonial-author, .review-author {
+  color: var(--text) !important;
+  font-weight: 700 !important;
+}
+.testimonial-role, .review-role {
+  color: var(--orange) !important;
+  font-size: 0.85rem !important;
+}
+
+/* ── WAITLIST SECTION ── */
+.waitlist-section, #waitlist {
+  background: linear-gradient(
+    135deg,
+    rgba(249,115,22,0.05) 0%,
+    var(--dark) 100%
+  ) !important;
+  border-top: 1px solid var(--border) !important;
+}
+.waitlist-section input, #waitlist input {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  color: var(--text) !important;
+}
+.waitlist-section input:focus, #waitlist input:focus {
+  border-color: var(--orange) !important;
+  outline: none !important;
+}
+
+/* ── FEATURE/APP SECTION ── */
+.features-section, .app-section,
+.platform-section {
+  background: var(--dark-card) !important;
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+.feature-card, .app-card {
+  background: var(--dark-elevated) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 4px solid var(--orange) !important;
+  border-radius: 12px !important;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark-card) !important;
+  border-top: 1px solid var(--border) !important;
+}
+footer a:hover {
+  color: var(--orange) !important;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb {
+  background: var(--orange);
+  border-radius: 3px;
+}
+
+/* ── SECTION HEADINGS ── */
+.section-title, .section-heading,
+.trainers-section h2, #trainers h2,
+.programs-section h2, #programs h2,
+.pricing-section h2, .pricing h2,
+.testimonials-section h2, #community h2,
+.waitlist-section h2, #waitlist h2 {
+  color: var(--text) !important;
+  letter-spacing: 1px !important;
+}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -1042,6 +1246,7 @@
   <div class="trainers-header">
     <div>
       <div class="section-label">World-Class Coaches</div>
+      <span class="section-badge">OUR COACHES</span>
       <h2 class="section-title">MEET YOUR<br>TRAINERS</h2>
     </div>
     <div class="tabs">
@@ -1133,6 +1338,7 @@
 <!-- PROGRAMS -->
 <section class="programs" id="programs">
   <div class="section-label">Trending Right Now</div>
+  <span class="section-badge">PROGRAMS</span>
   <h2 class="section-title">TOP PROGRAMS</h2>
   <div class="prog-grid">
     <div class="prog-card">
@@ -1339,6 +1545,7 @@
 <!-- PRICING -->
 <section class="pricing" style="background: var(--dark); border-top: 1px solid var(--border);">
   <div class="section-label">Simple Pricing</div>
+  <span class="section-badge">PRICING</span>
   <h2 class="section-title">ONE PASS.<br>EVERY COACH.</h2>
   <p class="section-sub">Unlimited access to 500+ elite trainers, thousands of programs, and the entire CoachAndTrack community.</p>
   <div class="pricing-cards">
@@ -1388,6 +1595,7 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="community">
   <div class="section-label">Real Results</div>
+  <span class="section-badge">SUCCESS STORIES</span>
   <h2 class="section-title">WHAT MEMBERS<br>ARE SAYING</h2>
   <div class="test-grid">
     <div class="test-card">
@@ -1430,6 +1638,7 @@
 <span id="nutrition" style="display:block;"></span>
 <section class="waitlist" id="waitlist">
   <div class="waitlist-inner">
+    <span class="section-badge">EARLY ACCESS</span>
     <h2 class="waitlist-headline">Be First. Get Early Access.</h2>
     <p class="waitlist-sub">Join our waitlist and get founding member pricing when we launch. No spam. Unsubscribe anytime.</p>
     <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xbdaeqaj" method="POST">
