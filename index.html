@@ -1641,7 +1641,9 @@ footer a:hover {
     <span class="section-badge">EARLY ACCESS</span>
     <h2 class="waitlist-headline">Be First. Get Early Access.</h2>
     <p class="waitlist-sub">Join our waitlist and get founding member pricing when we launch. No spam. Unsubscribe anytime.</p>
-    <form class="waitlist-form" id="waitlist-form" action="https://formspree.io/f/xbdaeqaj" method="POST">
+    <form class="waitlist-form" id="waitlist-form" action="https://coachandtrack.us1.list-manage.com/subscribe/post?u=13927c0666dcc8f22a58c51d3&id=e5ae5cfbde" method="POST">
+      <input type="hidden" name="u" value="13927c0666dcc8f22a58c51d3">
+      <input type="hidden" name="id" value="e5ae5cfbde">
       <input class="waitlist-input" type="email" name="email" placeholder="Enter your email address" required>
       <button class="waitlist-btn" type="submit">Join the Waitlist</button>
     </form>
@@ -1725,21 +1727,75 @@ footer a:hover {
     observer.observe(el);
   });
 
-  // Waitlist form submission
-  document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    try {
-      const res = await fetch(this.action, {
-        method: 'POST',
-        body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        this.style.display = 'none';
-        document.getElementById('waitlist-success').style.display = 'block';
+  // Waitlist form submission — Mailchimp JSONP
+  const waitlistForm = document.querySelector('#waitlist form')
+    || document.querySelector('.waitlist-form')
+    || document.querySelector('form[action*="list-manage"]');
+
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const emailInput = this.querySelector('input[type="email"]');
+      const email = emailInput ? emailInput.value : '';
+      const btn = this.querySelector('button[type="submit"]')
+                || this.querySelector('button');
+      const successMsg = document.querySelector('.waitlist-success');
+
+      if (!email) return;
+
+      // Show loading state
+      const originalText = btn ? btn.textContent : '';
+      if (btn) {
+        btn.textContent = 'Joining...';
+        btn.disabled = true;
       }
-    } catch(err) {}
-  });
+
+      try {
+        // Mailchimp JSONP submission (avoids CORS)
+        const mcUrl = 'https://coachandtrack.us1.list-manage.com/subscribe/post-json?u=13927c0666dcc8f22a58c51d3&id=e5ae5cfbde&f_id=00ef17e0f0';
+
+        const script = document.createElement('script');
+        const callbackName = 'mcCallback_' + Date.now();
+
+        window[callbackName] = function(data) {
+          delete window[callbackName];
+          document.body.removeChild(script);
+
+          if (data.result === 'success' ||
+              data.msg.includes('already subscribed')) {
+            // Hide form, show success
+            waitlistForm.style.display = 'none';
+            if (successMsg) {
+              successMsg.style.display = 'block';
+            } else {
+              waitlistForm.insertAdjacentHTML('afterend',
+                '<p class="waitlist-success" style="color:#22C55E;font-weight:700;font-size:1.1rem;margin-top:1rem;">🎉 You\'re on the list! Check your email.</p>'
+              );
+            }
+          } else {
+            // Show error
+            if (btn) {
+              btn.textContent = originalText;
+              btn.disabled = false;
+            }
+            alert('Something went wrong. Please try again.');
+          }
+        };
+
+        script.src = mcUrl + '&EMAIL=' +
+          encodeURIComponent(email) +
+          '&c=' + callbackName;
+        document.body.appendChild(script);
+
+      } catch(err) {
+        if (btn) {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }
+      }
+    });
+  }
 </script>
 </body>
 </html>
