@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 1 — Strength Foundation | CoachAndTrack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark:          #0D0D14;
+      --dark-card:     #13131E;
+      --dark-elevated: #1A1A2E;
+      --border:        #2A2A3E;
+      --orange:        #F97316;
+      --orange-glow:   rgba(249,115,22,0.10);
+      --green:         #22C55E;
+      --text:          #F3F4F6;
+      --text-muted:    #94A3B8;
+      --text-dim:      #64748B;
+      --radius:        16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--dark);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--orange);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* HERO */
+    .program-hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 1.25rem;
+    }
+    .program-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .program-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .program-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    .meta-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .meta-chip strong { color: var(--text); }
+    .coach-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange-glow);
+      border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 100px;
+      padding: 0.25rem 0.85rem 0.25rem 0.35rem;
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .coach-avatar {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F97316, #ea6c0a);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.65rem;
+      color: white;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    /* PROGRESS */
+    .progress-section {
+      max-width: 860px;
+      margin: 1.75rem auto 0;
+      padding: 0 2rem 1.75rem;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+    .progress-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .progress-count {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background: var(--dark-elevated);
+      border-radius: 100px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #F97316, #22C55E);
+      border-radius: 100px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+    .progress-steps {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+      flex-wrap: wrap;
+    }
+    .step-dot {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--dark-elevated);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      transition: all 0.3s;
+    }
+    .step-dot.done   { background: var(--green); border-color: var(--green); color: white; }
+    .step-dot.skipped{ background: var(--dark-elevated); border-color: var(--text-dim); color: var(--text-dim); opacity: 0.45; }
+    .step-dot.active { border-color: var(--orange); color: var(--orange); }
+
+    /* COMPLETION BANNER */
+    .completion-banner {
+      display: none;
+      max-width: 860px;
+      margin: 0 auto 1.5rem;
+      padding: 0 2rem;
+    }
+    .completion-banner.show { display: block; }
+    .completion-inner {
+      background: linear-gradient(135deg, rgba(34,197,94,0.08), rgba(249,115,22,0.06));
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+    }
+    .completion-inner h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 0.4rem;
+    }
+    .completion-inner p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* MOVEMENT CARDS */
+    .movements {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .movement-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s, opacity 0.3s;
+    }
+    .movement-card.done    { border-color: rgba(34,197,94,0.35); opacity: 0.72; }
+    .movement-card.skipped { opacity: 0.4; }
+    .movement-card.coming-soon { opacity: 0.55; cursor: default; }
+
+    .movement-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.95rem 1.1rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .movement-card.coming-soon .movement-header { cursor: default; }
+
+    .movement-number {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--dark-elevated);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .movement-card.done   .movement-number { background: rgba(34,197,94,0.12); border-color: var(--green); color: var(--green); }
+    .movement-card.active .movement-number { background: var(--orange-glow); border-color: var(--orange); color: var(--orange); }
+
+    .movement-info { flex: 1; min-width: 0; }
+    .movement-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .movement-reps { font-size: 0.76rem; color: var(--text-muted); }
+
+    .movement-status {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.18rem 0.6rem;
+      border-radius: 100px;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .status-done    { background: rgba(34,197,94,0.12); color: var(--green); }
+    .status-skipped { background: var(--dark-elevated); color: var(--text-dim); }
+    .status-soon    { background: rgba(249,115,22,0.1); color: var(--orange); border: 1px solid rgba(249,115,22,0.2); }
+
+    .movement-chevron {
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .movement-card.open .movement-chevron { transform: rotate(180deg); }
+
+    /* BODY */
+    .movement-body {
+      display: none;
+      padding: 0 1.1rem 1.1rem;
+      border-top: 1px solid var(--border);
+    }
+    .movement-card.open .movement-body { display: block; }
+
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #000;
+      margin: 1rem 0;
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .movement-actions {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.25rem;
+    }
+    .btn-done {
+      flex: 1;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 0.7rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-done:hover { opacity: 0.85; }
+    .btn-skip {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem 1.1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-skip:hover { border-color: var(--text-dim); color: var(--text); }
+    .btn-undo {
+      flex: 1;
+      background: var(--dark-elevated);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-undo:hover { color: var(--text); border-color: var(--text-dim); }
+
+    /* COMING SOON MOVEMENT */
+    .cs-body {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.1rem 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+    .cs-icon { font-size: 1.75rem; flex-shrink: 0; }
+    .cs-text-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .cs-text-sub { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+    @media (max-width: 600px) {
+      .navbar { padding: 0.75rem 1rem; }
+      .program-hero, .progress-section, .movements { padding-left: 1rem; padding-right: 1rem; }
+      .program-title { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="../index.html">CoachAndTrack</a>
+  <a class="nav-back" href="../index.html#programs">&#8592; Programs</a>
+</nav>
+
+<!-- HERO -->
+<div class="program-hero">
+  <div class="program-label">Strength Foundation &middot; Day 1 of 28</div>
+  <h1 class="program-title">STRENGTH<br>FOUNDATION</h1>
+  <div class="program-meta">
+    <div class="coach-chip">
+      <div class="coach-avatar">VM</div>
+      Veronica Mosquera
+    </div>
+    <div class="meta-chip"><strong>11</strong>&nbsp;Movements</div>
+    <div class="meta-chip"><strong>Intermediate</strong></div>
+    <div class="meta-chip">&#9201; ~45 min</div>
+    <div class="meta-chip">&#127947; Strength</div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-section">
+  <div class="progress-header">
+    <span class="progress-label">Today's Progress</span>
+    <span class="progress-count" id="progress-count">0 / 10 complete</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+  <div class="progress-steps" id="progress-steps"></div>
+</div>
+
+<!-- COMPLETION BANNER -->
+<div class="completion-banner" id="completion-banner">
+  <div class="completion-inner">
+    <div style="font-size:2.5rem;margin-bottom:0.5rem;">&#127881;</div>
+    <h2>Day 1 Complete!</h2>
+    <p>Great work. Veronica is proud of you.<br>Rest up and come back for Day 2.</p>
+  </div>
+</div>
+
+<!-- MOVEMENTS -->
+<div class="movements" id="movements-list"></div>
+
+<script>
+const movements = [
+  { id:  1, name: "Goblet Squat",              reps: "4 rounds &times; 12 reps",       videoId: "Ft3vpaFreP8" },
+  { id:  2, name: "Romanian Deadlift",          reps: "4 rounds &times; 10 reps",       videoId: "Vw0bDaqlv5U" },
+  { id:  3, name: "Push Up",                    reps: "4 rounds &times; 15 reps",       videoId: "5Lp0SjCZd20" },
+  { id:  4, name: "Dumbbell Row",               reps: "4 rounds &times; 12 reps each",  videoId: "tT1La8hTzaA" },
+  { id:  5, name: "Reverse Lunge",              reps: "4 rounds &times; 10 reps each",  videoId: "BwG1gicWhIE" },
+  { id:  6, name: "Overhead Press",             reps: "4 rounds &times; 10 reps",       videoId: "iRf5qbnyGEg" },
+  { id:  7, name: "Plank Hold",                 reps: "4 rounds &times; 30 sec",        videoId: "cNt6-8dc53w" },
+  { id:  8, name: "Hip Thrust",                 reps: "4 rounds &times; 15 reps",       videoId: "-SlMWVz8xOk" },
+  { id:  9, name: "Bicep Curl",                 reps: "3 rounds &times; 12 reps",       videoId: "_yzf3Avp1cc" },
+  { id: 10, name: "Tricep Kickback",            reps: "3 rounds &times; 12 reps",       videoId: "C9j0Jl09l9A" },
+  { id: 11, name: "Pull Up with Modification",  reps: "4 rounds &times; 10 reps",       comingSoon: true },
+];
+
+const TOTAL = movements.filter(m => !m.comingSoon).length; // 10
+const state = new Array(movements.length).fill(null); // null | 'done' | 'skipped'
+
+function countDone() { return state.filter(s => s === 'done').length; }
+
+function updateProgress() {
+  const done = countDone();
+  const pct  = Math.round((done / TOTAL) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-count').textContent = done + ' / ' + TOTAL + ' complete';
+
+  const stepsEl = document.getElementById('progress-steps');
+  stepsEl.innerHTML = '';
+  const firstNull = state.indexOf(null);
+  movements.forEach((m, i) => {
+    if (m.comingSoon) return;
+    const dot = document.createElement('div');
+    dot.className = 'step-dot';
+    dot.textContent = m.id;
+    if      (state[i] === 'done')    dot.classList.add('done');
+    else if (state[i] === 'skipped') dot.classList.add('skipped');
+    else if (i === firstNull)        dot.classList.add('active');
+    stepsEl.appendChild(dot);
+  });
+
+  const banner = document.getElementById('completion-banner');
+  if (done === TOTAL) {
+    banner.classList.add('show');
+    banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    banner.classList.remove('show');
+  }
+}
+
+function openNext() {
+  const next = state.indexOf(null);
+  if (next !== -1 && !movements[next].comingSoon) {
+    document.querySelectorAll('.movement-card')[next].classList.add('open', 'active');
+    setTimeout(() => {
+      document.querySelectorAll('.movement-card')[next]
+        .scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 120);
+  }
+}
+
+function markDone(i)    { state[i] = 'done';    renderCards(); updateProgress(); openNext(); }
+function markSkipped(i) { state[i] = 'skipped'; renderCards(); updateProgress(); openNext(); }
+function markUndo(i)    { state[i] = null;       renderCards(); updateProgress(); }
+
+function toggleCard(i) {
+  const cards = document.querySelectorAll('.movement-card');
+  const card  = cards[i];
+  const isOpen = card.classList.contains('open');
+  cards.forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+
+function renderCards() {
+  const list = document.getElementById('movements-list');
+  list.innerHTML = '';
+
+  movements.forEach((m, i) => {
+    const card = document.createElement('div');
+    card.className = 'movement-card';
+    if (state[i] === 'done')    card.classList.add('done');
+    if (state[i] === 'skipped') card.classList.add('skipped');
+    if (m.comingSoon)           card.classList.add('coming-soon');
+
+    // ── COMING SOON ──
+    if (m.comingSoon) {
+      card.innerHTML = `
+        <div class="movement-header">
+          <div class="movement-number">${m.id}</div>
+          <div class="movement-info">
+            <div class="movement-name">${m.name}</div>
+            <div class="movement-reps">${m.reps}</div>
+          </div>
+          <span class="movement-status status-soon">Coming Soon</span>
+        </div>
+        <div class="cs-body">
+          <div class="cs-icon">&#128274;</div>
+          <div>
+            <div class="cs-text-title">Demo video coming soon</div>
+            <div class="cs-text-sub">Veronica is filming the Pull Up with Modification tutorial. It will be live before your next session.</div>
+          </div>
+        </div>`;
+      list.appendChild(card);
+      return;
+    }
+
+    // ── STATUS BADGE ──
+    let statusHtml = '';
+    if (state[i] === 'done')    statusHtml = `<span class="movement-status status-done">&#10003; Done</span>`;
+    if (state[i] === 'skipped') statusHtml = `<span class="movement-status status-skipped">Skipped</span>`;
+
+    // ── ACTIONS ──
+    const actionsHtml = state[i] === null
+      ? `<div class="movement-actions">
+           <button class="btn-done" onclick="markDone(${i});event.stopPropagation()">&#10003; Mark as Done</button>
+           <button class="btn-skip" onclick="markSkipped(${i});event.stopPropagation()">Skip</button>
+         </div>`
+      : `<div class="movement-actions">
+           <button class="btn-undo" onclick="markUndo(${i});event.stopPropagation()">&#8617; Undo</button>
+         </div>`;
+
+    card.innerHTML = `
+      <div class="movement-header" onclick="toggleCard(${i})">
+        <div class="movement-number">${m.id}</div>
+        <div class="movement-info">
+          <div class="movement-name">${m.name}</div>
+          <div class="movement-reps">${m.reps}</div>
+        </div>
+        ${statusHtml}
+        <div class="movement-chevron">&#9660;</div>
+      </div>
+      <div class="movement-body">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/${m.videoId}?rel=0&modestbranding=1"
+            title="${m.name}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        ${actionsHtml}
+      </div>`;
+
+    list.appendChild(card);
+  });
+
+  // open first incomplete card
+  const firstNull = state.indexOf(null);
+  if (firstNull !== -1 && !movements[firstNull].comingSoon) {
+    document.querySelectorAll('.movement-card')[firstNull].classList.add('open', 'active');
+  }
+}
+
+renderCards();
+updateProgress();
+</script>
+</body>
+</html>
