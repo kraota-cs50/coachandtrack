@@ -1104,6 +1104,15 @@ footer a:hover {
   color: var(--text) !important;
   letter-spacing: 1px !important;
 }
+@media (max-width: 768px) {
+  #how-it-works [style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  #how-it-works [style*="position:absolute;top:36px"] {
+    display: none !important;
+  }
+}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -1123,6 +1132,7 @@ footer a:hover {
   <div class="logo">COACH<span>AND</span>TRACK</div>
   <div class="nav-links">
     <a href="#programs">Explore</a>
+    <a href="#how-it-works">How It Works</a>
     <a href="#trainers">Trainers</a>
     <a href="#programs">Programs</a>
     <a href="#programs">Nutrition</a>
@@ -1204,6 +1214,226 @@ footer a:hover {
     <div class="strip-item"><span class="strip-dot"></span>COMMUNITY ACCESS</div>
   </div>
 </div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" style="
+  padding:5rem 2rem;
+  background:var(--dark-card);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:3rem;">
+      <span style="display:inline-block;
+        background:var(--orange);color:white;
+        font-size:0.68rem;font-weight:700;
+        padding:0.22rem 0.85rem;border-radius:4px;
+        letter-spacing:2px;text-transform:uppercase;
+        margin-bottom:0.75rem;">
+        How It Works
+      </span>
+      <h2 style="font-family:'Bebas Neue',sans-serif;
+        font-size:clamp(2.5rem,5vw,3.5rem);
+        letter-spacing:2px;color:#F3F4F6;
+        margin-bottom:0.75rem;">
+        YOUR JOURNEY TO <span style="color:var(--orange);">
+        TRANSFORMATION</span>
+      </h2>
+      <p style="color:#94A3B8;font-size:1rem;
+        max-width:540px;margin:0 auto;line-height:1.7;">
+        Getting started takes less than 5 minutes.
+        Here is exactly what happens after you join.
+      </p>
+    </div>
+
+    <!-- STEPS -->
+    <div style="display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1.5rem;position:relative;
+      margin-bottom:3rem;">
+
+      <!-- connector line -->
+      <div style="position:absolute;top:36px;
+        left:12.5%;right:12.5%;height:2px;
+        background:linear-gradient(90deg,
+          var(--orange),rgba(249,115,22,0.15));
+        z-index:0;"></div>
+
+      <!-- STEP 1 -->
+      <div style="background:var(--elevated);
+        border:1px solid var(--border);
+        border-radius:12px;padding:1.75rem 1.25rem;
+        text-align:center;position:relative;z-index:1;
+        transition:transform 0.2s,border-color 0.2s;"
+        onmouseover="this.style.transform='translateY(-4px)';
+          this.style.borderColor='rgba(249,115,22,0.4)'"
+        onmouseout="this.style.transform='translateY(0)';
+          this.style.borderColor='#2A2A3E'">
+        <div style="width:56px;height:56px;
+          border-radius:50%;background:var(--orange);
+          display:flex;align-items:center;
+          justify-content:center;margin:0 auto 1rem;
+          font-family:'Bebas Neue',sans-serif;
+          font-size:1.6rem;color:white;
+          border:3px solid rgba(249,115,22,0.3);">1</div>
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;">
+          🔍</div>
+        <div style="font-weight:700;font-size:0.95rem;
+          color:#F3F4F6;margin-bottom:0.5rem;">
+          Join the Waitlist</div>
+        <div style="font-size:0.82rem;color:#94A3B8;
+          line-height:1.6;">
+          Sign up with your email. No credit card
+          needed. You get early access at founding
+          member pricing when we launch.</div>
+        <div style="margin-top:0.75rem;font-size:0.7rem;
+          color:var(--orange);font-weight:700;
+          letter-spacing:1px;text-transform:uppercase;">
+          Today — Free</div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div style="background:var(--elevated);
+        border:1px solid var(--border);
+        border-radius:12px;padding:1.75rem 1.25rem;
+        text-align:center;position:relative;z-index:1;
+        transition:transform 0.2s,border-color 0.2s;"
+        onmouseover="this.style.transform='translateY(-4px)';
+          this.style.borderColor='rgba(249,115,22,0.4)'"
+        onmouseout="this.style.transform='translateY(0)';
+          this.style.borderColor='#2A2A3E'">
+        <div style="width:56px;height:56px;
+          border-radius:50%;background:var(--orange);
+          display:flex;align-items:center;
+          justify-content:center;margin:0 auto 1rem;
+          font-family:'Bebas Neue',sans-serif;
+          font-size:1.6rem;color:white;
+          border:3px solid rgba(249,115,22,0.3);">2</div>
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;">
+          🏋️</div>
+        <div style="font-weight:700;font-size:0.95rem;
+          color:#F3F4F6;margin-bottom:0.5rem;">
+          Choose Your Coach</div>
+        <div style="font-size:0.82rem;color:#94A3B8;
+          line-height:1.6;">
+          Browse certified coaches by specialty.
+          Read their profiles, see their programs,
+          and pick the one that fits your goal.</div>
+        <div style="margin-top:0.75rem;font-size:0.7rem;
+          color:var(--orange);font-weight:700;
+          letter-spacing:1px;text-transform:uppercase;">
+          At Launch</div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div style="background:var(--elevated);
+        border:1px solid var(--border);
+        border-radius:12px;padding:1.75rem 1.25rem;
+        text-align:center;position:relative;z-index:1;
+        transition:transform 0.2s,border-color 0.2s;"
+        onmouseover="this.style.transform='translateY(-4px)';
+          this.style.borderColor='rgba(249,115,22,0.4)'"
+        onmouseout="this.style.transform='translateY(0)';
+          this.style.borderColor='#2A2A3E'">
+        <div style="width:56px;height:56px;
+          border-radius:50%;background:var(--orange);
+          display:flex;align-items:center;
+          justify-content:center;margin:0 auto 1rem;
+          font-family:'Bebas Neue',sans-serif;
+          font-size:1.6rem;color:white;
+          border:3px solid rgba(249,115,22,0.3);">3</div>
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;">
+          📱</div>
+        <div style="font-weight:700;font-size:0.95rem;
+          color:#F3F4F6;margin-bottom:0.5rem;">
+          Start Your Program</div>
+        <div style="font-size:0.82rem;color:#94A3B8;
+          line-height:1.6;">
+          Follow your coach's structured program —
+          movement by movement, day by day.
+          Watch, follow along, mark it done.</div>
+        <div style="margin-top:0.75rem;font-size:0.7rem;
+          color:var(--orange);font-weight:700;
+          letter-spacing:1px;text-transform:uppercase;">
+          Week 1</div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div style="background:var(--elevated);
+        border:1px solid var(--border);
+        border-radius:12px;padding:1.75rem 1.25rem;
+        text-align:center;position:relative;z-index:1;
+        transition:transform 0.2s,border-color 0.2s;"
+        onmouseover="this.style.transform='translateY(-4px)';
+          this.style.borderColor='rgba(249,115,22,0.4)'"
+        onmouseout="this.style.transform='translateY(0)';
+          this.style.borderColor='#2A2A3E'">
+        <div style="width:56px;height:56px;
+          border-radius:50%;background:var(--orange);
+          display:flex;align-items:center;
+          justify-content:center;margin:0 auto 1rem;
+          font-family:'Bebas Neue',sans-serif;
+          font-size:1.6rem;color:white;
+          border:3px solid rgba(249,115,22,0.3);">4</div>
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;">
+          🚀</div>
+        <div style="font-weight:700;font-size:0.95rem;
+          color:#F3F4F6;margin-bottom:0.5rem;">
+          Track &amp; Transform</div>
+        <div style="font-size:0.82rem;color:#94A3B8;
+          line-height:1.6;">
+          Log workouts, track progress, and watch
+          your results build week over week.
+          Upgrade for direct coach access anytime.</div>
+        <div style="margin-top:0.75rem;font-size:0.7rem;
+          color:#22C55E;font-weight:700;
+          letter-spacing:1px;text-transform:uppercase;">
+          Ongoing</div>
+      </div>
+    </div>
+
+    <!-- BOTTOM STRIP -->
+    <div style="background:var(--dark);
+      border:1px solid var(--border);
+      border-radius:12px;padding:1.5rem 2rem;
+      display:flex;align-items:center;
+      justify-content:space-between;flex-wrap:wrap;
+      gap:1rem;">
+      <div style="display:flex;align-items:center;
+        gap:1.5rem;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;
+          gap:0.5rem;font-size:0.88rem;color:#94A3B8;">
+          <span style="color:var(--orange);">✓</span>
+          No credit card to start
+        </div>
+        <div style="display:flex;align-items:center;
+          gap:0.5rem;font-size:0.88rem;color:#94A3B8;">
+          <span style="color:var(--orange);">✓</span>
+          Cancel anytime
+        </div>
+        <div style="display:flex;align-items:center;
+          gap:0.5rem;font-size:0.88rem;color:#94A3B8;">
+          <span style="color:var(--orange);">✓</span>
+          Founding member pricing locked in
+        </div>
+        <div style="display:flex;align-items:center;
+          gap:0.5rem;font-size:0.88rem;color:#94A3B8;">
+          <span style="color:var(--orange);">✓</span>
+          English &amp; Spanish support
+        </div>
+      </div>
+      <a href="#waitlist" style="
+        display:inline-block;
+        background:var(--orange);color:white;
+        padding:0.75rem 1.8rem;border-radius:8px;
+        font-weight:700;font-size:0.9rem;
+        white-space:nowrap;text-decoration:none;">
+        Join the Waitlist →
+      </a>
+    </div>
+
+  </div>
+</section>
 
 <!-- CATEGORIES -->
 <section class="categories">
