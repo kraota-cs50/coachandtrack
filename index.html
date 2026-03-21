@@ -1113,6 +1113,42 @@ footer a:hover {
     display: none !important;
   }
 }
+
+@media (max-width: 768px) {
+  /* Early access banner */
+  div[style*="background:rgba(249,115,22,0.08)"] {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+  /* How It Works — 4 cols to 2 cols */
+  #how-it-works div[style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+  /* Hide connector line on mobile */
+  #how-it-works div[style*="position:absolute;top:36px"] {
+    display: none !important;
+  }
+  /* Trust badge row — stack on mobile */
+  div[style*="Certified Coaches Only"] {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    text-align: center;
+  }
+  /* Hide dividers between trust badges on mobile */
+  div[style*="width:1px;height:20px"] {
+    display: none !important;
+  }
+  /* Hero stats row */
+  .hero-stats {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    align-items: flex-start !important;
+  }
+  /* Hamburger */
+  #nav-hamburger { display: block !important; }
+  .nav-links { display: none !important; }
+}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -1139,6 +1175,20 @@ footer a:hover {
     <a href="#community">Community</a>
   </div>
   <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+
+  <!-- Mobile hamburger -->
+  <button id="nav-hamburger" onclick="toggleMobileNav()" style="display:none;background:transparent;border:1px solid #2A2A3E;border-radius:6px;padding:0.4rem 0.6rem;cursor:pointer;color:#F3F4F6;font-size:1.1rem;">☰</button>
+
+  <!-- Mobile nav overlay -->
+  <div id="mobile-nav" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,13,20,0.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem;">
+    <button onclick="toggleMobileNav()" style="position:absolute;top:1.25rem;right:1.25rem;background:transparent;border:none;color:#94A3B8;font-size:1.5rem;cursor:pointer;">✕</button>
+    <a href="#how-it-works" onclick="toggleMobileNav()" style="color:#F3F4F6;font-size:1.3rem;font-weight:600;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;text-decoration:none;">HOW IT WORKS</a>
+    <a href="#trainers" onclick="toggleMobileNav()" style="color:#F3F4F6;font-size:1.3rem;font-weight:600;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;text-decoration:none;">COACHES</a>
+    <a href="#programs" onclick="toggleMobileNav()" style="color:#F3F4F6;font-size:1.3rem;font-weight:600;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;text-decoration:none;">PROGRAMS</a>
+    <a href="#pricing" onclick="toggleMobileNav()" style="color:#F3F4F6;font-size:1.3rem;font-weight:600;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;text-decoration:none;">PRICING</a>
+    <a href="/about-us.html" onclick="toggleMobileNav()" style="color:#F3F4F6;font-size:1.3rem;font-weight:600;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;text-decoration:none;">ABOUT</a>
+    <a href="#waitlist" onclick="toggleMobileNav()" style="background:#F97316;color:white;padding:0.9rem 2.5rem;border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;">Join the Waitlist →</a>
+  </div>
 </nav>
 
 <div style="background:rgba(249,115,22,0.08);
@@ -2018,6 +2068,13 @@ footer a:hover {
       script.src = baseUrl + '?' + params.toString();
       document.body.appendChild(script);
     });
+  }
+
+  function toggleMobileNav() {
+    const nav = document.getElementById('mobile-nav');
+    const isOpen = nav.style.display === 'flex';
+    nav.style.display = isOpen ? 'none' : 'flex';
+    document.body.style.overflow = isOpen ? '' : 'hidden';
   }
 </script>
 </body>
