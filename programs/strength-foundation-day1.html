@@ -396,7 +396,7 @@
 <div class="progress-section">
   <div class="progress-header">
     <span class="progress-label">Today's Progress</span>
-    <span class="progress-count" id="progress-count">0 / 10 complete</span>
+    <span class="progress-count" id="progress-count">0 / 11 complete</span>
   </div>
   <div class="progress-track">
     <div class="progress-fill" id="progress-fill"></div>
@@ -428,10 +428,10 @@ const movements = [
   { id:  8, name: "Supinated Front Raise",                              reps: "4 rounds &times; 15 reps", videoId: "-SlMWVz8xOk" },
   { id:  9, name: "Triceps Press Down with Band",                       reps: "4 rounds &times; 15 reps", videoId: "_yzf3Avp1cc" },
   { id: 10, name: "Standing Eccentric Hammer Curl",                     reps: "4 rounds &times; 10 reps", videoId: "C9j0Jl09l9A" },
-  { id: 11, name: "Pull Up with Modification",  reps: "4 rounds &times; 10 reps",       comingSoon: true },
+  { id: 11, name: "Pull Up with Modification",  reps: "4 rounds &times; 10 reps",       videoId: "XA1PpM155k4" },
 ];
 
-const TOTAL = movements.filter(m => !m.comingSoon).length; // 10
+const TOTAL = movements.length; // 11
 const state = new Array(movements.length).fill(null); // null | 'done' | 'skipped'
 
 function countDone() { return state.filter(s => s === 'done').length; }
@@ -446,7 +446,6 @@ function updateProgress() {
   stepsEl.innerHTML = '';
   const firstNull = state.indexOf(null);
   movements.forEach((m, i) => {
-    if (m.comingSoon) return;
     const dot = document.createElement('div');
     dot.className = 'step-dot';
     dot.textContent = m.id;
@@ -467,7 +466,7 @@ function updateProgress() {
 
 function openNext() {
   const next = state.indexOf(null);
-  if (next !== -1 && !movements[next].comingSoon) {
+  if (next !== -1) {
     document.querySelectorAll('.movement-card')[next].classList.add('open', 'active');
     setTimeout(() => {
       document.querySelectorAll('.movement-card')[next]
@@ -497,29 +496,6 @@ function renderCards() {
     card.className = 'movement-card';
     if (state[i] === 'done')    card.classList.add('done');
     if (state[i] === 'skipped') card.classList.add('skipped');
-    if (m.comingSoon)           card.classList.add('coming-soon');
-
-    // ── COMING SOON ──
-    if (m.comingSoon) {
-      card.innerHTML = `
-        <div class="movement-header">
-          <div class="movement-number">${m.id}</div>
-          <div class="movement-info">
-            <div class="movement-name">${m.name}</div>
-            <div class="movement-reps">${m.reps}</div>
-          </div>
-          <span class="movement-status status-soon">Coming Soon</span>
-        </div>
-        <div class="cs-body">
-          <div class="cs-icon">&#128274;</div>
-          <div>
-            <div class="cs-text-title">Demo video coming soon</div>
-            <div class="cs-text-sub">Veronica is filming the Pull Up with Modification tutorial. It will be live before your next session.</div>
-          </div>
-        </div>`;
-      list.appendChild(card);
-      return;
-    }
 
     // ── STATUS BADGE ──
     let statusHtml = '';
@@ -563,7 +539,7 @@ function renderCards() {
 
   // open first incomplete card
   const firstNull = state.indexOf(null);
-  if (firstNull !== -1 && !movements[firstNull].comingSoon) {
+  if (firstNull !== -1) {
     document.querySelectorAll('.movement-card')[firstNull].classList.add('open', 'active');
   }
 }
