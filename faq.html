@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — CoachAndTrack</title>
+  <meta name="description" content="Frequently asked questions about CoachAndTrack — programs, coaches, pricing, and how the platform works.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGRQKRPPXV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGRQKRPPXV');</script>
+  <style>
+    :root {
+      --dark:          #0D0D14;
+      --dark-card:     #13131E;
+      --dark-elevated: #1A1A2E;
+      --border:        #2A2A3E;
+      --orange:        #F97316;
+      --orange-glow:   rgba(249,115,22,0.10);
+      --orange-border: rgba(249,115,22,0.25);
+      --green:         #22C55E;
+      --text:          #F3F4F6;
+      --text-muted:    #94A3B8;
+      --text-dim:      #64748B;
+      --radius:        16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--dark); color: var(--text); font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; border-bottom: 1px solid var(--border);
+      background: var(--dark); position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--orange); text-decoration: none; letter-spacing: 1px; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--orange); color: white !important; border-radius: 8px; padding: 0.45rem 1rem; font-weight: 700 !important; font-size: 0.85rem !important; transition: opacity 0.2s !important; }
+    .nav-cta:hover { opacity: 0.88; }
+    @media (max-width: 640px) { .nav-links { gap: 1rem; } .nav-links a:not(.nav-cta) { display: none; } }
+
+    /* ── MAIN ── */
+    main { flex: 1; max-width: 760px; margin: 0 auto; width: 100%; padding: 4rem 2rem; }
+
+    .page-header { margin-bottom: 3rem; }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; margin-bottom: 0.75rem; }
+    .page-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── CATEGORY ── */
+    .faq-category { margin-bottom: 3rem; }
+    .category-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; letter-spacing: 1px;
+      color: var(--text); margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── ACCORDION ── */
+    .faq-item {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item.open { border-color: rgba(249,115,22,0.3); }
+
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 1.4rem;
+      cursor: pointer;
+      font-weight: 600; font-size: 0.95rem;
+      color: var(--text);
+      user-select: none;
+      gap: 1rem;
+    }
+    .faq-question:hover { color: var(--orange); }
+
+    .faq-chevron {
+      flex-shrink: 0; width: 20px; height: 20px;
+      background: var(--dark-elevated); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--text-dim);
+      transition: transform 0.25s, background 0.2s;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--orange-glow); color: var(--orange); }
+
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.2s;
+      font-size: 0.92rem; color: var(--text-muted); line-height: 1.75;
+    }
+    .faq-answer-inner { padding: 0 1.4rem 1.25rem; }
+    .faq-item.open .faq-answer { max-height: 500px; }
+
+    .faq-answer a { color: var(--orange); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+
+    /* ── CTA ── */
+    .faq-cta {
+      margin-top: 3.5rem;
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .faq-cta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; margin-bottom: 0.5rem;
+    }
+    .faq-cta p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .btn-primary {
+      display: inline-block; background: var(--orange); color: white;
+      padding: 0.75rem 1.75rem; border-radius: 10px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .site-footer a { color: var(--text-dim); text-decoration: none; }
+    .site-footer a:hover { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="/" class="nav-logo">CoachAndTrack</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about-us.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/#waitlist" class="nav-cta">Join Waitlist</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <div class="page-header">
+    <div class="section-label">Help Center</div>
+    <h1 class="page-title">Frequently Asked Questions</h1>
+    <p class="page-sub">Everything you need to know about CoachAndTrack. Can't find your answer? <a href="/contact.html" style="color:var(--orange);">Contact us →</a></p>
+  </div>
+
+  <!-- CATEGORY 1: Platform & Programs -->
+  <div class="faq-category">
+    <div class="category-title">Platform &amp; Programs</div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        What is CoachAndTrack?
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          CoachAndTrack is a fitness coaching marketplace that connects clients with certified personal trainers and nutrition coaches. We're currently in early access — you can try sample workouts and nutrition plans for free right now, and join the waitlist for full platform access when we launch.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        What programs are available for free?
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          During early access, you can try <a href="/programs/strength-foundation-day1.html">Strength Foundation — Day 1</a> (an 11-movement full-body strength workout) and <a href="/programs/nutrition-plan-week1.html">Nutrition Plan — Week 1</a> (a 7-day gluten-free bilingual meal plan). Both are fully functional with video guidance and progress tracking.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        Do I need any equipment to follow the workouts?
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Our Strength Foundation program uses minimal equipment — a resistance band, a set of dumbbells, and a mat are all you need. Modifications are available for most movements. The nutrition plan requires no equipment at all.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        Are programs available in Spanish?
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Yes! Our nutrition plans include a full Spanish translation — just toggle EN / ES at the top of the page. Coach Veronica Mosquera is bilingual and her coaching content is available in both English and Spanish. We're committed to making fitness accessible to the Latino community.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CATEGORY 2: Coaches & Pricing -->
+  <div class="faq-category">
+    <div class="category-title">Coaches &amp; Pricing</div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        How are coaches verified?
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Every coach on CoachAndTrack goes through a three-step verification: we check their certifications (ISSA, NASM, ACE, or equivalent), review their coach profile for accuracy, and approve all program content before it goes live. You'll see a "Verified Coach" badge on any profile that has passed this process.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        How much does CoachAndTrack cost?
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Sample programs are free during early access. At launch, we plan to offer a Pro plan and an Elite plan — founding members who join the waitlist will receive special early-bird pricing. Full pricing details will be shared with waitlist members before launch.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        Can I cancel my subscription anytime?
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Yes, absolutely. CoachAndTrack subscriptions are cancel-anytime — no long-term contracts or cancellation fees. You'll retain access through the end of your billing period. We believe in earning your subscription every month.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        I'm a coach. How do I apply to join the platform?
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          Visit our <a href="/become-a-coach.html">Become a Coach</a> page to learn about requirements, earnings potential, and the application process. Coaches keep 70% of all subscription revenue. We're selectively onboarding certified coaches who are passionate about delivering results.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="faq-cta">
+    <h2>Still Have Questions?</h2>
+    <p>Our team is happy to help. Send us a message and we'll get back to you within 1–2 business days.</p>
+    <a href="/contact.html" class="btn-primary">Contact Us →</a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>
+    &copy; 2026 TechXcel Partners LLC, d/b/a CoachAndTrack. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/about-us.html">About</a>
+    &nbsp;&middot;&nbsp; <a href="/contact.html">Contact</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy-policy.html">Privacy</a>
+    &nbsp;&middot;&nbsp; <a href="/terms-of-service.html">Terms</a>
+  </p>
+</footer>
+
+<script>
+function toggleFaq(item) {
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  // Open clicked if it was closed
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>

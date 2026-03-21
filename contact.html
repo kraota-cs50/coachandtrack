@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — CoachAndTrack</title>
+  <meta name="description" content="Get in touch with the CoachAndTrack team. We're here to help with questions about coaching, programs, and your account.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGRQKRPPXV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MGRQKRPPXV');</script>
+  <style>
+    :root {
+      --dark:          #0D0D14;
+      --dark-card:     #13131E;
+      --dark-elevated: #1A1A2E;
+      --border:        #2A2A3E;
+      --orange:        #F97316;
+      --orange-glow:   rgba(249,115,22,0.10);
+      --orange-border: rgba(249,115,22,0.25);
+      --green:         #22C55E;
+      --text:          #F3F4F6;
+      --text-muted:    #94A3B8;
+      --text-dim:      #64748B;
+      --radius:        16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--dark); color: var(--text); font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; border-bottom: 1px solid var(--border);
+      background: var(--dark); position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--orange); text-decoration: none; letter-spacing: 1px; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--orange); color: white !important; border-radius: 8px; padding: 0.45rem 1rem; font-weight: 700 !important; font-size: 0.85rem !important; transition: opacity 0.2s !important; }
+    .nav-cta:hover { opacity: 0.88; }
+    @media (max-width: 640px) { .nav-links { gap: 1rem; } .nav-links a:not(.nav-cta) { display: none; } }
+
+    /* ── MAIN ── */
+    main { flex: 1; max-width: 980px; margin: 0 auto; width: 100%; padding: 4rem 2rem; }
+
+    .page-header { margin-bottom: 3rem; }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; margin-bottom: 0.75rem; }
+    .page-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 540px; }
+
+    /* ── GRID ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    /* ── INFO CARD ── */
+    .info-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .info-card h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .info-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .info-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--orange-glow); border: 1px solid var(--orange-border);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .info-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.2rem; }
+    .info-value { font-size: 0.92rem; color: var(--text-muted); }
+    .info-value a { color: var(--orange); text-decoration: none; }
+    .info-value a:hover { text-decoration: underline; }
+
+    .response-note {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .response-note strong { color: var(--text-muted); }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .form-card h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block; font-size: 0.8rem; font-weight: 600;
+      color: var(--text-muted); margin-bottom: 0.4rem; letter-spacing: 0.3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; background: var(--dark-elevated);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.7rem 1rem; color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-size: 0.92rem;
+      outline: none; transition: border-color 0.2s;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--orange); }
+    .form-group textarea { min-height: 130px; }
+    .form-group select option { background: var(--dark-elevated); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .btn-submit {
+      width: 100%; background: var(--orange); color: white;
+      border: none; border-radius: 10px; padding: 0.85rem 1.5rem;
+      font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: opacity 0.2s; margin-top: 0.5rem;
+    }
+    .btn-submit:hover { opacity: 0.88; }
+
+    .success-msg {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 10px;
+      color: var(--green);
+      font-size: 0.9rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .site-footer a { color: var(--text-dim); text-decoration: none; }
+    .site-footer a:hover { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="/" class="nav-logo">CoachAndTrack</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about-us.html">About</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/#waitlist" class="nav-cta">Join Waitlist</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <div class="page-header">
+    <div class="section-label">Get In Touch</div>
+    <h1 class="page-title">Contact Us</h1>
+    <p class="page-sub">Have a question about a program, coach, or your account? We'd love to hear from you.</p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- LEFT: INFO -->
+    <div class="info-card">
+      <h2>Contact Details</h2>
+
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">General Support</div>
+          <div class="info-value"><a href="mailto:support@coachandtrack.com">support@coachandtrack.com</a></div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">🧑‍💼</div>
+        <div>
+          <div class="info-label">Coach Applications</div>
+          <div class="info-value"><a href="mailto:support@coachandtrack.com?subject=Coach%20Application">support@coachandtrack.com</a><br>
+          <span style="font-size:0.8rem;">Subject: Coach Application</span></div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">🤝</div>
+        <div>
+          <div class="info-label">Partnerships</div>
+          <div class="info-value"><a href="mailto:support@coachandtrack.com?subject=Partnership%20Inquiry">support@coachandtrack.com</a><br>
+          <span style="font-size:0.8rem;">Subject: Partnership Inquiry</span></div>
+        </div>
+      </div>
+
+      <div class="info-item" style="margin-bottom:0;">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Company</div>
+          <div class="info-value">TechXcel Partners LLC<br>d/b/a CoachAndTrack</div>
+        </div>
+      </div>
+
+      <div class="response-note">
+        <strong>Response time:</strong> We typically reply within 1–2 business days. For faster answers, check our <a href="/faq.html" style="color:var(--orange);">FAQ page</a>.
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="form-card">
+      <h2>Send a Message</h2>
+      <form id="contact-form" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Jane" required>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last_name" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Topic</label>
+          <select id="subject" name="subject" required>
+            <option value="" disabled selected>Select a topic…</option>
+            <option value="General Question">General Question</option>
+            <option value="Program Help">Program Help</option>
+            <option value="Coach Application">Coach Application</option>
+            <option value="Billing & Pricing">Billing &amp; Pricing</option>
+            <option value="Technical Issue">Technical Issue</option>
+            <option value="Partnership">Partnership</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us what's on your mind…" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message →</button>
+      </form>
+      <div class="success-msg" id="success-msg">
+        ✓ Message sent! We'll get back to you within 1–2 business days.
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>
+    &copy; 2026 TechXcel Partners LLC, d/b/a CoachAndTrack. All rights reserved.
+    &nbsp;&middot;&nbsp; <a href="/about-us.html">About</a>
+    &nbsp;&middot;&nbsp; <a href="/faq.html">FAQ</a>
+    &nbsp;&middot;&nbsp; <a href="/privacy-policy.html">Privacy</a>
+    &nbsp;&middot;&nbsp; <a href="/terms-of-service.html">Terms</a>
+  </p>
+</footer>
+
+<script>
+function submitForm(e) {
+  e.preventDefault();
+  const form = document.getElementById('contact-form');
+  const firstName = document.getElementById('first-name').value.trim();
+  const lastName  = document.getElementById('last-name').value.trim();
+  const email     = document.getElementById('email').value.trim();
+  const subject   = document.getElementById('subject').value;
+  const message   = document.getElementById('message').value.trim();
+
+  const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nTopic: ${subject}\n\n${message}`;
+  const mailtoLink = `mailto:support@coachandtrack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailtoLink;
+
+  form.style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
