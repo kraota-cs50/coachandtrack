@@ -1149,6 +1149,41 @@ footer a:hover {
   #nav-hamburger { display: block !important; }
   .nav-links { display: none !important; }
 }
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.hero-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #94A3B8;
+  white-space: nowrap;
+}
+
+.hero-stat-item .stat-check {
+  color: #F97316;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .hero-stats {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.6rem !important;
+    margin-top: 1rem !important;
+  }
+  .hero-stat-item {
+    font-size: 0.85rem !important;
+    white-space: normal !important;
+  }
+}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -1219,17 +1254,17 @@ footer a:hover {
       <a href="#waitlist" class="btn-ghost" style="display:inline-block;text-decoration:none;">Join the Waitlist</a>
     </div>
     <div class="hero-stats">
-      <div>
-        <div class="stat-num">✓</div>
-        <div class="stat-label">Vetted Coaches</div>
+      <div class="hero-stat-item">
+        <span class="stat-check">✓</span>
+        <span>Vetted Coaches</span>
       </div>
-      <div>
-        <div class="stat-num">$0</div>
-        <div class="stat-label">To Get Started</div>
+      <div class="hero-stat-item">
+        <span class="stat-check">$0</span>
+        <span>To Get Started</span>
       </div>
-      <div>
-        <div class="stat-num">70%</div>
-        <div class="stat-label">Coach Revenue Share</div>
+      <div class="hero-stat-item">
+        <span class="stat-check">70%</span>
+        <span>Coach Revenue Share</span>
       </div>
     </div>
   </div>
