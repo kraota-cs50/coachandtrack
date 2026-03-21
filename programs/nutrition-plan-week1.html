@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrition Reset — Week 1 | CoachAndTrack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark:          #0D0D14;
+      --dark-card:     #13131E;
+      --dark-elevated: #1A1A2E;
+      --border:        #2A2A3E;
+      --orange:        #F97316;
+      --orange-glow:   rgba(249,115,22,0.10);
+      --green:         #22C55E;
+      --green-glow:    rgba(34,197,94,0.10);
+      --blue:          #3B82F6;
+      --blue-glow:     rgba(59,130,246,0.10);
+      --purple:        #A855F7;
+      --purple-glow:   rgba(168,85,247,0.10);
+      --text:          #F3F4F6;
+      --text-muted:    #94A3B8;
+      --text-dim:      #64748B;
+      --radius:        16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--dark);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--orange);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .nav-back {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .lang-toggle {
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .lang-toggle:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 1.5rem;
+    }
+    .hero-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+    .meta-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .meta-chip strong { color: var(--text); }
+    .coach-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange-glow);
+      border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 100px;
+      padding: 0.25rem 0.85rem 0.25rem 0.35rem;
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .coach-avatar {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F97316, #ea6c0a);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.65rem; color: white; font-weight: 900;
+      flex-shrink: 0;
+    }
+    .goal-tag {
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .goal-fat   { background: var(--orange-glow); color: var(--orange); border: 1px solid rgba(249,115,22,0.25); }
+    .goal-recomp{ background: var(--green-glow);  color: var(--green);  border: 1px solid rgba(34,197,94,0.25); }
+
+    /* ── LAYOUT ── */
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ── DAY TABS ── */
+    .day-tabs {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .day-tabs::-webkit-scrollbar { display: none; }
+    .day-tab {
+      flex-shrink: 0;
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .day-tab:hover  { border-color: var(--green); color: var(--text); }
+    .day-tab.active { background: var(--green); border-color: var(--green); color: #0D0D14; }
+
+    /* ── DAY HEADER ── */
+    .day-header {
+      margin-bottom: 1rem;
+    }
+    .day-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .day-cal {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .day-cal strong { color: var(--green); }
+
+    /* ── MEAL CARDS ── */
+    .meal-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 0.65rem;
+      transition: border-color 0.2s;
+    }
+    .meal-card:hover { border-color: rgba(255,255,255,0.12); }
+    .meal-card.type-breakfast { border-left: 3px solid var(--orange); }
+    .meal-card.type-lunch     { border-left: 3px solid var(--green); }
+    .meal-card.type-snack     { border-left: 3px solid var(--blue); }
+    .meal-card.type-dinner    { border-left: 3px solid var(--purple); }
+
+    .meal-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.95rem 1.1rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .meal-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .type-breakfast .meal-icon { background: var(--orange-glow); }
+    .type-lunch     .meal-icon { background: var(--green-glow); }
+    .type-snack     .meal-icon { background: var(--blue-glow); }
+    .type-dinner    .meal-icon { background: var(--purple-glow); }
+
+    .meal-info { flex: 1; min-width: 0; }
+    .meal-type-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+    .type-breakfast .meal-type-label { color: var(--orange); }
+    .type-lunch     .meal-type-label { color: var(--green); }
+    .type-snack     .meal-type-label { color: var(--blue); }
+    .type-dinner    .meal-type-label { color: var(--purple); }
+
+    .meal-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .meal-cal {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+    .meal-chevron {
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .meal-card.open .meal-chevron { transform: rotate(180deg); }
+
+    /* ── MEAL BODY ── */
+    .meal-body {
+      display: none;
+      padding: 0 1.1rem 1.1rem;
+      border-top: 1px solid var(--border);
+    }
+    .meal-card.open .meal-body { display: block; }
+
+    .macros-row {
+      display: flex;
+      gap: 0.5rem;
+      margin: 0.9rem 0 1rem;
+      flex-wrap: wrap;
+    }
+    .macro-chip {
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.35rem 0.7rem;
+      text-align: center;
+    }
+    .macro-val {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+    .macro-label {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ingredients-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.6rem;
+    }
+    .ingredients-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+    .ingredients-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .ingredients-list li::before {
+      content: "·";
+      color: var(--text-dim);
+      flex-shrink: 0;
+      margin-top: 0px;
+    }
+
+    .coach-tip {
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+    .tip-icon { font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+    .tip-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.2rem;
+    }
+    .tip-text { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; font-style: italic; }
+
+    /* ── SIDEBAR ── */
+    .sidebar { position: sticky; top: 80px; }
+    .sidebar-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .sidebar-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-row-label { color: var(--text-muted); }
+    .stat-row-val { font-weight: 700; color: var(--text); }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-orange { background: var(--orange); }
+    .dot-green  { background: var(--green); }
+    .dot-blue   { background: var(--blue); }
+    .dot-purple { background: var(--purple); }
+
+    .week-nav {
+      display: flex;
+      gap: 0.5rem;
+      flex-direction: column;
+    }
+    .week-btn {
+      display: block;
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+    .week-btn.current {
+      background: var(--green-glow);
+      border-color: rgba(34,197,94,0.35);
+      color: var(--green);
+    }
+    .week-btn.locked {
+      background: transparent;
+      color: var(--text-dim);
+      cursor: default;
+      opacity: 0.5;
+    }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 0.75rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 0.75rem;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+    .cta-secondary {
+      display: block;
+      width: 100%;
+      background: transparent;
+      color: var(--orange);
+      border: 1px solid rgba(249,115,22,0.4);
+      border-radius: 10px;
+      padding: 0.7rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+    .cta-secondary:hover { background: var(--orange-glow); }
+
+    @media (max-width: 768px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero, .layout { padding-left: 1rem; padding-right: 1rem; }
+      .navbar { padding: 0.75rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="../index.html">CoachAndTrack</a>
+  <div class="nav-right">
+    <button class="lang-toggle" id="lang-btn" onclick="toggleLang()">🌐 Español</button>
+    <a class="nav-back" href="../index.html#programs">&#8592; Programs</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label" id="hero-label">Nutrition Reset &middot; Week 1 of 4</div>
+  <h1 class="hero-title" id="hero-title">NUTRITION<br>RESET</h1>
+  <div class="hero-meta">
+    <div class="coach-chip">
+      <div class="coach-avatar">VM</div>
+      Veronica Mosquera
+    </div>
+    <div class="meta-chip"><strong>7</strong>&nbsp;<span data-en="Days" data-es="Días">Days</span></div>
+    <div class="meta-chip"><strong>Gluten-Free</strong></div>
+    <div class="meta-chip"><strong>1,500–1,700</strong>&nbsp;cal/day</div>
+    <span class="goal-tag goal-fat" data-en="🔥 Fat Burn" data-es="🔥 Quema Grasa">🔥 Fat Burn</span>
+    <span class="goal-tag goal-recomp" data-en="💪 Muscle Recomp" data-es="💪 Recomposición">💪 Muscle Recomp</span>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+  <!-- MAIN -->
+  <div class="main-col">
+    <div class="day-tabs" id="day-tabs"></div>
+    <div class="day-header">
+      <div class="day-title" id="day-title"></div>
+      <div class="day-cal" id="day-cal"></div>
+    </div>
+    <div id="meals-list"></div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title" data-en="PLAN OVERVIEW" data-es="RESUMEN DEL PLAN">PLAN OVERVIEW</div>
+      <div class="stat-row">
+        <span class="stat-row-label" data-en="Duration" data-es="Duración">Duration</span>
+        <span class="stat-row-val" data-en="4 Weeks" data-es="4 Semanas">4 Weeks</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-row-label" data-en="Calories / Day" data-es="Calorías / Día">Calories / Day</span>
+        <span class="stat-row-val">1,500–1,700</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-row-label" data-en="Meals / Day" data-es="Comidas / Día">Meals / Day</span>
+        <span class="stat-row-val" data-en="3 + 1 snack" data-es="3 + 1 merienda">3 + 1 snack</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-row-label" data-en="Diet Type" data-es="Tipo de Dieta">Diet Type</span>
+        <span class="stat-row-val" data-en="Gluten-Free" data-es="Sin Gluten">Gluten-Free</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-row-label" data-en="Coach" data-es="Entrenadora">Coach</span>
+        <span class="stat-row-val">Veronica M.</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title" data-en="MEAL KEY" data-es="LEYENDA">MEAL KEY</div>
+      <div class="legend-item"><span class="legend-dot dot-orange"></span><span data-en="Breakfast" data-es="Desayuno">Breakfast</span></div>
+      <div class="legend-item"><span class="legend-dot dot-green"></span><span data-en="Lunch" data-es="Almuerzo">Lunch</span></div>
+      <div class="legend-item"><span class="legend-dot dot-blue"></span><span data-en="Snack" data-es="Merienda">Snack</span></div>
+      <div class="legend-item"><span class="legend-dot dot-purple"></span><span data-en="Dinner" data-es="Cena">Dinner</span></div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title" data-en="WEEK NAVIGATION" data-es="SEMANAS">WEEK NAVIGATION</div>
+      <div class="week-nav">
+        <button class="week-btn current" data-en="✓ Week 1 — Current" data-es="✓ Semana 1 — Actual">✓ Week 1 — Current</button>
+        <button class="week-btn locked" data-en="🔒 Week 2" data-es="🔒 Semana 2">🔒 Week 2</button>
+        <button class="week-btn locked" data-en="🔒 Week 3" data-es="🔒 Semana 3">🔒 Week 3</button>
+        <button class="week-btn locked" data-en="🔒 Week 4" data-es="🔒 Semana 4">🔒 Week 4</button>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title" data-en="READY TO TRAIN?" data-es="¿LISTA PARA ENTRENAR?">READY TO TRAIN?</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.5;margin-bottom:0.75rem;" data-en="Pair this plan with Veronica's Strength Foundation program for best results." data-es="Combina este plan con el programa Strength Foundation de Veronica para mejores resultados.">Pair this plan with Veronica's Strength Foundation program for best results.</p>
+      <a class="cta-btn" href="/programs/strength-foundation-day1.html" data-en="💪 Start Day 1 Workout" data-es="💪 Empezar Entrenamiento Día 1">💪 Start Day 1 Workout</a>
+      <a class="cta-secondary" href="/../index.html#waitlist" data-en="Join Full Waitlist" data-es="Unirse a la Lista de Espera">Join Full Waitlist</a>
+    </div>
+  </aside>
+</div>
+
+<script>
+let lang = 'en';
+let activeDay = 0;
+
+const labels = {
+  en: {
+    dayNames: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+    dayShort: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    mealTypes: { breakfast:'Breakfast', lunch:'Lunch', snack:'Snack', dinner:'Dinner' },
+    mealIcons: { breakfast:'☀️', lunch:'🥗', snack:'🍎', dinner:'🌙' },
+    ingredients: 'Ingredients',
+    coachTip: "Coach's Tip",
+    totalCal: 'Total',
+    macros: { p:'Protein', c:'Carbs', f:'Fat', cal:'Calories' },
+    heroLabel: 'Nutrition Reset · Week 1 of 4',
+  },
+  es: {
+    dayNames: ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'],
+    dayShort: ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'],
+    mealTypes: { breakfast:'Desayuno', lunch:'Almuerzo', snack:'Merienda', dinner:'Cena' },
+    mealIcons: { breakfast:'☀️', lunch:'🥗', snack:'🍎', dinner:'🌙' },
+    ingredients: 'Ingredientes',
+    coachTip: 'Consejo de Veronica',
+    totalCal: 'Total',
+    macros: { p:'Proteína', c:'Carbos', f:'Grasa', cal:'Calorías' },
+    heroLabel: 'Nutrition Reset · Semana 1 de 4',
+  }
+};
+
+// ── MEAL DATA ──
+// Each day: [breakfast, lunch, snack, dinner]
+const data = {
+  en: [
+    // 0 Monday
+    [
+      { type:'breakfast', name:'Scrambled Eggs & Avocado', cal:370, p:22, c:12, f:25,
+        ingredients:['3 large eggs','½ avocado, sliced','½ cup cherry tomatoes','1 tsp olive oil','Salt, pepper, cumin to taste'],
+        tip:'Eat within 45 min of waking — protein at breakfast controls hunger all day.' },
+      { type:'lunch', name:'Grilled Chicken & Brown Rice Bowl', cal:490, p:42, c:45, f:12,
+        ingredients:['5 oz grilled chicken breast','½ cup cooked brown rice','1 cup roasted mixed vegetables','1 tbsp olive oil','Garlic, paprika, salt'],
+        tip:'Prep double the rice — you\'ll use it again on Wednesday.' },
+      { type:'snack', name:'Apple & Almond Butter', cal:190, p:4, c:25, f:9,
+        ingredients:['1 medium apple, sliced','2 tbsp natural almond butter'],
+        tip:'Have this 30 min before your workout for sustained energy.' },
+      { type:'dinner', name:'Baked Salmon & Quinoa', cal:520, p:40, c:35, f:18,
+        ingredients:['5 oz salmon fillet','½ cup cooked quinoa','1½ cups steamed broccoli','1 tbsp olive oil','Lemon, dill, garlic'],
+        tip:'Omega-3s in salmon accelerate recovery and reduce inflammation overnight.' },
+    ],
+    // 1 Tuesday
+    [
+      { type:'breakfast', name:'GF Oats with Banana & Protein', cal:380, p:30, c:50, f:6,
+        ingredients:['½ cup gluten-free rolled oats','1 scoop vanilla protein powder','1 banana, sliced','1 cup unsweetened almond milk','Cinnamon'],
+        tip:'Use certified GF oats — regular oats are often cross-contaminated.' },
+      { type:'lunch', name:'Turkey Lettuce Wraps', cal:420, p:38, c:18, f:18,
+        ingredients:['5 oz lean ground turkey, cooked','4 large romaine lettuce leaves','½ cup diced bell peppers','¼ cup diced onion','Cumin, garlic powder, lime juice'],
+        tip:'Load up on lettuce — it\'s unlimited and keeps you full without extra calories.' },
+      { type:'snack', name:'Hard-Boiled Eggs & Celery', cal:180, p:14, c:3, f:12,
+        ingredients:['2 large hard-boiled eggs','3 stalks celery','Pinch of sea salt'],
+        tip:'Perfect pre-bed snack — the protein feeds your muscles while you sleep.' },
+      { type:'dinner', name:'Beef Stir-Fry with Cauliflower Rice', cal:520, p:42, c:22, f:28,
+        ingredients:['5 oz lean ground beef','2 cups cauliflower rice','1 cup mixed bell peppers','2 tbsp coconut aminos (GF)','Garlic, ginger, sesame oil'],
+        tip:'Coconut aminos taste just like soy sauce and are naturally gluten-free.' },
+    ],
+    // 2 Wednesday
+    [
+      { type:'breakfast', name:'Banana Egg Pancakes', cal:360, p:18, c:42, f:14,
+        ingredients:['2 large eggs','1 ripe banana, mashed','¼ tsp vanilla extract','Pinch of cinnamon','1 tbsp coconut oil','Fresh berries to top'],
+        tip:'The riper the banana, the sweeter the pancakes — no added sugar needed.' },
+      { type:'lunch', name:'Grilled Shrimp & Sweet Potato', cal:470, p:36, c:40, f:14,
+        ingredients:['5 oz large shrimp, peeled','1 medium sweet potato, roasted','2 cups mixed greens','1 tbsp olive oil','Garlic, lemon, paprika'],
+        tip:'Shrimp is one of the leanest proteins — a big win for muscle recomposition.' },
+      { type:'snack', name:'Celery with Peanut Butter', cal:200, p:6, c:22, f:12,
+        ingredients:['4 stalks celery','2 tbsp natural peanut butter','Handful of raisins (optional)'],
+        tip:'Pair fat with fiber to slow digestion and stay full longer.' },
+      { type:'dinner', name:'Chicken Thighs & Asparagus', cal:530, p:45, c:32, f:20,
+        ingredients:['5 oz boneless chicken thighs','1 bundle asparagus, roasted','½ cup cooked quinoa','1 tbsp avocado oil','Garlic, rosemary, salt'],
+        tip:'Chicken thighs have more fat than breast — that\'s fine, it supports hormones.' },
+    ],
+    // 3 Thursday
+    [
+      { type:'breakfast', name:'Greek Yogurt Power Bowl', cal:390, p:24, c:52, f:8,
+        ingredients:['1 cup plain Greek yogurt','¼ cup GF granola','1 tsp honey','½ cup mixed berries','1 tbsp chia seeds'],
+        tip:'Chia seeds add fiber and omega-3s — tiny but mighty.' },
+      { type:'lunch', name:'Tuna & Cucumber Salad', cal:430, p:40, c:8, f:24,
+        ingredients:['5 oz canned tuna in water, drained','1 cup sliced cucumber','¼ avocado, diced','1 tbsp olive oil','Lemon juice, salt, fresh dill'],
+        tip:'Skip the mayo — olive oil and lemon give you healthy fats and better flavor.' },
+      { type:'snack', name:'Rice Cakes & Avocado', cal:185, p:3, c:22, f:10,
+        ingredients:['2 plain rice cakes','½ small avocado, mashed','Pinch of sea salt & red pepper flakes'],
+        tip:'A fast, satisfying snack with zero prep — perfect for busy afternoons.' },
+      { type:'dinner', name:'Baked Chicken & Sweet Potato Mash', cal:540, p:46, c:42, f:12,
+        ingredients:['6 oz chicken breast, baked','1 medium sweet potato, mashed','1 cup steamed green beans','1 tsp ghee','Garlic powder, salt, pepper'],
+        tip:'Sweet potato gives you complex carbs that fuel your next morning workout.' },
+    ],
+    // 4 Friday
+    [
+      { type:'breakfast', name:'Green Power Smoothie', cal:360, p:32, c:38, f:6,
+        ingredients:['1 scoop vanilla protein powder','1 cup baby spinach','1 banana','1 cup unsweetened almond milk','½ cup frozen mango','Ice cubes'],
+        tip:'You won\'t taste the spinach — but you\'ll feel the energy. Promise.' },
+      { type:'lunch', name:'Beef & Black Bean Bowl', cal:510, p:40, c:52, f:16,
+        ingredients:['4 oz lean ground beef, seasoned','½ cup canned black beans, rinsed','½ cup cooked white rice','¼ cup pico de gallo','Lime, cumin, chili powder'],
+        tip:'Black beans add fiber that feeds your gut microbiome — key for fat loss.' },
+      { type:'snack', name:'Mixed Nuts & Dark Chocolate', cal:210, p:6, c:14, f:16,
+        ingredients:['1 oz mixed nuts (almonds, cashews, walnuts)','1 square (10g) 70%+ dark chocolate'],
+        tip:'Dark chocolate 70%+ is anti-inflammatory — this is not a cheat meal.' },
+      { type:'dinner', name:'Grilled Tilapia & Cauliflower Mash', cal:490, p:42, c:18, f:24,
+        ingredients:['6 oz tilapia fillet, grilled','1½ cups cauliflower, steamed & mashed','1 cup roasted zucchini','1 tbsp ghee','Garlic, lemon, parsley'],
+        tip:'Cauliflower mash cuts the carbs vs. potato — same comfort, better macros.' },
+    ],
+    // 5 Saturday
+    [
+      { type:'breakfast', name:'Veggie Omelet', cal:340, p:24, c:10, f:22,
+        ingredients:['3 large eggs','½ cup fresh spinach','½ cup sliced mushrooms','2 tbsp salsa (GF)','1 tsp coconut oil','Salt, pepper'],
+        tip:'Saturday means more time to cook. Slow down and enjoy this one.' },
+      { type:'lunch', name:'Power Salad with Chicken & Quinoa', cal:510, p:42, c:32, f:22,
+        ingredients:['5 oz grilled chicken breast, sliced','½ cup cooked quinoa','1 cup mixed greens','¼ cucumber, sliced','¼ avocado','Lemon + olive oil dressing'],
+        tip:'This salad is your most nutrient-dense meal of the week — earn it.' },
+      { type:'snack', name:'Protein Shake & Banana', cal:200, p:26, c:30, f:2,
+        ingredients:['1 scoop chocolate protein powder','1 cup water or almond milk','1 banana','Ice (optional)'],
+        tip:'Ideal post-workout — fast protein + fast carbs = muscle recovery.' },
+      { type:'dinner', name:'Grilled Steak & Roasted Broccoli', cal:570, p:50, c:14, f:32,
+        ingredients:['5 oz lean sirloin steak','2 cups broccoli florets, roasted','1 cup cauliflower rice','1 tbsp avocado oil','Garlic, rosemary, sea salt'],
+        tip:'Steak once a week is fine — iron and zinc from red meat support metabolism.' },
+    ],
+    // 6 Sunday
+    [
+      { type:'breakfast', name:'Sweet Potato Hash & Eggs', cal:410, p:32, c:36, f:18,
+        ingredients:['1 medium sweet potato, cubed & sauteed','3 large eggs, any style','2 oz turkey breakfast sausage (GF)','½ cup bell peppers','1 tsp avocado oil'],
+        tip:'Meal-prep the hash in bulk — it keeps 4 days in the fridge.' },
+      { type:'lunch', name:'Chicken & Vegetable Soup', cal:420, p:40, c:28, f:12,
+        ingredients:['5 oz chicken breast, shredded','1 cup chopped carrots & celery','1 cup zucchini, diced','2 cups low-sodium GF chicken broth','Garlic, thyme, bay leaf'],
+        tip:'Make a big pot — freeze what you don\'t eat and use it as a week 2 starter.' },
+      { type:'snack', name:'Cottage Cheese & Pineapple', cal:175, p:20, c:22, f:2,
+        ingredients:['½ cup low-fat cottage cheese','½ cup fresh or canned pineapple'],
+        tip:'Cottage cheese is casein protein — slow-digesting, perfect between meals.' },
+      { type:'dinner', name:'Salmon Patties & Sweet Potato', cal:560, p:42, c:38, f:22,
+        ingredients:['5 oz canned salmon, drained','1 egg (binder)','2 tbsp almond flour','1 medium sweet potato, mashed','1 cup sauteed spinach','Lemon, dill, garlic'],
+        tip:'End the week strong. You showed up 7 days — that\'s how results happen.' },
+    ],
+  ],
+  es: [
+    // 0 Lunes
+    [
+      { type:'breakfast', name:'Huevos Revueltos con Aguacate', cal:370, p:22, c:12, f:25,
+        ingredients:['3 huevos grandes','½ aguacate en rodajas','½ taza de tomates cherry','1 cdta de aceite de oliva','Sal, pimienta y comino al gusto'],
+        tip:'Come en los primeros 45 min de despertar — la proteína al desayuno controla el apetito todo el día.' },
+      { type:'lunch', name:'Bowl de Pollo con Arroz Integral', cal:490, p:42, c:45, f:12,
+        ingredients:['140g pechuga de pollo a la parrilla','½ taza de arroz integral cocido','1 taza de verduras mixtas asadas','1 cda de aceite de oliva','Ajo, pimentón, sal'],
+        tip:'Prepara el doble del arroz — lo usarás de nuevo el miércoles.' },
+      { type:'snack', name:'Manzana con Mantequilla de Almendras', cal:190, p:4, c:25, f:9,
+        ingredients:['1 manzana mediana en rodajas','2 cdas de mantequilla natural de almendras'],
+        tip:'Tómalo 30 min antes de entrenar para energía sostenida.' },
+      { type:'dinner', name:'Salmón al Horno con Quinoa', cal:520, p:40, c:35, f:18,
+        ingredients:['140g filete de salmón','½ taza de quinoa cocida','1½ taza de brócoli al vapor','1 cda de aceite de oliva','Limón, eneldo, ajo'],
+        tip:'Los omega-3 del salmón aceleran la recuperación y reducen la inflamación durante la noche.' },
+    ],
+    // 1 Martes
+    [
+      { type:'breakfast', name:'Avena GF con Banana y Proteína', cal:380, p:30, c:50, f:6,
+        ingredients:['½ taza de avena certificada sin gluten','1 scoop de proteína de vainilla','1 banana en rodajas','1 taza de leche de almendras sin azúcar','Canela'],
+        tip:'Usa avena certificada GF — la avena regular suele estar contaminada.' },
+      { type:'lunch', name:'Wraps de Pavo en Lechuga', cal:420, p:38, c:18, f:18,
+        ingredients:['140g pavo molido magro cocido','4 hojas grandes de lechuga romana','½ taza de pimientos picados','¼ taza de cebolla picada','Comino, ajo en polvo, limón'],
+        tip:'Llena los wraps con lechuga — es ilimitada y te mantiene satisfecha sin calorías extra.' },
+      { type:'snack', name:'Huevos Duros y Apio', cal:180, p:14, c:3, f:12,
+        ingredients:['2 huevos duros','3 tallos de apio','Pizca de sal marina'],
+        tip:'Perfecto antes de dormir — la proteína alimenta tus músculos mientras descansas.' },
+      { type:'dinner', name:'Saltado de Res con Arroz de Coliflor', cal:520, p:42, c:22, f:28,
+        ingredients:['140g carne molida magra','2 tazas de arroz de coliflor','1 taza de pimientos mixtos','2 cdas de aminoácidos de coco (GF)','Ajo, jengibre, aceite de sésamo'],
+        tip:'Los aminoácidos de coco saben igual que la soya y son naturalmente sin gluten.' },
+    ],
+    // 2 Miércoles
+    [
+      { type:'breakfast', name:'Pancakes de Plátano y Huevo', cal:360, p:18, c:42, f:14,
+        ingredients:['2 huevos grandes','1 plátano maduro aplastado','¼ cdta de extracto de vainilla','Pizca de canela','1 cda de aceite de coco','Frutas frescas para decorar'],
+        tip:'El plátano más maduro hace los pancakes más dulces — sin azúcar añadida.' },
+      { type:'lunch', name:'Camarones a la Parrilla con Camote', cal:470, p:36, c:40, f:14,
+        ingredients:['140g camarones grandes pelados','1 camote mediano asado','2 tazas de vegetales mixtos','1 cda de aceite de oliva','Ajo, limón, pimentón'],
+        tip:'El camarón es una de las proteínas más magras — ideal para recomposición muscular.' },
+      { type:'snack', name:'Apio con Mantequilla de Maní', cal:200, p:6, c:22, f:12,
+        ingredients:['4 tallos de apio','2 cdas de mantequilla natural de maní','Puñado de pasas (opcional)'],
+        tip:'La grasa con fibra ralentiza la digestión y te mantiene satisfecha más tiempo.' },
+      { type:'dinner', name:'Muslos de Pollo con Espárragos', cal:530, p:45, c:32, f:20,
+        ingredients:['140g muslos de pollo sin hueso','1 manojo de espárragos asados','½ taza de quinoa cocida','1 cda de aceite de aguacate','Ajo, romero, sal'],
+        tip:'Los muslos tienen más grasa que la pechuga — está bien, apoya las hormonas.' },
+    ],
+    // 3 Jueves
+    [
+      { type:'breakfast', name:'Bowl de Yogur Griego', cal:390, p:24, c:52, f:8,
+        ingredients:['1 taza de yogur griego natural','¼ taza de granola sin gluten','1 cdta de miel','½ taza de frutas mixtas','1 cda de semillas de chía'],
+        tip:'Las semillas de chía agregan fibra y omega-3 — pequeñas pero poderosas.' },
+      { type:'lunch', name:'Ensalada de Atún y Pepino', cal:430, p:40, c:8, f:24,
+        ingredients:['140g atún enlatado en agua escurrido','1 taza de pepino en rodajas','¼ aguacate en cubos','1 cda de aceite de oliva','Jugo de limón, sal, eneldo fresco'],
+        tip:'Sin mayonesa — aceite de oliva y limón dan grasas saludables y más sabor.' },
+      { type:'snack', name:'Galletas de Arroz con Aguacate', cal:185, p:3, c:22, f:10,
+        ingredients:['2 galletas de arroz natural','½ aguacate pequeño aplastado','Pizca de sal marina y hojuelas de chile'],
+        tip:'Snack rápido sin preparación — perfecto para tardes ocupadas.' },
+      { type:'dinner', name:'Pollo al Horno con Puré de Camote', cal:540, p:46, c:42, f:12,
+        ingredients:['170g pechuga de pollo al horno','1 camote mediano en puré','1 taza de habichuelas al vapor','1 cdta de mantequilla o ghee','Ajo en polvo, sal, pimienta'],
+        tip:'El camote te da carbohidratos complejos para tu próximo entrenamiento matutino.' },
+    ],
+    // 4 Viernes
+    [
+      { type:'breakfast', name:'Batido Verde Energético', cal:360, p:32, c:38, f:6,
+        ingredients:['1 scoop de proteína de vainilla','1 taza de espinaca baby','1 banana','1 taza de leche de almendras','½ taza de mango congelado','Hielo'],
+        tip:'No sabrás la espinaca — pero sentirás la energía. Te lo prometo.' },
+      { type:'lunch', name:'Bowl de Carne y Frijoles Negros', cal:510, p:40, c:52, f:16,
+        ingredients:['115g carne molida magra sazonada','½ taza de frijoles negros enjuagados','½ taza de arroz blanco cocido','¼ taza de pico de gallo','Limón, comino, chile en polvo'],
+        tip:'Los frijoles negros alimentan tu microbioma intestinal — clave para quemar grasa.' },
+      { type:'snack', name:'Nueces Mixtas y Chocolate Oscuro', cal:210, p:6, c:14, f:16,
+        ingredients:['1 oz de nueces mixtas (almendras, marañones, nueces)','1 cuadro (10g) de chocolate oscuro 70%+'],
+        tip:'El chocolate oscuro 70%+ es antiinflamatorio — esto no es trampa.' },
+      { type:'dinner', name:'Tilapia con Puré de Coliflor', cal:490, p:42, c:18, f:24,
+        ingredients:['170g filete de tilapia a la parrilla','1½ taza de coliflor al vapor aplastada','1 taza de calabacín asado','1 cda de ghee','Ajo, limón, perejil'],
+        tip:'El puré de coliflor reduce los carbohidratos vs. papa — misma textura, mejores macros.' },
+    ],
+    // 5 Sábado
+    [
+      { type:'breakfast', name:'Omelette de Vegetales', cal:340, p:24, c:10, f:22,
+        ingredients:['3 huevos grandes','½ taza de espinaca fresca','½ taza de champiñones en rodajas','2 cdas de salsa sin gluten','1 cdta de aceite de coco','Sal y pimienta'],
+        tip:'Sábado = más tiempo para cocinar. Tómate tu tiempo y disfrútalo.' },
+      { type:'lunch', name:'Ensalada Power con Pollo y Quinoa', cal:510, p:42, c:32, f:22,
+        ingredients:['140g pechuga de pollo a la parrilla','½ taza de quinoa cocida','1 taza de vegetales mixtos','¼ pepino en rodajas','¼ aguacate','Aderezo de limón y aceite de oliva'],
+        tip:'Esta ensalada es tu comida más nutritiva de la semana — gánatela.' },
+      { type:'snack', name:'Batido de Proteína con Banana', cal:200, p:26, c:30, f:2,
+        ingredients:['1 scoop de proteína de chocolate','1 taza de agua o leche de almendras','1 banana','Hielo (opcional)'],
+        tip:'Ideal post-entrenamiento — proteína rápida + carbohidratos = recuperación muscular.' },
+      { type:'dinner', name:'Carne Asada con Brócoli Asado', cal:570, p:50, c:14, f:32,
+        ingredients:['140g solomillo magro','2 tazas de brócoli asado','1 taza de arroz de coliflor','1 cda de aceite de aguacate','Ajo, romero, sal marina'],
+        tip:'Carne roja una vez a la semana está bien — el hierro y zinc apoyan el metabolismo.' },
+    ],
+    // 6 Domingo
+    [
+      { type:'breakfast', name:'Hash de Camote con Huevos', cal:410, p:32, c:36, f:18,
+        ingredients:['1 camote mediano en cubos salteado','3 huevos grandes al gusto','55g salchicha de pavo para desayuno GF','½ taza de pimientos','1 cdta de aceite de aguacate'],
+        tip:'Prepara el hash en grandes cantidades — dura 4 días en el refrigerador.' },
+      { type:'lunch', name:'Sopa de Pollo y Vegetales', cal:420, p:40, c:28, f:12,
+        ingredients:['140g pechuga de pollo desmenuzada','1 taza de zanahoria y apio picados','1 taza de calabacín en cubos','2 tazas de caldo GF bajo en sodio','Ajo, tomillo, hoja de laurel'],
+        tip:'Haz una olla grande — congela lo que sobre y úsalo para comenzar la semana 2.' },
+      { type:'snack', name:'Requesón con Piña', cal:175, p:20, c:22, f:2,
+        ingredients:['½ taza de requesón bajo en grasa','½ taza de piña fresca o en lata'],
+        tip:'El requesón es proteína caseína — de digestión lenta, perfecta entre comidas.' },
+      { type:'dinner', name:'Croquetas de Salmón con Camote', cal:560, p:42, c:38, f:22,
+        ingredients:['140g salmón enlatado escurrido','1 huevo (aglutinante)','2 cdas de harina de almendras','1 camote mediano en puré','1 taza de espinaca salteada','Limón, eneldo, ajo'],
+        tip:'Termina la semana fuerte. Apareciste 7 días seguidos — así es como se logran los resultados.' },
+    ],
+  ],
+};
+
+function toggleLang() {
+  lang = lang === 'en' ? 'es' : 'en';
+  document.getElementById('lang-btn').textContent = lang === 'en' ? '🌐 Español' : '🌐 English';
+  document.getElementById('hero-label').textContent = labels[lang].heroLabel;
+  // update all data-en / data-es elements
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + lang);
+  });
+  render();
+}
+
+function toggleMeal(idx) {
+  const card = document.querySelectorAll('.meal-card')[idx];
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.meal-card').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+
+function switchDay(idx) {
+  activeDay = idx;
+  render();
+}
+
+function render() {
+  const L = labels[lang];
+  const days = data[lang];
+  const dayMeals = days[activeDay];
+
+  // tabs
+  const tabsEl = document.getElementById('day-tabs');
+  tabsEl.innerHTML = '';
+  L.dayShort.forEach((d, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'day-tab' + (i === activeDay ? ' active' : '');
+    btn.textContent = d;
+    btn.onclick = () => switchDay(i);
+    tabsEl.appendChild(btn);
+  });
+
+  // day header
+  const totalCal = dayMeals.reduce((s, m) => s + m.cal, 0);
+  const totalP   = dayMeals.reduce((s, m) => s + m.p, 0);
+  const totalC   = dayMeals.reduce((s, m) => s + m.c, 0);
+  const totalF   = dayMeals.reduce((s, m) => s + m.f, 0);
+  document.getElementById('day-title').textContent = L.dayNames[activeDay];
+  document.getElementById('day-cal').innerHTML =
+    `<strong>${totalCal} cal</strong> &nbsp;·&nbsp; ${L.macros.p}: ${totalP}g &nbsp;·&nbsp; ${L.macros.c}: ${totalC}g &nbsp;·&nbsp; ${L.macros.f}: ${totalF}g`;
+
+  // meal cards
+  const list = document.getElementById('meals-list');
+  list.innerHTML = '';
+  dayMeals.forEach((m, i) => {
+    const card = document.createElement('div');
+    card.className = `meal-card type-${m.type}`;
+
+    const ingHtml = m.ingredients.map(ing => `<li>${ing}</li>`).join('');
+
+    card.innerHTML = `
+      <div class="meal-header" onclick="toggleMeal(${i})">
+        <div class="meal-icon">${L.mealIcons[m.type]}</div>
+        <div class="meal-info">
+          <div class="meal-type-label">${L.mealTypes[m.type]}</div>
+          <div class="meal-name">${m.name}</div>
+          <div class="meal-cal">${m.cal} cal &nbsp;·&nbsp; ${L.macros.p}: ${m.p}g &nbsp; ${L.macros.c}: ${m.c}g &nbsp; ${L.macros.f}: ${m.f}g</div>
+        </div>
+        <div class="meal-chevron">&#9660;</div>
+      </div>
+      <div class="meal-body">
+        <div class="macros-row">
+          <div class="macro-chip"><span class="macro-val">${m.cal}</span><span class="macro-label">${L.macros.cal}</span></div>
+          <div class="macro-chip"><span class="macro-val">${m.p}g</span><span class="macro-label">${L.macros.p}</span></div>
+          <div class="macro-chip"><span class="macro-val">${m.c}g</span><span class="macro-label">${L.macros.c}</span></div>
+          <div class="macro-chip"><span class="macro-val">${m.f}g</span><span class="macro-label">${L.macros.f}</span></div>
+        </div>
+        <div class="ingredients-title">${L.ingredients}</div>
+        <ul class="ingredients-list">${ingHtml}</ul>
+        <div class="coach-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <div class="tip-label">${L.coachTip}</div>
+            <div class="tip-text">${m.tip}</div>
+          </div>
+        </div>
+      </div>`;
+    list.appendChild(card);
+  });
+}
+
+render();
+</script>
+</body>
+</html>
