@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a Coach | CoachAndTrack</title>
+  <meta name="description" content="Apply to coach on CoachAndTrack. $0 to join, 70% revenue share, 48-hour approval. Turn your fitness expertise into income.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark:          #0D0D14;
+      --dark-card:     #13131E;
+      --dark-elevated: #1A1A2E;
+      --border:        #2A2A3E;
+      --orange:        #F97316;
+      --orange-glow:   rgba(249,115,22,0.10);
+      --orange-border: rgba(249,115,22,0.25);
+      --green:         #22C55E;
+      --green-glow:    rgba(34,197,94,0.10);
+      --text:          #F3F4F6;
+      --text-muted:    #94A3B8;
+      --text-dim:      #64748B;
+      --radius:        16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--orange); }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--dark);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; color: var(--orange);
+      text-decoration: none; letter-spacing: 1px;
+    }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .nav-back {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.88rem; font-weight: 500; transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-apply {
+      background: var(--orange); color: white;
+      border: none; border-radius: 8px;
+      padding: 0.5rem 1.1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; font-weight: 700;
+      text-decoration: none; cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .nav-apply:hover { opacity: 0.88; }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 980px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2px; color: var(--orange);
+      text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1; margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--text-muted);
+      line-height: 1.7; max-width: 600px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem 2rem 4rem;
+      background: linear-gradient(180deg, #0D0D14 0%, #13131E 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      max-width: 980px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 340px;
+      gap: 3rem; align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2px; color: var(--orange);
+      text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 1; margin-bottom: 1rem;
+    }
+    .hero-title span { color: var(--orange); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--text-muted);
+      line-height: 1.7; margin-bottom: 2rem;
+    }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .pill {
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--text-muted);
+    }
+    .pill.green { background: var(--green-glow); border-color: rgba(34,197,94,0.3); color: var(--green); }
+    .pill.orange { background: var(--orange-glow); border-color: var(--orange-border); color: var(--orange); }
+    .hero-cta {
+      display: inline-block;
+      background: var(--orange); color: white;
+      padding: 0.85rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.88; }
+
+    /* EARNINGS CARD */
+    .earnings-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .ec-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem; letter-spacing: 1px;
+      color: var(--text-muted); margin-bottom: 1.25rem;
+    }
+    .ec-row {
+      display: flex; justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .ec-row:last-child { border-bottom: none; }
+    .ec-label { color: var(--text-muted); }
+    .ec-val { font-weight: 700; color: var(--text); }
+    .ec-val.orange { color: var(--orange); font-size: 1.1rem; }
+    .ec-val.green  { color: var(--green);  font-size: 1.3rem; }
+    .ec-footer {
+      margin-top: 1.25rem;
+      background: var(--green-glow);
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      text-align: center;
+    }
+    .ec-footer-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--green);
+    }
+    .ec-footer-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+    /* ── REQUIREMENTS ── */
+    .req-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem; margin-top: 2.5rem;
+    }
+    .req-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.25rem 1.25rem 1rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .req-card.required { border-left: 3px solid var(--orange); }
+    .req-card.preferred { border-left: 3px solid var(--text-dim); }
+    .req-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .req-badge {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    .required .req-badge { color: var(--orange); }
+    .preferred .req-badge { color: var(--text-dim); }
+    .req-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .req-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── HOW IT WORKS ── */
+    .steps { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: grid; grid-template-columns: 56px 1fr;
+      gap: 1.25rem; position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 27px; top: 56px;
+      width: 2px; bottom: 0;
+      background: var(--border);
+    }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--dark-elevated);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem; color: var(--orange);
+      flex-shrink: 0; z-index: 1;
+    }
+    .step-body { padding-bottom: 2.5rem; }
+    .step-title { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem; }
+    .step-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+    .step-tag {
+      display: inline-block; margin-top: 0.5rem;
+      background: var(--orange-glow); color: var(--orange);
+      border: 1px solid var(--orange-border);
+      border-radius: 100px; font-size: 0.72rem;
+      font-weight: 700; padding: 0.15rem 0.65rem;
+    }
+
+    /* ── CALCULATOR ── */
+    .calc-wrap {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem; margin-top: 2.5rem;
+    }
+    .calc-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; margin-bottom: 1.5rem;
+    }
+    .slider-group { margin-bottom: 1.5rem; }
+    .slider-label {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 0.6rem;
+    }
+    .slider-name { font-weight: 600; font-size: 0.9rem; }
+    .slider-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem; color: var(--orange);
+    }
+    input[type=range] {
+      width: 100%; -webkit-appearance: none;
+      height: 6px; border-radius: 100px;
+      background: var(--dark-elevated);
+      outline: none; cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--orange); cursor: pointer;
+      border: 2px solid var(--dark);
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--orange); cursor: pointer;
+      border: 2px solid var(--dark);
+    }
+    .calc-results {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-top: 1.75rem;
+    }
+    .calc-result-card {
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 1rem;
+      text-align: center;
+    }
+    .calc-result-card.highlight {
+      background: var(--green-glow);
+      border-color: rgba(34,197,94,0.3);
+    }
+    .crv { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--text); }
+    .crv.green { color: var(--green); font-size: 2.4rem; }
+    .crl { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.2rem; }
+    .calc-note { margin-top: 1rem; font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem; margin-top: 2.5rem;
+    }
+    .tl-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+    }
+    .tl-week {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 0.5rem;
+    }
+    .tl-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .tl-items { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+    .tl-items li {
+      font-size: 0.8rem; color: var(--text-muted);
+      display: flex; gap: 0.4rem; align-items: flex-start;
+    }
+    .tl-items li::before { content: "·"; color: var(--text-dim); flex-shrink: 0; }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .faq-item {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+    }
+    .faq-q {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      cursor: pointer; user-select: none;
+      font-weight: 700; font-size: 0.95rem;
+    }
+    .faq-chevron { color: var(--text-dim); font-size: 0.75rem; transition: transform 0.25s; flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a {
+      display: none;
+      padding: 0 1.25rem 1.1rem;
+      font-size: 0.88rem; color: var(--text-muted);
+      line-height: 1.7; border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── FORM ── */
+    .form-section {
+      background: var(--dark-card);
+      border-top: 1px solid var(--border);
+    }
+    .form-inner {
+      max-width: 680px; margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-top: 2rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.5px; color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    input[type=text], input[type=email], input[type=url],
+    select, textarea {
+      background: var(--dark-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.75rem 1rem;
+      color: var(--text); font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; width: 100%;
+      transition: border-color 0.2s; outline: none;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--orange);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    select option { background: var(--dark-elevated); }
+    .form-submit {
+      width: 100%; margin-top: 1.5rem;
+      background: var(--orange); color: white;
+      border: none; border-radius: 10px;
+      padding: 0.9rem; font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .form-submit:hover { opacity: 0.88; }
+    .form-note {
+      margin-top: 1rem; text-align: center;
+      font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;
+    }
+    .form-success {
+      display: none; text-align: center;
+      padding: 2rem; background: var(--green-glow);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: var(--radius); margin-top: 1.5rem;
+    }
+    .form-success h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .form-success p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+    .page-footer a { color: var(--orange); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .earnings-card { display: none; }
+      .calc-results { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      section { padding: 3.5rem 1.25rem; }
+      .hero { padding: 3.5rem 1.25rem 3rem; }
+      .navbar { padding: 0.75rem 1rem; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .timeline { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="/index.html">CoachAndTrack</a>
+  <div class="nav-right">
+    <a class="nav-back" href="/index.html">&#8592; Home</a>
+    <a class="nav-apply" href="#apply">Apply Now</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">For Certified Fitness Professionals</div>
+      <h1 class="hero-title">TURN YOUR<br>EXPERTISE INTO<br><span>INCOME</span></h1>
+      <p class="hero-sub">CoachAndTrack is building the fitness marketplace where certified coaches earn real money doing what they love — on their schedule, on their terms.</p>
+      <div class="hero-pills">
+        <span class="pill green">$0 to Join</span>
+        <span class="pill orange">70% Revenue Share</span>
+        <span class="pill">48h Approval</span>
+        <span class="pill">Gluten-Free Plans Welcome</span>
+      </div>
+      <a class="hero-cta" href="#apply">Apply to Coach →</a>
+    </div>
+
+    <!-- EARNINGS EXAMPLE CARD -->
+    <div class="earnings-card">
+      <div class="ec-title">EARNINGS EXAMPLE</div>
+      <div class="ec-row">
+        <span class="ec-label">Pro subscribers (×50)</span>
+        <span class="ec-val">50 × $14</span>
+      </div>
+      <div class="ec-row">
+        <span class="ec-label">Elite subscribers (×20)</span>
+        <span class="ec-val">20 × $29</span>
+      </div>
+      <div class="ec-row">
+        <span class="ec-label">Gross revenue</span>
+        <span class="ec-val orange">$1,280 / mo</span>
+      </div>
+      <div class="ec-row">
+        <span class="ec-label">Your 70% share</span>
+        <span class="ec-val green">$896 / mo</span>
+      </div>
+      <div class="ec-row">
+        <span class="ec-label">Platform fee</span>
+        <span class="ec-val">$0 upfront</span>
+      </div>
+      <div class="ec-footer">
+        <div class="ec-footer-big">$896 / mo</div>
+        <div class="ec-footer-label">Example take-home · Scale at your pace</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     REQUIREMENTS
+══════════════════════════════════════════ -->
+<section style="border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">Who We're Looking For</div>
+    <h2 class="section-title">REQUIREMENTS</h2>
+    <p class="section-sub">We keep standards high to protect our members. Here's what we look for — and what gives you an edge.</p>
+    <div class="req-grid">
+      <div class="req-card required">
+        <div class="req-icon">📋</div>
+        <div>
+          <div class="req-badge">Required</div>
+          <div class="req-name">Fitness Certification</div>
+          <div class="req-desc">Active certification from a recognized body (ISSA, NASM, ACE, NSCA, ACSM, or equivalent).</div>
+        </div>
+      </div>
+      <div class="req-card required">
+        <div class="req-icon">📸</div>
+        <div>
+          <div class="req-badge">Required</div>
+          <div class="req-name">Demo Video</div>
+          <div class="req-desc">At least one exercise or coaching demo video showing proper form and clear instruction.</div>
+        </div>
+      </div>
+      <div class="req-card required">
+        <div class="req-icon">✉️</div>
+        <div>
+          <div class="req-badge">Required</div>
+          <div class="req-name">Valid Contact Info</div>
+          <div class="req-desc">A working email address you check regularly — we move fast during onboarding.</div>
+        </div>
+      </div>
+      <div class="req-card preferred">
+        <div class="req-icon">🌎</div>
+        <div>
+          <div class="req-badge">Preferred</div>
+          <div class="req-name">Bilingual (EN/ES)</div>
+          <div class="req-desc">Spanish-speaking coaches are a priority — a large portion of our early members prefer Spanish content.</div>
+        </div>
+      </div>
+      <div class="req-card preferred">
+        <div class="req-icon">🥗</div>
+        <div>
+          <div class="req-badge">Preferred</div>
+          <div class="req-name">Nutrition Certification</div>
+          <div class="req-desc">Nutrition coaching is a top-requested category. Dual-certified coaches get fast-tracked.</div>
+        </div>
+      </div>
+      <div class="req-card preferred">
+        <div class="req-icon">📱</div>
+        <div>
+          <div class="req-badge">Preferred</div>
+          <div class="req-name">Online Coaching Experience</div>
+          <div class="req-desc">Experience writing programs or coaching clients remotely helps you hit the ground running.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════════ -->
+<section style="border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">HOW IT WORKS</h2>
+    <p class="section-sub">From application to earning — here's exactly what happens.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Submit Your Application</div>
+          <div class="step-desc">Fill out the form below with your certification info, specialty, and a short bio. Takes under 5 minutes. No fee, no commitment.</div>
+          <span class="step-tag">&#9201; ~5 minutes</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Review & Approval</div>
+          <div class="step-desc">Our team reviews your application — typically within 48 hours. We'll verify your certification and reach out with any questions.</div>
+          <span class="step-tag">&#9201; Within 48 hours</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Set Up Your Profile & Programs</div>
+          <div class="step-desc">Once approved, you'll get early access to build your coach profile, upload programs, and set your subscriber pricing. We guide you through every step.</div>
+          <span class="step-tag">&#9201; Week 1–2</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Go Live & Start Earning</div>
+          <div class="step-desc">When CoachAndTrack launches publicly, your profile goes live. Members subscribe, you coach, and you earn 70% of every dollar — paid out monthly.</div>
+          <span class="step-tag">&#127775; At launch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     EARNINGS CALCULATOR
+══════════════════════════════════════════ -->
+<section style="border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">Payout Details</div>
+    <h2 class="section-title">EARNINGS CALCULATOR</h2>
+    <p class="section-sub">Drag the sliders to see your estimated monthly take-home at different subscriber counts. 70% goes to you — always.</p>
+    <div class="calc-wrap">
+      <div class="calc-title">YOUR EARNINGS ESTIMATE</div>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <span class="slider-name">Pro Subscribers <span style="color:var(--text-muted);font-size:0.8rem;font-weight:400;">($14 / mo each)</span></span>
+          <span class="slider-val" id="pro-count-label">25</span>
+        </div>
+        <input type="range" id="pro-slider" min="0" max="200" value="25" oninput="calcEarnings()">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <span class="slider-name">Elite Subscribers <span style="color:var(--text-muted);font-size:0.8rem;font-weight:400;">($29 / mo each)</span></span>
+          <span class="slider-val" id="elite-count-label">10</span>
+        </div>
+        <input type="range" id="elite-slider" min="0" max="100" value="10" oninput="calcEarnings()">
+      </div>
+
+      <div class="calc-results">
+        <div class="calc-result-card">
+          <div class="crv" id="gross-val">$640</div>
+          <div class="crl">Gross / Month</div>
+        </div>
+        <div class="calc-result-card">
+          <div class="crv" id="platform-val">$192</div>
+          <div class="crl">Platform (30%)</div>
+        </div>
+        <div class="calc-result-card highlight">
+          <div class="crv green" id="take-home-val">$448</div>
+          <div class="crl">Your Take-Home (70%)</div>
+        </div>
+      </div>
+      <div class="calc-note">* Estimates only. Actual earnings depend on your subscriber base. Payouts processed monthly via bank transfer or PayPal. No hidden fees.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ONBOARDING TIMELINE
+══════════════════════════════════════════ -->
+<section style="border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">What to Expect</div>
+    <h2 class="section-title">ONBOARDING TIMELINE</h2>
+    <p class="section-sub">Here's a week-by-week look at what happens after you apply.</p>
+    <div class="timeline">
+      <div class="tl-card">
+        <div class="tl-week">Week 0 — Apply</div>
+        <div class="tl-title">Application Submitted</div>
+        <ul class="tl-items">
+          <li>Fill out the form below</li>
+          <li>Certification details submitted</li>
+          <li>Confirmation email sent to you</li>
+        </ul>
+      </div>
+      <div class="tl-card">
+        <div class="tl-week">Week 1 — Review</div>
+        <div class="tl-title">Approval & Welcome</div>
+        <ul class="tl-items">
+          <li>Team reviews within 48 hours</li>
+          <li>Certification verified</li>
+          <li>Welcome packet sent via email</li>
+        </ul>
+      </div>
+      <div class="tl-card">
+        <div class="tl-week">Week 1–2 — Setup</div>
+        <div class="tl-title">Profile & Programs</div>
+        <ul class="tl-items">
+          <li>Build your coach profile</li>
+          <li>Upload program content</li>
+          <li>Set pricing tiers</li>
+        </ul>
+      </div>
+      <div class="tl-card">
+        <div class="tl-week">Pre-Launch</div>
+        <div class="tl-title">Review & Go Live</div>
+        <ul class="tl-items">
+          <li>Final profile review</li>
+          <li>Listed as founding coach</li>
+          <li>Ready for day-one members</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section style="border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">Common Questions</div>
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-list" id="faq-list"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     APPLICATION FORM
+══════════════════════════════════════════ -->
+<div class="form-section" id="apply">
+  <div class="form-inner">
+    <div class="section-label" style="text-align:center;">Ready to Join?</div>
+    <h2 class="section-title" style="text-align:center;font-size:clamp(2rem,5vw,3rem);">APPLY TO COACH</h2>
+    <p class="section-sub" style="margin:0 auto 0;text-align:center;max-width:480px;">Takes under 5 minutes. We'll reply within 48 hours.</p>
+
+    <form class="form-grid" id="apply-form" onsubmit="submitForm(event)">
+      <div class="form-group">
+        <label for="f-first">First Name</label>
+        <input type="text" id="f-first" name="first_name" placeholder="Veronica" required>
+      </div>
+      <div class="form-group">
+        <label for="f-last">Last Name</label>
+        <input type="text" id="f-last" name="last_name" placeholder="Mosquera" required>
+      </div>
+      <div class="form-group full">
+        <label for="f-email">Email Address</label>
+        <input type="email" id="f-email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="f-cert">Primary Certification</label>
+        <select id="f-cert" name="certification" required>
+          <option value="" disabled selected>Select certification</option>
+          <option>ISSA</option>
+          <option>NASM</option>
+          <option>ACE</option>
+          <option>NSCA</option>
+          <option>ACSM</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="f-specialty">Primary Specialty</label>
+        <select id="f-specialty" name="specialty" required>
+          <option value="" disabled selected>Select specialty</option>
+          <option>Strength Training</option>
+          <option>Nutrition Coaching</option>
+          <option>HIIT / Cardio</option>
+          <option>Yoga / Mobility</option>
+          <option>Weight Loss</option>
+          <option>Muscle Building</option>
+          <option>General Fitness</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label for="f-languages">Languages You Coach In</label>
+        <select id="f-languages" name="languages">
+          <option>English only</option>
+          <option>Spanish only</option>
+          <option>English & Spanish (bilingual)</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label for="f-bio">Short Bio <span style="font-weight:400;text-transform:none;letter-spacing:0;">(2–4 sentences)</span></label>
+        <textarea id="f-bio" name="bio" placeholder="Tell us about your coaching background, your approach, and who you love to work with..." required></textarea>
+      </div>
+      <div class="form-group full">
+        <label for="f-video">Demo Video Link <span style="font-weight:400;text-transform:none;letter-spacing:0;">(YouTube, Instagram, TikTok, etc.)</span></label>
+        <input type="url" id="f-video" name="video_url" placeholder="https://...">
+      </div>
+      <div class="form-group full">
+        <label for="f-hear">How Did You Hear About Us?</label>
+        <select id="f-hear" name="referral">
+          <option value="" disabled selected>Select one</option>
+          <option>Instagram</option>
+          <option>TikTok</option>
+          <option>Another Coach</option>
+          <option>Google Search</option>
+          <option>Word of Mouth</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <button type="submit" class="form-submit">Submit Application →</button>
+        <p class="form-note">By submitting you agree to our <a href="/terms-of-service.html">Terms of Service</a> and <a href="/privacy-policy.html">Privacy Policy</a>. We'll never share your information.</p>
+      </div>
+    </form>
+
+    <div class="form-success" id="form-success">
+      <div style="font-size:2.5rem;margin-bottom:0.75rem;">&#127881;</div>
+      <h3>Application Received!</h3>
+      <p>Thanks for applying. Our team will review your application and get back to you at your email address within 48 hours.<br><br>In the meantime, feel free to explore the platform and <a href="/index.html#waitlist">join the member waitlist</a> too.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <p>&copy; 2026 TechXcel Partners LLC, d/b/a CoachAndTrack. All rights reserved. &nbsp;&middot;&nbsp; <a href="/privacy-policy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="/terms-of-service.html">Terms</a> &nbsp;&middot;&nbsp; <a href="mailto:support@coachandtrack.com">Contact</a></p>
+</footer>
+
+<script>
+/* ── CALCULATOR ── */
+function calcEarnings() {
+  const pro   = parseInt(document.getElementById('pro-slider').value);
+  const elite = parseInt(document.getElementById('elite-slider').value);
+  document.getElementById('pro-count-label').textContent   = pro;
+  document.getElementById('elite-count-label').textContent = elite;
+  const gross     = (pro * 14) + (elite * 29);
+  const platform  = Math.round(gross * 0.30);
+  const takeHome  = Math.round(gross * 0.70);
+  document.getElementById('gross-val').textContent     = '$' + gross.toLocaleString();
+  document.getElementById('platform-val').textContent  = '$' + platform.toLocaleString();
+  document.getElementById('take-home-val').textContent = '$' + takeHome.toLocaleString();
+}
+calcEarnings();
+
+/* ── FAQ ── */
+const faqs = [
+  {
+    q: 'Is there any cost to join as a coach?',
+    a: 'No — it is completely free to apply and create your coach profile. CoachAndTrack earns a 30% platform fee only when you earn. If you earn nothing, we charge nothing.'
+  },
+  {
+    q: 'How does the 70% revenue share work?',
+    a: 'When a member subscribes to your Pro or Elite plan, CoachAndTrack keeps 30% to cover platform operations, payment processing, and support. You keep 70%. Payouts are processed monthly with no minimum threshold.'
+  },
+  {
+    q: 'What certifications do you accept?',
+    a: 'We accept certifications from all major bodies including ISSA, NASM, ACE, NSCA, and ACSM. If your certification is from another recognized organization, include it in your application and we\'ll review it on a case-by-case basis.'
+  },
+  {
+    q: 'Do I need to speak Spanish?',
+    a: 'No — English-only coaches are welcome. However, Spanish-speaking coaches are in very high demand with our early member base, so bilingual coaches are fast-tracked through the review process.'
+  },
+  {
+    q: 'When will I start earning?',
+    a: 'Approved coaches will be set up before public launch so they\'re ready on day one. Once the platform opens to members, you start earning immediately as subscribers sign up for your plans.'
+  },
+  {
+    q: 'What types of programs can I offer?',
+    a: 'Anything in the fitness and wellness space — strength training, HIIT, yoga, nutrition plans, mobility, recovery, sports-specific training, and more. You create the content; we provide the platform.'
+  },
+  {
+    q: 'How long does the approval process take?',
+    a: 'We aim to respond to every application within 48 hours. During high-volume periods it may take up to 72 hours. You\'ll receive a confirmation email immediately after submitting.'
+  },
+  {
+    q: 'Can I still work with in-person clients?',
+    a: 'Absolutely. CoachAndTrack is designed to complement — not replace — your existing business. Many coaches use it as a passive income stream alongside their in-person work.'
+  },
+];
+
+const faqList = document.getElementById('faq-list');
+faqs.forEach((faq, i) => {
+  const item = document.createElement('div');
+  item.className = 'faq-item';
+  item.innerHTML = `
+    <div class="faq-q" onclick="toggleFaq(${i})">
+      <span>${faq.q}</span>
+      <span class="faq-chevron">&#9660;</span>
+    </div>
+    <div class="faq-a">${faq.a}</div>`;
+  faqList.appendChild(item);
+});
+
+function toggleFaq(i) {
+  const items = document.querySelectorAll('.faq-item');
+  const isOpen = items[i].classList.contains('open');
+  items.forEach(el => el.classList.remove('open'));
+  if (!isOpen) items[i].classList.add('open');
+}
+
+/* ── FORM ── */
+function submitForm(e) {
+  e.preventDefault();
+  const form = document.getElementById('apply-form');
+  const data = new FormData(form);
+  const lines = [];
+  data.forEach((v, k) => lines.push(`${k}: ${v}`));
+  const body = encodeURIComponent(lines.join('\n'));
+  const subject = encodeURIComponent('CoachAndTrack Coach Application — ' + (data.get('first_name') || '') + ' ' + (data.get('last_name') || ''));
+  window.location.href = `mailto:support@coachandtrack.com?subject=${subject}&body=${body}`;
+  setTimeout(() => {
+    form.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }, 800);
+}
+</script>
+</body>
+</html>
