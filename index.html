@@ -1175,13 +1175,27 @@ footer a:hover {
 @media (max-width: 768px) {
   .hero-stats {
     flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0.6rem !important;
+    align-items: stretch !important;
+    gap: 0 !important;
     margin-top: 1rem !important;
+    width: 100% !important;
   }
   .hero-stat-item {
-    font-size: 0.85rem !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding: 0.6rem 0 !important;
+    border-bottom: 1px solid #2A2A3E !important;
+    width: 100% !important;
     white-space: normal !important;
+    font-size: 0.85rem !important;
+  }
+  .hero-stat-item:last-child {
+    border-bottom: none !important;
+  }
+  .hero-stat-item .stat-check {
+    font-size: 1.1rem !important;
+    min-width: 42px !important;
   }
 }
 </style>
