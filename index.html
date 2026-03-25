@@ -110,8 +110,9 @@
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 120px 64px 80px;
+    align-items: flex-start;
+    padding: 80px 64px 60px;
+    padding-top: 100px;
     gap: 64px;
     position: relative;
     overflow: hidden;
@@ -764,7 +765,7 @@
   }
 
   @media (max-width: 1024px) {
-    .hero { grid-template-columns: 1fr; padding: 100px 32px 60px; }
+    .hero { grid-template-columns: 1fr; padding: 80px 24px 40px; }
     .hero-visual { display: none; }
     section { padding: 60px 32px; }
     .cats-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1283,7 +1284,7 @@ footer a:hover {
     </div>
   </div>
 
-  <div class="hero-visual fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:stretch;align-self:center;margin-top:-4rem;">
+  <div class="hero-visual fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:stretch;align-self:flex-start;padding-top:2rem;">
     <a href="/coaches/veronica-mosquera.html" style="text-decoration:none;color:inherit;display:block;">
     <div class="trainer-card" style="width:100%;height:auto;">
       <div style="position:relative;overflow:hidden;height:240px;min-height:240px;background:linear-gradient(135deg,#F97316,#ea6c0a);">
