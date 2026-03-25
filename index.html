@@ -190,7 +190,6 @@
   }
   .btn-ghost:hover { border-color: var(--muted); }
 
-  .hero-stats { display: flex; gap: 40px; }
   .stat-num {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 36px;
@@ -1140,12 +1139,6 @@ footer a:hover {
   div[style*="width:1px;height:20px"] {
     display: none !important;
   }
-  /* Hero stats row */
-  .hero-stats {
-    flex-direction: column !important;
-    gap: 0.75rem !important;
-    align-items: flex-start !important;
-  }
   /* Hamburger */
   #nav-hamburger { display: block !important; }
   .nav-links { display: none !important; }
@@ -1160,6 +1153,7 @@ footer a:hover {
   }
 }
 
+/* ── HERO STATS ── */
 .hero-stats {
   display: flex;
   align-items: center;
@@ -1167,7 +1161,6 @@ footer a:hover {
   flex-wrap: wrap;
   margin-top: 1.5rem;
 }
-
 .hero-stat-item {
   display: flex;
   align-items: center;
@@ -1176,36 +1169,37 @@ footer a:hover {
   color: #94A3B8;
   white-space: nowrap;
 }
-
 .hero-stat-item .stat-check {
   color: #F97316;
   font-weight: 700;
 }
-
 @media (max-width: 768px) {
   .hero-stats {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0 !important;
-    margin-top: 1rem !important;
-    width: 100% !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    width: 100%;
   }
   .hero-stat-item {
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 0.75rem !important;
-    padding: 0.6rem 0 !important;
-    border-bottom: 1px solid #2A2A3E !important;
-    width: 100% !important;
-    white-space: normal !important;
-    font-size: 0.85rem !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #2A2A3E;
+    width: 100%;
+    white-space: normal;
+    font-size: 0.85rem;
   }
   .hero-stat-item:last-child {
-    border-bottom: none !important;
+    border-bottom: none;
   }
   .hero-stat-item .stat-check {
-    font-size: 1.1rem !important;
-    min-width: 42px !important;
+    min-width: 32px;
+    font-size: 1rem;
+    color: #F97316;
+    font-weight: 700;
   }
 }
 </style>
