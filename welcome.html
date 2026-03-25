@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Welcome to CoachAndTrack — You're In!</title>
+  <meta name="description" content="Welcome to CoachAndTrack. You're a founding member — your access is confirmed.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark:          #0D0D14;
+      --dark-card:     #13131E;
+      --dark-elevated: #1A1A2E;
+      --border:        #2A2A3E;
+      --orange:        #F97316;
+      --orange-glow:   rgba(249,115,22,0.10);
+      --orange-border: rgba(249,115,22,0.25);
+      --green:         #22C55E;
+      --green-glow:    rgba(34,197,94,0.10);
+      --green-border:  rgba(34,197,94,0.3);
+      --text:          #F3F4F6;
+      --text-muted:    #94A3B8;
+      --text-dim:      #64748B;
+      --radius:        16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--dark); color: var(--text); font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .navbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; border-bottom: 1px solid var(--border);
+      background: var(--dark); position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--orange); letter-spacing: 1px; }
+    .nav-support { font-size: 0.82rem; color: var(--text-muted); }
+    .nav-support a { color: var(--orange); font-weight: 600; }
+    .nav-support a:hover { text-decoration: underline; }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center; padding: 5rem 2rem 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .confetti { font-size: 3rem; margin-bottom: 1.25rem; }
+    .you-in-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--green-glow); border: 1px solid var(--green-border);
+      border-radius: 100px; padding: 0.3rem 1rem;
+      font-size: 0.75rem; font-weight: 700; color: var(--green);
+      text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1; letter-spacing: 2px; margin-bottom: 1rem;
+    }
+    .hero-title span { color: var(--orange); }
+    .founder-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--orange-glow); border: 1px solid var(--orange-border);
+      border-radius: 100px; padding: 0.35rem 1.1rem;
+      font-size: 0.82rem; font-weight: 600; color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+    .hero-sub {
+      font-size: 1rem; color: var(--text-muted); line-height: 1.7;
+      max-width: 520px; margin: 0 auto 2rem;
+    }
+
+    /* ── NEXT STEPS ── */
+    .steps-section {
+      max-width: 680px; margin: 0 auto; padding: 4rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1; margin-bottom: 2rem; }
+    .step-row {
+      display: flex; align-items: center; gap: 1.25rem;
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem 1.25rem;
+      margin-bottom: 0.75rem; transition: border-color 0.2s;
+    }
+    .step-row:hover { border-color: rgba(249,115,22,0.3); }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--dark-elevated); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--orange);
+      flex-shrink: 0;
+    }
+    .step-num.done { background: var(--green-glow); border-color: var(--green-border); color: var(--green); }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .step-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .step-action { flex-shrink: 0; }
+    .btn-done {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      background: var(--green-glow); border: 1px solid var(--green-border);
+      border-radius: 8px; padding: 0.35rem 0.85rem;
+      font-size: 0.75rem; font-weight: 700; color: var(--green);
+    }
+    .btn-orange {
+      display: inline-block; background: var(--orange); color: white;
+      padding: 0.5rem 1.1rem; border-radius: 8px;
+      font-weight: 700; font-size: 0.82rem; transition: opacity 0.2s;
+    }
+    .btn-orange:hover { opacity: 0.88; }
+    .btn-ghost-sm {
+      display: inline-block; background: transparent; color: var(--text);
+      border: 1px solid var(--border); padding: 0.5rem 1.1rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.82rem;
+      transition: border-color 0.2s;
+    }
+    .btn-ghost-sm:hover { border-color: var(--text-muted); }
+
+    /* ── SAMPLE CALLOUT ── */
+    .callout {
+      margin: 0 auto; max-width: 680px;
+      padding: 2rem 2rem 3rem;
+    }
+    .callout-card {
+      background: linear-gradient(135deg, rgba(249,115,22,0.12), rgba(249,115,22,0.05));
+      border: 1px solid var(--orange-border);
+      border-radius: var(--radius); padding: 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    .callout-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 1px; margin-bottom: 0.35rem; }
+    .callout-sub { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+    .btn-primary-lg {
+      display: inline-block; background: var(--orange); color: white;
+      padding: 0.8rem 1.75rem; border-radius: 10px;
+      font-weight: 700; font-size: 0.95rem; white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .btn-primary-lg:hover { opacity: 0.88; }
+
+    /* ── COACHES ── */
+    .coaches-section {
+      max-width: 680px; margin: 0 auto;
+      padding: 0 2rem 4rem; border-bottom: 1px solid var(--border);
+    }
+    .coaches-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .coach-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s; display: block;
+    }
+    .coach-card:hover { border-color: var(--orange-border); transform: translateY(-3px); }
+    .coach-photo {
+      height: 180px; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #F97316, #ea6c0a);
+    }
+    .coach-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    .coach-body { padding: 1rem; }
+    .coach-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .coach-title-text { font-size: 0.78rem; color: var(--orange); font-weight: 600; margin-bottom: 0.6rem; }
+    .view-profile { font-size: 0.78rem; font-weight: 700; color: var(--orange); }
+
+    /* ── SUPPORT ── */
+    .support-section {
+      max-width: 680px; margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .support-card {
+      background: var(--dark-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
+    }
+    .support-icon { font-size: 1.75rem; }
+    .support-text { flex: 1; }
+    .support-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .support-desc { font-size: 0.82rem; color: var(--text-muted); }
+    .support-email { color: var(--orange); font-weight: 600; }
+    .support-email:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border); padding: 1.75rem 2rem;
+      text-align: center; font-size: 0.78rem; color: var(--text-dim);
+    }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--orange); letter-spacing: 1px; margin-bottom: 0.4rem; }
+
+    @media (max-width: 600px) {
+      .coaches-grid { grid-template-columns: 1fr; }
+      .callout-card { flex-direction: column; text-align: center; }
+      .step-row { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a class="nav-logo" href="/index.html">CoachAndTrack</a>
+  <div class="nav-support">Need help? <a href="mailto:support@coachandtrack.com">support@coachandtrack.com</a></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="confetti">🎉</div>
+  <div class="you-in-badge">✓ You're In!</div>
+  <h1 class="hero-title">Welcome to<br><span>CoachAndTrack</span></h1>
+  <div class="founder-pill">🔒 Founding Member Access — pricing locked in forever</div>
+  <p class="hero-sub">Your spot is confirmed. Below you'll find everything you need to get started — free workouts, nutrition plans, and your coaches are ready for you.</p>
+</div>
+
+<!-- NEXT STEPS -->
+<div class="steps-section">
+  <div class="section-label">What's Next</div>
+  <h2 class="section-title">YOUR NEXT STEPS</h2>
+
+  <div class="step-row">
+    <div class="step-num done">✓</div>
+    <div class="step-content">
+      <div class="step-title">Account Created</div>
+      <div class="step-desc">You're officially a founding member of CoachAndTrack.</div>
+    </div>
+    <div class="step-action">
+      <span class="btn-done">✓ Done</span>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <div class="step-title">Check Your Email</div>
+      <div class="step-desc">We sent a confirmation to your inbox with your access details.</div>
+    </div>
+    <div class="step-action">
+      <a href="mailto:" class="btn-ghost-sm">Open Email</a>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <div class="step-title">Try a Free Workout</div>
+      <div class="step-desc">Start with Day 1 of Strength Foundation — 11 movements, fully guided with video.</div>
+    </div>
+    <div class="step-action">
+      <a href="/programs/strength-foundation-day1.html" class="btn-orange">Try Day 1 Free</a>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <div class="step-title">Explore Your Nutrition Plan</div>
+      <div class="step-desc">Week 1 of the Nutrition Reset is live — 7 days of gluten-free meals with macros, in EN &amp; ES.</div>
+    </div>
+    <div class="step-action">
+      <a href="/programs/nutrition-plan-week1.html" class="btn-ghost-sm">View Week 1</a>
+    </div>
+  </div>
+
+  <div class="step-row">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <div class="step-title">Browse Your Coaches</div>
+      <div class="step-desc">Meet Veronica and Rolando — your founding coaches on CoachAndTrack.</div>
+    </div>
+    <div class="step-action">
+      <a href="/#trainers" class="btn-ghost-sm">Meet the Coaches</a>
+    </div>
+  </div>
+</div>
+
+<!-- FREE SAMPLE CALLOUT -->
+<div class="callout">
+  <div class="callout-card">
+    <div>
+      <div class="callout-title">DAY 1 IS FREE — START NOW</div>
+      <div class="callout-sub">No equipment needed to begin. 11 movements, video guidance, progress tracking — all free, right now.</div>
+    </div>
+    <a href="/programs/strength-foundation-day1.html" class="btn-primary-lg">Start Day 1 →</a>
+  </div>
+</div>
+
+<!-- COACHES -->
+<div class="coaches-section">
+  <div class="section-label">Your Coaches</div>
+  <h2 class="section-title">MEET YOUR TEAM</h2>
+  <div class="coaches-grid">
+    <a class="coach-card" href="/coaches/veronica-mosquera.html">
+      <div class="coach-photo">
+        <img src="/images/veronica-mosquera.jpg" alt="Veronica Mosquera" onerror="this.style.display='none';" />
+      </div>
+      <div class="coach-body">
+        <div class="coach-name">Veronica Mosquera</div>
+        <div class="coach-title-text">Strength &amp; Nutrition Coach</div>
+        <div class="view-profile">View Profile →</div>
+      </div>
+    </a>
+    <a class="coach-card" href="/coaches/rolando-corzo.html">
+      <div class="coach-photo">
+        <img src="/images/rolando-headshot.jpg" alt="Rolando Corzo" onerror="this.style.display='none';" />
+      </div>
+      <div class="coach-body">
+        <div class="coach-name">Rolando Corzo</div>
+        <div class="coach-title-text">Strength &amp; Performance Coach</div>
+        <div class="view-profile">View Profile →</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- SUPPORT -->
+<div class="support-section">
+  <div class="support-card">
+    <div class="support-icon">💬</div>
+    <div class="support-text">
+      <div class="support-title">Questions? We're here.</div>
+      <div class="support-desc">Reach us anytime at <a class="support-email" href="mailto:support@coachandtrack.com">support@coachandtrack.com</a> — we respond within 24 hours.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">CoachAndTrack</div>
+  <p>&copy; 2026 TechXcel Partners LLC, d/b/a CoachAndTrack. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
