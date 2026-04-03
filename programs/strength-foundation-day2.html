@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 1 — Strength Foundation | CoachAndTrack</title>
+  <title>Day 2 — Strength Foundation | CoachAndTrack</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <style>
@@ -134,16 +134,8 @@
       align-items: center;
       margin-bottom: 0.6rem;
     }
-    .progress-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .progress-count {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--orange);
-    }
+    .progress-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+    .progress-count { font-size: 0.8rem; font-weight: 700; color: var(--orange); }
     .progress-track {
       width: 100%;
       height: 7px;
@@ -176,9 +168,9 @@
       color: var(--text-dim);
       transition: all 0.3s;
     }
-    .step-dot.done   { background: var(--green); border-color: var(--green); color: white; }
-    .step-dot.skipped{ background: var(--dark-elevated); border-color: var(--text-dim); color: var(--text-dim); opacity: 0.45; }
-    .step-dot.active { border-color: var(--orange); color: var(--orange); }
+    .step-dot.done    { background: var(--green); border-color: var(--green); color: white; }
+    .step-dot.skipped { background: var(--dark-elevated); border-color: var(--text-dim); color: var(--text-dim); opacity: 0.45; }
+    .step-dot.active  { border-color: var(--orange); color: var(--orange); }
 
     /* COMPLETION BANNER */
     .completion-banner {
@@ -220,7 +212,6 @@
     }
     .movement-card.done    { border-color: rgba(34,197,94,0.35); opacity: 0.72; }
     .movement-card.skipped { opacity: 0.4; }
-    .movement-card.coming-soon { opacity: 0.55; cursor: default; }
 
     .movement-header {
       display: flex;
@@ -230,8 +221,6 @@
       cursor: pointer;
       user-select: none;
     }
-    .movement-card.coming-soon .movement-header { cursor: default; }
-
     .movement-number {
       width: 34px; height: 34px;
       border-radius: 50%;
@@ -268,7 +257,6 @@
     }
     .status-done    { background: rgba(34,197,94,0.12); color: var(--green); }
     .status-skipped { background: var(--dark-elevated); color: var(--text-dim); }
-    .status-soon    { background: rgba(249,115,22,0.1); color: var(--orange); border: 1px solid rgba(249,115,22,0.2); }
 
     .movement-chevron {
       color: var(--text-dim);
@@ -278,7 +266,6 @@
     }
     .movement-card.open .movement-chevron { transform: rotate(180deg); }
 
-    /* BODY */
     .movement-body {
       display: none;
       padding: 0 1.1rem 1.1rem;
@@ -349,18 +336,6 @@
     }
     .btn-undo:hover { color: var(--text); border-color: var(--text-dim); }
 
-    /* COMING SOON MOVEMENT */
-    .cs-body {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.1rem 1.25rem;
-      border-top: 1px solid var(--border);
-    }
-    .cs-icon { font-size: 1.75rem; flex-shrink: 0; }
-    .cs-text-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
-    .cs-text-sub { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
-
     @media (max-width: 600px) {
       .navbar { padding: 0.75rem 1rem; }
       .program-hero, .progress-section, .movements { padding-left: 1rem; padding-right: 1rem; }
@@ -373,22 +348,22 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <a class="nav-logo" href="../index.html">CoachAndTrack</a>
-  <a class="nav-back" href="../index.html#programs">&#8592; Programs</a>
+  <a class="nav-back" href="../coaches/veronica-mosquera.html">&#8592; Veronica's Programs</a>
 </nav>
 
 <!-- HERO -->
 <div class="program-hero">
-  <div class="program-label">Strength Foundation &middot; Day 1 of 28</div>
-  <h1 class="program-title">STRENGTH<br>FOUNDATION</h1>
+  <div class="program-label">Strength Foundation &middot; Day 2 of 28</div>
+  <h1 class="program-title">LOWER<br>BODY</h1>
   <div class="program-meta">
     <div class="coach-chip">
       <div class="coach-avatar">VM</div>
       Veronica Mosquera
     </div>
-    <div class="meta-chip"><strong>11</strong>&nbsp;Movements</div>
+    <div class="meta-chip"><strong>8</strong>&nbsp;Movements</div>
     <div class="meta-chip"><strong>Intermediate</strong></div>
     <div class="meta-chip">&#9201; ~45 min</div>
-    <div class="meta-chip">&#127947; Strength</div>
+    <div class="meta-chip">&#127947; Lower Body</div>
   </div>
 </div>
 
@@ -396,7 +371,7 @@
 <div class="progress-section">
   <div class="progress-header">
     <span class="progress-label">Today's Progress</span>
-    <span class="progress-count" id="progress-count">0 / 11 complete</span>
+    <span class="progress-count" id="progress-count">0 / 8 complete</span>
   </div>
   <div class="progress-track">
     <div class="progress-fill" id="progress-fill"></div>
@@ -404,12 +379,16 @@
   <div class="progress-steps" id="progress-steps"></div>
 </div>
 
-<!-- DAY NAV -->
-<div style="max-width:800px;margin:0 auto 1rem;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;">
-  <div style="color:#64748B;font-size:0.85rem;">Day 1 of 28</div>
-  <a href="/programs/strength-foundation-day2.html"
+<!-- DAY NAV (top) -->
+<div style="max-width:860px;margin:0 auto 1rem;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+  <a href="/programs/strength-foundation-day1.html"
+    style="display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:#94A3B8;border:1px solid #2A2A3E;padding:0.6rem 1.2rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;">
+    &#8592; Day 1: Upper Body
+  </a>
+  <div style="color:#64748B;font-size:0.85rem;">Day 2 of 28</div>
+  <a href="/programs/strength-foundation-day3.html"
     style="display:inline-flex;align-items:center;gap:0.5rem;background:#F97316;color:white;padding:0.6rem 1.2rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;">
-    Day 2: Lower Body &#8594;
+    Day 3: Upper Body &#8594;
   </a>
 </div>
 
@@ -417,8 +396,8 @@
 <div class="completion-banner" id="completion-banner">
   <div class="completion-inner">
     <div style="font-size:2.5rem;margin-bottom:0.5rem;">&#127881;</div>
-    <h2>Day 1 Complete!</h2>
-    <p>Great work. Veronica is proud of you.<br>Rest up and come back for Day 2.</p>
+    <h2>Day 2 Complete!</h2>
+    <p>Strong legs, stronger you. Veronica is proud of you.<br>Rest up and come back for Day 3.</p>
   </div>
 </div>
 
@@ -427,21 +406,18 @@
 
 <script>
 const movements = [
-  { id:  1, name: "High Plank Alternating Knee Tuck",                   reps: "4 rounds &times; 20 reps", videoId: "Ft3vpaFreP8" },
-  { id:  2, name: "Pull Over with Alternating Leg Raise",               reps: "4 rounds &times; 20 reps", videoId: "Vw0bDaqlv5U" },
-  { id:  3, name: "Seated Row with Band",                               reps: "4 rounds &times; 20 reps", videoId: "5Lp0SjCZd20" },
-  { id:  4, name: "High Plank Dumbbell Row",                            reps: "4 rounds &times; 20 reps", videoId: "tT1La8hTzaA" },
-  { id:  5, name: "Kneeling Squat Hammer Curl to Overhead",             reps: "4 rounds &times; 10 reps", videoId: "BwG1gicWhIE" },
-  { id:  6, name: "Kneeling Reverse Fly Pull Apart with Band",          reps: "4 rounds &times; 15 reps", videoId: "iRf5qbnyGEg" },
-  { id:  7, name: "Alternating Single Arm Chest Press",                 reps: "4 rounds &times; 20 reps", videoId: "cNt6-8dc53w" },
-  { id:  8, name: "Supinated Front Raise",                              reps: "4 rounds &times; 15 reps", videoId: "-SlMWVz8xOk" },
-  { id:  9, name: "Triceps Press Down with Band",                       reps: "4 rounds &times; 15 reps", videoId: "_yzf3Avp1cc" },
-  { id: 10, name: "Standing Eccentric Hammer Curl",                     reps: "4 rounds &times; 10 reps", videoId: "C9j0Jl09l9A" },
-  { id: 11, name: "Pull Up with Modification",  reps: "4 rounds &times; 10 reps",       videoId: "XA1PpM155k4" },
+  { id: 1, name: "Hip Hinge and Reach",                      reps: "4 rounds &times; 12 reps", playbackId: "AtxHq00HQBRQ7aQvRFz00uOMKZrVA3ckDhsMFQaTL01IOk" },
+  { id: 2, name: "Alternating Lateral Step Squat",           reps: "4 rounds &times; 16 reps", playbackId: "9g6guD02zf02x7qpXot6O7y00D8Oe6iq94AZKhYrFg02Tck" },
+  { id: 3, name: "Romanian Deadlift (RDL)",                  reps: "4 rounds &times; 12 reps", playbackId: "9N7GjMYZiOYzggtpgDU3N5oSKIfitf6dfYFUaUJxWec" },
+  { id: 4, name: "Alternating Front Rack Reverse Lunge",     reps: "4 rounds &times; 12 reps", playbackId: "wtXHsEDI8Edl1HG3R3t00KFJnn2zonI1tYKrWbJ4L00m4" },
+  { id: 5, name: "Bulgarian Split Squat",                    reps: "4 rounds &times; 10 reps each leg", playbackId: "aFaw6r31f4FhqV2L4ybJxjdWUOM200vGngADaoXpo024A" },
+  { id: 6, name: "Single Leg Hinge and Reach",               reps: "4 rounds &times; 10 reps each leg", playbackId: "7G73g00pTsyRXsIu6H011Uitw01GKLvU6Rh9zBHxRow5M4" },
+  { id: 7, name: "Glute Bridge Elevated",                    reps: "4 rounds &times; 15 reps", playbackId: "O3gXQEr01Ryl4STbdBAFfh4pfOygo97JiB024JoL1a6gA" },
+  { id: 8, name: "Wall Sit Weighted",                        reps: "4 rounds &times; 45 seconds", playbackId: "G2u7Rr025ERP00gCTFT01rqHrPPvAHY87IzSH100F5eJOa8" },
 ];
 
-const TOTAL = movements.length; // 11
-const state = new Array(movements.length).fill(null); // null | 'done' | 'skipped'
+const TOTAL = movements.length;
+const state = new Array(TOTAL).fill(null);
 
 function countDone() { return state.filter(s => s === 'done').length; }
 
@@ -506,12 +482,10 @@ function renderCards() {
     if (state[i] === 'done')    card.classList.add('done');
     if (state[i] === 'skipped') card.classList.add('skipped');
 
-    // ── STATUS BADGE ──
     let statusHtml = '';
     if (state[i] === 'done')    statusHtml = `<span class="movement-status status-done">&#10003; Done</span>`;
     if (state[i] === 'skipped') statusHtml = `<span class="movement-status status-skipped">Skipped</span>`;
 
-    // ── ACTIONS ──
     const actionsHtml = state[i] === null
       ? `<div class="movement-actions">
            <button class="btn-done" onclick="markDone(${i});event.stopPropagation()">&#10003; Mark as Done</button>
@@ -534,9 +508,9 @@ function renderCards() {
       <div class="movement-body">
         <div class="video-wrap">
           <iframe
-            src="https://www.youtube.com/embed/${m.videoId}?rel=0&modestbranding=1"
+            src="https://player.mux.com/${m.playbackId}"
             title="${m.name}"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
           </iframe>
         </div>
@@ -546,7 +520,6 @@ function renderCards() {
     list.appendChild(card);
   });
 
-  // open first incomplete card
   const firstNull = state.indexOf(null);
   if (firstNull !== -1) {
     document.querySelectorAll('.movement-card')[firstNull].classList.add('open', 'active');
