@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@mux/mux-node": "^12.8.1",
+    "dotenv": "^17.3.1"
+  }
+}

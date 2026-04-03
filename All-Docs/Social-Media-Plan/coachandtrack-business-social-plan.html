@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoachAndTrack — Business Social Media Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Syne+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0f14;
+    --paper: #f4f1ec;
+    --paper2: #ece8e0;
+    --teal: #0b7c6e;
+    --teal-light: #13a898;
+    --teal-pale: #e0f2f0;
+    --amber: #d4860a;
+    --amber-light: #f5a623;
+    --amber-pale: #fef3dc;
+    --coral: #c94f3a;
+    --slate: #3d4554;
+    --slate-light: #6b7590;
+    --rule: #d8d3ca;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    padding: 72px 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: 'COACH AND TRACK';
+    position: absolute;
+    bottom: -20px; right: -10px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 120px;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -2px;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .header-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .header-eyebrow {
+    font-family: 'Syne Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: rise 0.5s ease forwards 0.1s;
+  }
+
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.0;
+    color: #fff;
+    letter-spacing: -1px;
+    opacity: 0;
+    animation: rise 0.5s ease forwards 0.25s;
+  }
+
+  header h1 em {
+    font-style: normal;
+    color: var(--teal-light);
+  }
+
+  .header-desc {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #8a9ab0;
+    max-width: 520px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: rise 0.5s ease forwards 0.4s;
+  }
+
+  .header-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 36px;
+    opacity: 0;
+    animation: rise 0.5s ease forwards 0.55s;
+  }
+
+  .chip {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-family: 'Syne Mono', monospace;
+    color: #aab;
+    letter-spacing: 0.5px;
+  }
+
+  .chip.highlight {
+    background: rgba(11,124,110,0.25);
+    border-color: var(--teal-light);
+    color: var(--teal-light);
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: #fff;
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    overflow-x: auto;
+    padding: 0 48px;
+    gap: 0;
+  }
+
+  nav a {
+    padding: 14px 18px;
+    font-size: 11px;
+    font-family: 'Syne Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  nav a:hover { color: var(--teal); border-bottom-color: var(--teal); }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  section { padding: 72px 0; border-bottom: 1px solid var(--rule); }
+
+  .sec-label {
+    font-family: 'Syne Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+
+  .sec-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .sec-sub {
+    font-size: 14px;
+    color: var(--slate-light);
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  /* ── ALERT BOX ── */
+  .alert {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 56px;
+  }
+
+  .alert-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+
+  .alert h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--teal-light);
+    margin-bottom: 8px;
+  }
+
+  .alert p { font-size: 14px; color: #aab; line-height: 1.7; }
+  .alert strong { color: #fff; }
+
+  /* ── PLATFORM RECOMMENDATION ── */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 700px) { .platform-grid { grid-template-columns: 1fr; } }
+
+  .pcard {
+    background: #fff;
+    padding: 28px 32px;
+    position: relative;
+  }
+
+  .pcard-status {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-family: 'Syne Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .status-live { background: #e0f7f4; color: var(--teal); }
+  .status-yes { background: #fef3dc; color: var(--amber); }
+  .status-skip { background: #f5f5f5; color: #aaa; }
+
+  .pcard-icon { font-size: 28px; margin-bottom: 12px; }
+
+  .pcard-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .pcard-handle {
+    font-family: 'Syne Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  .pcard-why {
+    font-size: 13px;
+    color: var(--slate-light);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .pcard-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .pmeta {
+    font-size: 11px;
+    font-family: 'Syne Mono', monospace;
+    color: var(--slate-light);
+  }
+
+  .pmeta span { color: var(--ink); font-weight: 500; display: block; font-size: 13px; font-family: 'Instrument Sans', sans-serif; }
+
+  /* ── TWO AUDIENCES ── */
+  .audiences {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 600px) { .audiences { grid-template-columns: 1fr; } }
+
+  .audience-card {
+    padding: 32px;
+  }
+
+  .audience-card.clients { background: var(--teal-pale); }
+  .audience-card.coaches { background: var(--amber-pale); }
+
+  .aud-label {
+    font-family: 'Syne Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .clients .aud-label { color: var(--teal); }
+  .coaches .aud-label { color: var(--amber); }
+
+  .aud-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .aud-desc {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .aud-platforms {
+    font-size: 12px;
+    font-family: 'Syne Mono', monospace;
+    color: var(--slate-light);
+    margin-bottom: 16px;
+  }
+
+  .aud-platforms strong { color: var(--ink); }
+
+  .aud-messages li {
+    font-size: 13px;
+    color: var(--slate);
+    padding: 6px 0;
+    padding-left: 16px;
+    position: relative;
+    list-style: none;
+  }
+
+  .aud-messages li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+  }
+
+  .clients .aud-messages li::before { color: var(--teal); }
+  .coaches .aud-messages li::before { color: var(--amber); }
+
+  /* ── CONTENT PILLARS ── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  @media (max-width: 750px) { .pillars { grid-template-columns: 1fr 1fr; } }
+
+  .pillar {
+    background: #fff;
+    padding: 28px 24px;
+    border-top: 3px solid var(--pillar-color);
+  }
+
+  .pillar-num {
+    font-family: 'Syne Mono', monospace;
+    font-size: 11px;
+    color: var(--pillar-color);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .pillar-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .pillar-pct {
+    font-family: 'Syne Mono', monospace;
+    font-size: 11px;
+    color: var(--slate-light);
+    margin-bottom: 12px;
+  }
+
+  .pillar-desc {
+    font-size: 12px;
+    color: var(--slate-light);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .pillar-ideas {
+    list-style: none;
+  }
+
+  .pillar-ideas li {
+    font-size: 12px;
+    color: var(--slate);
+    padding: 5px 0;
+    padding-left: 14px;
+    position: relative;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .pillar-ideas li:last-child { border-bottom: none; }
+
+  .pillar-ideas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--pillar-color);
+    font-weight: bold;
+  }
+
+  /* ── CALENDAR ── */
+  .cal-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 650px) { .cal-intro { grid-template-columns: 1fr; } }
+
+  .cal-stat {
+    background: #fff;
+    padding: 24px 28px;
+    border-left: 3px solid var(--teal);
+  }
+
+  .cal-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .cal-stat-label {
+    font-size: 13px;
+    color: var(--slate-light);
+  }
+
+  .phase-block { margin-bottom: 48px; }
+
+  .phase-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    margin-bottom: 3px;
+  }
+
+  .phase-pre-launch { background: var(--ink); color: var(--teal-light); }
+  .phase-hype { background: var(--teal); color: #fff; }
+  .phase-launch { background: var(--amber); color: #fff; }
+
+  .day-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 3px;
+    margin-bottom: 3px;
+  }
+
+  .day-cell {
+    background: #fff;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .day-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .day-name {
+    font-family: 'Syne Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--slate-light);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .posts-cell {
+    background: var(--paper2);
+    padding: 14px 18px;
+  }
+
+  .day-focus {
+    font-size: 11px;
+    font-family: 'Syne Mono', monospace;
+    color: var(--teal);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .post-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pi {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #fff;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    color: var(--slate);
+  }
+
+  .pi-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .launch-day-row .day-cell { background: var(--amber); }
+  .launch-day-row .day-num { color: #fff; }
+  .launch-day-row .day-name { color: rgba(255,255,255,0.7); }
+  .launch-day-row .posts-cell { background: #fff5e0; border: 2px solid var(--amber); }
+
+  /* ── WAITLIST STRATEGY ── */
+  .waitlist-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 750px) { .waitlist-steps { grid-template-columns: 1fr 1fr; } }
+
+  .ws {
+    background: #fff;
+    padding: 28px 24px;
+    position: relative;
+  }
+
+  .ws-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 52px;
+    color: var(--paper2);
+    line-height: 1;
+    position: absolute;
+    top: 16px; right: 16px;
+  }
+
+  .ws-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    margin-top: 8px;
+    position: relative;
+  }
+
+  .ws-desc {
+    font-size: 12px;
+    color: var(--slate-light);
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .ws-icon { font-size: 24px; }
+
+  /* ── COACH ACQUISITION ── */
+  .coach-tactics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 650px) { .coach-tactics { grid-template-columns: 1fr; } }
+
+  .ct {
+    background: var(--amber-pale);
+    border-radius: 8px;
+    padding: 24px 28px;
+    border-top: 3px solid var(--amber);
+  }
+
+  .ct h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .ct p {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  /* ── HASHTAGS ── */
+  .ht-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3px;
+  }
+
+  @media (max-width: 750px) { .ht-grid { grid-template-columns: 1fr; } }
+
+  .ht-card {
+    background: #fff;
+    padding: 24px 28px;
+  }
+
+  .ht-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .ht-audience {
+    font-size: 11px;
+    font-family: 'Syne Mono', monospace;
+    color: var(--teal);
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tag {
+    border-radius: 100px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-family: 'Syne Mono', monospace;
+  }
+
+  .tag.lg { background: #e8f5e9; color: #2e7d32; }
+  .tag.md { background: #e3f2fd; color: #1565c0; }
+  .tag.sm { background: #fce4ec; color: #c62828; }
+  .tag.brand { background: var(--ink); color: var(--teal-light); }
+
+  /* ── TOOLS ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  @media (max-width: 750px) { .tools-grid { grid-template-columns: 1fr 1fr; } }
+
+  .tool {
+    background: #fff;
+    padding: 24px;
+  }
+
+  .tool-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .tool-cat {
+    font-size: 10px;
+    font-family: 'Syne Mono', monospace;
+    color: var(--teal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .tool-desc {
+    font-size: 12px;
+    color: var(--slate-light);
+    line-height: 1.6;
+  }
+
+  /* ── KPI TABLE ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+  }
+
+  @media (max-width: 750px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
+
+  .kpi {
+    background: #fff;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .kpi-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .kpi-name {
+    font-size: 12px;
+    color: var(--slate-light);
+    font-family: 'Syne Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  .kpi-when {
+    font-size: 10px;
+    color: var(--rule);
+    margin-top: 4px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 56px 48px;
+    text-align: center;
+  }
+
+  footer h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  footer h2 em { font-style: normal; color: var(--teal-light); }
+  footer p { color: #556; font-size: 13px; font-family: 'Syne Mono', monospace; }
+
+  @keyframes rise {
+    from { opacity:0; transform: translateY(16px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 0 20px; }
+    nav { padding: 0 16px; }
+    .day-row { grid-template-columns: 64px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-eyebrow">Business Social Media Strategy · Pre-Launch Edition</div>
+    <h1>CoachAndTrack<br><em>Social Media Plan</em></h1>
+    <p class="header-desc">A complete pre-launch strategy for the CoachAndTrack platform — building audience, attracting coaches, and filling the waitlist before go-live.</p>
+    <div class="header-chips">
+      <div class="chip highlight">Web Platform</div>
+      <div class="chip">Launch &lt; 1 Month</div>
+      <div class="chip">2 Audiences: Clients + Coaches</div>
+      <div class="chip">Waitlist Goal</div>
+      <div class="chip">Solo-Managed</div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="#platforms">Platforms</a>
+  <a href="#audiences">Audiences</a>
+  <a href="#pillars">Content Pillars</a>
+  <a href="#calendar">Calendar</a>
+  <a href="#waitlist">Waitlist</a>
+  <a href="#coaches">Coach Acquisition</a>
+  <a href="#hashtags">Hashtags</a>
+  <a href="#tools">Tools & KPIs</a>
+</nav>
+
+
+<!-- PLATFORMS -->
+<section id="platforms">
+  <div class="wrap">
+    <div class="sec-label">Section 01</div>
+    <h2 class="sec-title">Which Platforms to Use</h2>
+    <p class="sec-sub">You already have Instagram, TikTok and Facebook. Here's the full recommendation — what to add, what to skip, and why.</p>
+
+    <div class="alert">
+      <div class="alert-icon">✅</div>
+      <div>
+        <h3>You're Already On The Right Platforms</h3>
+        <p>Instagram and TikTok are your two most powerful pre-launch tools for <strong>discovery and virality</strong>. Facebook is ideal for <strong>community building</strong>. The additions below are strategic, not mandatory — prioritise quality over quantity as a solo operator.</p>
+      </div>
+    </div>
+
+    <div class="platform-grid">
+
+      <div class="pcard">
+        <div class="pcard-status status-live">✓ Already Live</div>
+        <div class="pcard-icon">📸</div>
+        <div class="pcard-name">Instagram</div>
+        <div class="pcard-handle">@coachandtrack</div>
+        <div class="pcard-why">Your primary brand-building channel. Reels drive discovery, carousels drive saves, Stories drive daily engagement. Perfect for both your client and coach audiences. This should receive the most attention.</div>
+        <div class="pcard-meta">
+          <div class="pmeta">FREQUENCY<span>1 post/day + Stories</span></div>
+          <div class="pmeta">BEST TIME<span>6–9 AM · 6–9 PM</span></div>
+          <div class="pmeta">PRIORITY<span>🔴 Primary</span></div>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-status status-live">✓ Already Live</div>
+        <div class="pcard-icon">🎵</div>
+        <div class="pcard-name">TikTok</div>
+        <div class="pcard-handle">@coachandtrack</div>
+        <div class="pcard-why">Your fastest route to organic reach — TikTok's algorithm gives new accounts a chance to go viral with zero followers. Ideal for short demo clips, "did you know?" fitness content, and behind-the-scenes platform previews.</div>
+        <div class="pcard-meta">
+          <div class="pmeta">FREQUENCY<span>1–2 videos/day</span></div>
+          <div class="pmeta">BEST TIME<span>7 AM · 7–9 PM</span></div>
+          <div class="pmeta">PRIORITY<span>🔴 Primary</span></div>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-status status-live">✓ Already Live</div>
+        <div class="pcard-icon">👥</div>
+        <div class="pcard-name">Facebook</div>
+        <div class="pcard-handle">@coachandtrack</div>
+        <div class="pcard-why">Create a <strong>private waitlist community group</strong> alongside your Page. This builds early adopter loyalty, lets you gather feedback, and creates a ready audience for launch day. Facebook Groups are excellent for pre-launch engagement.</div>
+        <div class="pcard-meta">
+          <div class="pmeta">FREQUENCY<span>4–5× weekly</span></div>
+          <div class="pmeta">BEST TIME<span>Wed–Fri 1–4 PM</span></div>
+          <div class="pmeta">PRIORITY<span>🟡 Secondary</span></div>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-status status-yes">+ Add This</div>
+        <div class="pcard-icon">💼</div>
+        <div class="pcard-name">LinkedIn</div>
+        <div class="pcard-handle">@coachandtrack (Company Page)</div>
+        <div class="pcard-why">Critical for attracting professional fitness coaches and trainers to join your platform. LinkedIn also opens doors to press, investors, and B2B wellness partnerships. Create a Company Page — not just a personal profile — to represent the brand.</div>
+        <div class="pcard-meta">
+          <div class="pmeta">FREQUENCY<span>3–4× weekly</span></div>
+          <div class="pmeta">BEST TIME<span>Tue–Thu 8–10 AM</span></div>
+          <div class="pmeta">PRIORITY<span>🟡 Secondary</span></div>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-status status-yes">+ Consider</div>
+        <div class="pcard-icon">▶️</div>
+        <div class="pcard-name">YouTube</div>
+        <div class="pcard-handle">@coachandtrack</div>
+        <div class="pcard-why">Worth claiming the handle now, even if you don't post immediately. YouTube Shorts can be repurposed from TikTok/Reels with zero extra effort. A platform walkthrough video before launch can drive significant organic search traffic.</div>
+        <div class="pcard-meta">
+          <div class="pmeta">FREQUENCY<span>Shorts only for now</span></div>
+          <div class="pmeta">BEST TIME<span>Fri–Sat 12–4 PM</span></div>
+          <div class="pmeta">PRIORITY<span>🟢 Claim + Light Use</span></div>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-status status-skip">Skip for Now</div>
+        <div class="pcard-icon">🐦</div>
+        <div class="pcard-name">X / Twitter</div>
+        <div class="pcard-handle">—</div>
+        <div class="pcard-why">As a solo operator with under 1 month to launch, X/Twitter is lower ROI for a fitness/wellness app. The fitness community there is smaller, and it requires constant daily activity to gain traction. Claim the handle, but deprioritise posting until after launch.</div>
+        <div class="pcard-meta">
+          <div class="pmeta">ACTION<span>Claim handle only</span></div>
+          <div class="pmeta">REVISIT<span>Post-launch</span></div>
+          <div class="pmeta">PRIORITY<span>⚪ Deferred</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="background:#fff; border-left:3px solid var(--teal); padding:20px 24px; border-radius:0 6px 6px 0; font-size:14px; color:var(--slate);">
+      <strong style="color:var(--ink); display:block; margin-bottom:4px;">⚡ Immediate Action</strong>
+      Claim <strong>@coachandtrack</strong> on LinkedIn and YouTube today — even before you post anything. Also claim it on X/Twitter to protect the brand name. Consistent handles across all platforms build trust and brand recognition.
+    </div>
+  </div>
+</section>
+
+
+<!-- AUDIENCES -->
+<section id="audiences">
+  <div class="wrap">
+    <div class="sec-label">Section 02</div>
+    <h2 class="sec-title">Two Distinct Audiences</h2>
+    <p class="sec-sub">CoachAndTrack needs to speak to two very different people. Each requires tailored messaging, platforms, and content types.</p>
+
+    <div class="audiences">
+      <div class="audience-card clients">
+        <div class="aud-label">Audience A</div>
+        <div class="aud-title">People Seeking a Coach & Progress Tracking</div>
+        <div class="aud-desc">Fitness-motivated individuals who want a certified, matched personal trainer and the tools to track, visualise, and share their progress journey. They're motivated by results, accountability, and community.</div>
+        <div class="aud-platforms"><strong>Best platforms:</strong> Instagram, TikTok, Facebook Group</div>
+        <ul class="aud-messages">
+          <li>"Find your perfect coach — matched to your goals"</li>
+          <li>"Track every rep, every run, every result"</li>
+          <li>"Share your progress. Stay accountable."</li>
+          <li>"Your coach is one tap away"</li>
+          <li>"Real coaches. Real plans. Real results."</li>
+        </ul>
+      </div>
+      <div class="audience-card coaches">
+        <div class="aud-label">Audience B</div>
+        <div class="aud-title">Fitness Coaches & Personal Trainers</div>
+        <div class="aud-desc">Certified trainers and coaches who want more clients, a professional platform to manage them, and tools to scale their coaching business online. They care about credibility, income, and ease of use.</div>
+        <div class="aud-platforms"><strong>Best platforms:</strong> LinkedIn, Instagram, Facebook Groups (fitness pro communities)</div>
+        <ul class="aud-messages">
+          <li>"Get matched with clients who are serious about results"</li>
+          <li>"Manage all your clients in one platform"</li>
+          <li>"We handle the discovery. You focus on coaching."</li>
+          <li>"Join our founding coach cohort — limited spots"</li>
+          <li>"Grow your coaching business online with CoachAndTrack"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:#fff; padding:24px 28px; border-radius:6px; font-size:13px; color:var(--slate); line-height:1.7;">
+      <strong style="color:var(--ink); font-size:15px; display:block; margin-bottom:8px;">💡 Content Split Guideline</strong>
+      Aim for roughly <strong style="color:var(--teal);">70% client-focused content</strong> (discovery, fitness tips, progress tracking) and <strong style="color:var(--amber);">30% coach-focused content</strong> (coach spotlights, "join our platform" calls to action, professional benefits). This reflects your primary monetisation path while building the coach supply side in parallel.
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTENT PILLARS -->
+<section id="pillars">
+  <div class="wrap">
+    <div class="sec-label">Section 03</div>
+    <h2 class="sec-title">6 Content Pillars</h2>
+    <p class="sec-sub">These are the recurring themes your content should rotate through. Each pillar serves a strategic purpose for the pre-launch phase.</p>
+
+    <div class="pillars">
+
+      <div class="pillar" style="--pillar-color: #0b7c6e;">
+        <div class="pillar-num">PILLAR 01 · 20%</div>
+        <div class="pillar-name">Platform Story & Vision</div>
+        <div class="pillar-pct">The "why" behind CoachAndTrack</div>
+        <div class="pillar-desc">Build emotional investment in the product before it launches. People back founders and missions, not just apps.</div>
+        <ul class="pillar-ideas">
+          <li>Founder origin video</li>
+          <li>"The problem we're solving"</li>
+          <li>Behind-the-scenes building</li>
+          <li>The vision for the platform</li>
+          <li>What makes us different</li>
+        </ul>
+      </div>
+
+      <div class="pillar" style="--pillar-color: #d4860a;">
+        <div class="pillar-num">PILLAR 02 · 25%</div>
+        <div class="pillar-name">Free Fitness Value</div>
+        <div class="pillar-pct">Education that builds trust &amp; following</div>
+        <div class="pillar-desc">The content people save, share, and follow you for. Give generously before the ask. This is your follower growth engine.</div>
+        <ul class="pillar-ideas">
+          <li>60-sec workout tips</li>
+          <li>"Common mistake" corrections</li>
+          <li>Training plan templates</li>
+          <li>Progress tracking tips</li>
+          <li>Nutrition quick-wins</li>
+        </ul>
+      </div>
+
+      <div class="pillar" style="--pillar-color: #c94f3a;">
+        <div class="pillar-num">PILLAR 03 · 15%</div>
+        <div class="pillar-name">Coach Spotlights</div>
+        <div class="pillar-pct">Build coach supply + social proof</div>
+        <div class="pillar-desc">Showcase coaches who are joining the platform. This attracts more coaches AND shows clients the quality of coaching available.</div>
+        <ul class="pillar-ideas">
+          <li>Coach intro videos</li>
+          <li>Coaching philosophy posts</li>
+          <li>"Meet a CoachAndTrack coach"</li>
+          <li>Specialist skills spotlights</li>
+          <li>Coach Q&amp;A sessions</li>
+        </ul>
+      </div>
+
+      <div class="pillar" style="--pillar-color: #4a6fa5;">
+        <div class="pillar-num">PILLAR 04 · 15%</div>
+        <div class="pillar-name">Progress & Transformation</div>
+        <div class="pillar-pct">Social proof + shareability</div>
+        <div class="pillar-desc">Real results — from beta users, early adopters, and coaches themselves. The most-shared content category in fitness.</div>
+        <ul class="pillar-ideas">
+          <li>Beta user progress updates</li>
+          <li>Before/after milestones</li>
+          <li>Tracking dashboard previews</li>
+          <li>Progress data visualisations</li>
+          <li>User testimonial quotes</li>
+        </ul>
+      </div>
+
+      <div class="pillar" style="--pillar-color: #7b5ea7;">
+        <div class="pillar-num">PILLAR 05 · 15%</div>
+        <div class="pillar-name">Platform Preview</div>
+        <div class="pillar-pct">Build anticipation &amp; waitlist sign-ups</div>
+        <div class="pillar-desc">Tease features, show UX, build desire before launch. This is your conversion content — every preview post should include a waitlist CTA.</div>
+        <ul class="pillar-ideas">
+          <li>Feature sneak peeks</li>
+          <li>Platform walkthrough clips</li>
+          <li>"Coming soon" teasers</li>
+          <li>UX/interface previews</li>
+          <li>"Swipe to see how it works"</li>
+        </ul>
+      </div>
+
+      <div class="pillar" style="--pillar-color: #2e7d32;">
+        <div class="pillar-num">PILLAR 06 · 10%</div>
+        <div class="pillar-name">Call to Action</div>
+        <div class="pillar-pct">Drive waitlist, follows &amp; coach sign-ups</div>
+        <div class="pillar-desc">Direct asks. Don't be shy — audiences need to be clearly invited to take action. Mix client CTAs and coach CTAs.</div>
+        <ul class="pillar-ideas">
+          <li>"Join the waitlist — link in bio"</li>
+          <li>"Are you a coach? Apply here"</li>
+          <li>Early-access limited spots</li>
+          <li>Countdown to launch</li>
+          <li>Referral incentive posts</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CALENDAR -->
+<section id="calendar">
+  <div class="wrap">
+    <div class="sec-label">Section 04</div>
+    <h2 class="sec-title">Pre-Launch Content Calendar</h2>
+    <p class="sec-sub">A 2-week day-by-day plan focused entirely on building your audience and filling the waitlist before launch day.</p>
+
+    <div class="cal-intro">
+      <div class="cal-stat"><div class="cal-stat-num">14</div><div class="cal-stat-label">Days to launch</div></div>
+      <div class="cal-stat"><div class="cal-stat-num">4</div><div class="cal-stat-label">Active platforms</div></div>
+      <div class="cal-stat"><div class="cal-stat-num">2</div><div class="cal-stat-label">Audiences targeted</div></div>
+    </div>
+
+    <!-- WEEK 1 -->
+    <div class="phase-block">
+      <div class="phase-title phase-pre-launch">WEEK 1 — ESTABLISH & EDUCATE (Days 1–7)</div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">1</div><div class="day-name">Mon</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Platform Story — Introduce the brand</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG Reel: "The problem with finding a great trainer"</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: Same — trending audio</div>
+            <div class="pi"><div class="pi-dot" style="background:#0077B5"></div>LinkedIn: Founder post — why CoachAndTrack exists</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">2</div><div class="day-name">Tue</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Free Fitness Value — First value drop</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG Carousel: "5 things to look for in a personal trainer"</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: "How to know if your trainer is right for you"</div>
+            <div class="pi"><div class="pi-dot" style="background:#4267B2"></div>Facebook: Share carousel + waitlist link</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">3</div><div class="day-name">Wed</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Coach Spotlight — First coach introduction</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG: Meet [Coach Name] — joining CoachAndTrack</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: Coach intro clip</div>
+            <div class="pi"><div class="pi-dot" style="background:#0077B5"></div>LinkedIn: "We're onboarding founding coaches — here's who's in"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">4</div><div class="day-name">Thu</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Platform Preview — First product tease</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG Reel: "Here's how CoachAndTrack works" (30s demo)</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: Same clip</div>
+            <div class="pi"><div class="pi-dot" style="background:#4267B2"></div>Facebook: Post + "Join the waitlist" CTA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">5</div><div class="day-name">Fri</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Free Value — Progress tracking tips</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG Carousel: "How to actually track your fitness progress"</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: "Why most people quit — and how tracking changes that"</div>
+            <div class="pi"><div class="pi-dot" style="background:#0077B5"></div>LinkedIn: Article: "The science of progress tracking in fitness"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">6</div><div class="day-name">Sat</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Social Proof — Beta user progress</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG: Beta user result / testimonial (with permission)</div>
+            <div class="pi"><div class="pi-dot" style="background:#4267B2"></div>Facebook Group: Share + ask members to comment their goals</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">7</div><div class="day-name">Sun</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: CTA — First direct waitlist push</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG Story: Poll + "Join waitlist" link sticker</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: "We launch in 7 days — here's how to get early access"</div>
+            <div class="pi"><div class="pi-dot" style="background:#4267B2"></div>Facebook: Week-in-review + waitlist link</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="phase-block">
+      <div class="phase-title phase-hype">WEEK 2 — BUILD HYPE & CONVERT (Days 8–13)</div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">8</div><div class="day-name">Mon</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Platform Preview — Feature deep dive</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG Carousel: "5 features dropping on launch day"</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: "POV: You just found your perfect fitness coach"</div>
+            <div class="pi"><div class="pi-dot" style="background:#0077B5"></div>LinkedIn: "Building CoachAndTrack — what we've learned"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">9</div><div class="day-name">Tue</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Coach Spotlight #2 + Coach CTA</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG: Coach #2 spotlight</div>
+            <div class="pi"><div class="pi-dot" style="background:#0077B5"></div>LinkedIn: "Are you a fitness coach? Founding spots are limited"</div>
+            <div class="pi"><div class="pi-dot" style="background:#4267B2"></div>Facebook: Tag-a-coach post ("Know a great trainer? Tag them")</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">10</div><div class="day-name">Wed</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Free Value + Platform crossover</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG Reel: "How to share your progress and actually stay motivated"</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: Same — focus on social sharing angle</div>
+            <div class="pi"><div class="pi-dot" style="background:#4267B2"></div>Facebook Group: Discussion post — "How do you track progress now?"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">11</div><div class="day-name">Thu</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Pillar: Social Proof — More results + buzz</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG: Testimonial #2 + waitlist counter graphic</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: "People are already signing up — here's why"</div>
+            <div class="pi"><div class="pi-dot" style="background:#0077B5"></div>LinkedIn: Case study / early adopter story</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">12</div><div class="day-name">Fri</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Urgency: 48-hour countdown begins</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG Story: "48 hours until launch" countdown sticker</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: "We go live in 2 days — everything you need to know"</div>
+            <div class="pi"><div class="pi-dot" style="background:#4267B2"></div>Facebook Live: 15-min preview / Q&amp;A for waitlist group</div>
+            <div class="pi"><div class="pi-dot" style="background:#0077B5"></div>LinkedIn: "Launching Sunday — last chance for founding access"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-cell"><div class="day-num">13</div><div class="day-name">Sat</div></div>
+        <div class="posts-cell">
+          <div class="day-focus">Eve of Launch — Final teaser, maximum urgency</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG Reel: "Tomorrow, everything changes" — emotional brand film</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: Full platform walkthrough video</div>
+            <div class="pi"><div class="pi-dot" style="background:#4267B2"></div>Facebook: "We launch tomorrow — share this with someone who needs a coach"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAUNCH DAY -->
+    <div class="phase-block">
+      <div class="phase-title phase-launch">DAY 14 — LAUNCH DAY 🚀</div>
+
+      <div class="day-row launch-day-row">
+        <div class="day-cell"><div class="day-num">14</div><div class="day-name">Sun</div></div>
+        <div class="posts-cell">
+          <div class="day-focus" style="color:var(--amber);">All platforms · All day · Maximum output</div>
+          <div class="post-items">
+            <div class="pi"><div class="pi-dot" style="background:#E1306C"></div>IG: Launch Reel + Stories all day with link sticker</div>
+            <div class="pi"><div class="pi-dot" style="background:#ff0050"></div>TikTok: "WE'RE LIVE" video + duet with first users</div>
+            <div class="pi"><div class="pi-dot" style="background:#4267B2"></div>Facebook: Live celebration session in Group</div>
+            <div class="pi"><div class="pi-dot" style="background:#0077B5"></div>LinkedIn: Official launch announcement post</div>
+            <div class="pi"><div class="pi-dot" style="background:#FF0000"></div>YouTube: Post platform walkthrough as first video</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- WAITLIST -->
+<section id="waitlist">
+  <div class="wrap">
+    <div class="sec-label">Section 05</div>
+    <h2 class="sec-title">Waitlist Strategy</h2>
+    <p class="sec-sub">Every social post should feed into one goal: getting people onto your waitlist. Here's how to build it systematically.</p>
+
+    <div class="waitlist-steps">
+      <div class="ws">
+        <div class="ws-num">1</div>
+        <div class="ws-icon">🔗</div>
+        <div class="ws-title">Set Up a Waitlist Page</div>
+        <div class="ws-desc">Create a simple landing page (Mailchimp, Tally, or Carrd) with an email capture. This is the single destination for all your "link in bio" traffic. Keep it to one screen: headline, 3 bullet benefits, email field, submit button.</div>
+      </div>
+      <div class="ws">
+        <div class="ws-num">2</div>
+        <div class="ws-icon">📌</div>
+        <div class="ws-title">Pin It Everywhere</div>
+        <div class="ws-desc">Instagram bio link, TikTok bio link, Facebook Page CTA button, LinkedIn Company Page website field. Every profile should point to one URL. Use a link-in-bio tool (like Linktree or Bio.link) to track clicks per platform.</div>
+      </div>
+      <div class="ws">
+        <div class="ws-num">3</div>
+        <div class="ws-icon">🎁</div>
+        <div class="ws-title">Add an Incentive</div>
+        <div class="ws-desc">Give people a reason to join now, not later. Ideas: "First 100 get free premium for 3 months", "Founding members get exclusive coach matching priority", or "Early access before public launch." Scarcity drives action.</div>
+      </div>
+      <div class="ws">
+        <div class="ws-num">4</div>
+        <div class="ws-icon">📣</div>
+        <div class="ws-title">Share the Number</div>
+        <div class="ws-desc">Post updates like "127 people have joined the waitlist — are you in?" Social proof creates FOMO and drives more sign-ups. Share waitlist milestones (100, 250, 500) as celebration posts to generate engagement.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--teal-pale); border-radius:8px; padding:28px 32px; border-left:4px solid var(--teal);">
+      <strong style="color:var(--teal); font-family:'Syne',sans-serif; font-size:17px; display:block; margin-bottom:8px;">📧 What to Send Waitlist Members</strong>
+      <p style="font-size:13px; color:var(--slate); line-height:1.7;">Once someone joins your waitlist, send them 3 emails over 14 days: <strong>(1)</strong> Welcome + what to expect, <strong>(2)</strong> a value email with a free fitness resource (this builds goodwill and reduces unsubscribes), and <strong>(3)</strong> a launch-day email with their exclusive early access link. Keep it personal and founder-voiced — not corporate.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- COACH ACQUISITION -->
+<section id="coaches">
+  <div class="wrap">
+    <div class="sec-label">Section 06</div>
+    <h2 class="sec-title">Attracting Coaches to the Platform</h2>
+    <p class="sec-sub">Without coaches, there's no marketplace. Here's how to use social media to recruit founding coaches in the next 14 days.</p>
+
+    <div class="coach-tactics">
+      <div class="ct">
+        <h4>🎯 LinkedIn Outreach Posts</h4>
+        <p>Post a "We're looking for founding coaches" article on LinkedIn 2× per week. Be specific: type of coaches you want, what they get (early access, profile visibility, revenue share details). Personal founder posts outperform company page posts — use both.</p>
+      </div>
+      <div class="ct">
+        <h4>📣 Facebook Group Seeding</h4>
+        <p>Join 5–10 personal trainer and fitness coach Facebook Groups. Share value content (not spam) for 3–4 days before mentioning CoachAndTrack. Look for groups like "Online Personal Trainers", "Fitness Coaches UK/US", "Personal Trainer Business Tips".</p>
+      </div>
+      <div class="ct">
+        <h4>🎬 Coach-Specific TikTok/Reels</h4>
+        <p>Create a short series: "If you're a fitness coach, watch this." Address their pain points (finding clients, managing bookings, building online presence) and position CoachAndTrack as the solution. Use hashtags like #personaltrainertips #fitnesscoach.</p>
+      </div>
+      <div class="ct">
+        <h4>🤝 DM Outreach Campaign</h4>
+        <p>Identify 20–30 coaches on Instagram with 1,000–10,000 followers (micro-influencers). Send personalised DMs: acknowledge their work, explain the platform, offer founding coach benefits. Aim for quality over quantity — 5 genuine replies beats 50 cold blasts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HASHTAGS -->
+<section id="hashtags">
+  <div class="wrap">
+    <div class="sec-label">Section 07</div>
+    <h2 class="sec-title">Hashtag Strategy</h2>
+    <p class="sec-sub">Three rotating sets for Instagram, plus TikTok keyword guidance. Rotate between sets to avoid repetition penalties.</p>
+
+    <div class="ht-grid">
+      <div class="ht-card">
+        <h4>Set A — Client Discovery</h4>
+        <div class="ht-audience">For: value posts, fitness tips, progress content</div>
+        <div class="tags">
+          <span class="tag lg">#fitness</span>
+          <span class="tag lg">#personaltrainer</span>
+          <span class="tag lg">#workout</span>
+          <span class="tag md">#fitnessmotivation</span>
+          <span class="tag md">#onlinecoach</span>
+          <span class="tag md">#progresstracking</span>
+          <span class="tag md">#fitgoals</span>
+          <span class="tag sm">#coachandtrack</span>
+          <span class="tag sm">#findyourcoach</span>
+          <span class="tag sm">#fitnessapp</span>
+          <span class="tag brand">#coachandtrack</span>
+        </div>
+      </div>
+      <div class="ht-card">
+        <h4>Set B — Coach Acquisition</h4>
+        <div class="ht-audience">For: coach spotlights, trainer-focused content</div>
+        <div class="tags">
+          <span class="tag lg">#personaltrainertips</span>
+          <span class="tag lg">#fitnessbusiness</span>
+          <span class="tag md">#onlinepersonaltrainer</span>
+          <span class="tag md">#trainersofinstagram</span>
+          <span class="tag md">#coachingbusiness</span>
+          <span class="tag md">#fitnesscoach</span>
+          <span class="tag sm">#growmycoachingbusiness</span>
+          <span class="tag sm">#PTlife</span>
+          <span class="tag sm">#coachlife</span>
+          <span class="tag brand">#coachandtrack</span>
+        </div>
+      </div>
+      <div class="ht-card">
+        <h4>Set C — Launch &amp; Platform</h4>
+        <div class="ht-audience">For: platform previews, CTA posts, launch content</div>
+        <div class="tags">
+          <span class="tag lg">#fitnessstartup</span>
+          <span class="tag lg">#fitnessapp</span>
+          <span class="tag md">#newapp</span>
+          <span class="tag md">#healthtech</span>
+          <span class="tag md">#startup</span>
+          <span class="tag md">#productlaunch</span>
+          <span class="tag sm">#earlyaccess</span>
+          <span class="tag sm">#waitlist</span>
+          <span class="tag sm">#launchday</span>
+          <span class="tag brand">#coachandtrack</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3px; background:#fff; padding:24px 28px; font-size:13px; color:var(--slate); line-height:1.7; border-top:3px solid #ff0050;">
+      <strong style="color:var(--ink); display:block; margin-bottom:6px;">🎵 TikTok: Keywords beat hashtags</strong>
+      On TikTok, use only 3–5 hashtags per video. The algorithm is keyword-based — write descriptive captions that include natural language like "how to find a personal trainer" or "fitness progress tracking app". Always include <strong>#FitnessApp</strong> and one trending hashtag from the Discover page. Your caption words drive reach more than hashtags do.
+    </div>
+  </div>
+</section>
+
+
+<!-- TOOLS & KPIs -->
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-label">Section 08</div>
+    <h2 class="sec-title">Tools & Success Metrics</h2>
+    <p class="sec-sub">Free tools to manage all platforms solo, and the KPIs that actually matter for a pre-launch business.</p>
+
+    <div class="tools-grid" style="margin-bottom:48px;">
+      <div class="tool">
+        <div class="tool-name">Buffer</div>
+        <div class="tool-cat">Scheduling</div>
+        <div class="tool-desc">Schedule posts across all platforms from one dashboard. Batch your whole week every Sunday. Free plan covers 3 channels.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">Canva</div>
+        <div class="tool-cat">Design</div>
+        <div class="tool-desc">Create a Brand Kit once (logo, colours, fonts) then use templates for carousels, story graphics, and coach spotlight cards.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">CapCut</div>
+        <div class="tool-cat">Video Editing</div>
+        <div class="tool-desc">Free mobile editor built for Reels and TikTok. Auto-captions, trending templates, and direct export to both platforms.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">Tally.so</div>
+        <div class="tool-cat">Waitlist Page</div>
+        <div class="tool-desc">Free, beautiful form builder. Create your waitlist signup page in 10 minutes. Connects to Mailchimp or Notion for list management.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">Metricool</div>
+        <div class="tool-cat">Analytics</div>
+        <div class="tool-desc">Track performance across Instagram, TikTok, Facebook and LinkedIn in one view. Free tier is sufficient for pre-launch monitoring.</div>
+      </div>
+      <div class="tool">
+        <div class="tool-name">Notion</div>
+        <div class="tool-cat">Content Planning</div>
+        <div class="tool-desc">Keep your content calendar, caption drafts, coach outreach tracker, and waitlist notes in one place. Free for personal use.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:22px; color:var(--ink); margin-bottom:24px;">KPIs to Track Weekly</h3>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-val">500+</div>
+        <div class="kpi-name">Waitlist sign-ups by launch</div>
+        <div class="kpi-when">Target by Day 14</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">10+</div>
+        <div class="kpi-name">Founding coaches recruited</div>
+        <div class="kpi-when">Target by Day 14</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">1K+</div>
+        <div class="kpi-name">Instagram followers</div>
+        <div class="kpi-when">Target by Day 14</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">5K+</div>
+        <div class="kpi-name">TikTok video views</div>
+        <div class="kpi-when">Per video target</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2>Ready to <em>Launch</em></h2>
+  <p>CoachAndTrack · Business Social Media Strategy · Pre-Launch Edition</p>
+  <p style="margin-top:8px; color:#333;">Built for a solo founder · Web platform · Sub-30-day launch</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" width="520" height="110">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Orange square favicon mark -->
+  <rect x="0" y="8" width="90" height="90" rx="14" fill="#E8621A"/>
+
+  <!-- CAT text inside orange box -->
+  <text
+    x="45"
+    y="64"
+    font-family="'Barlow Condensed', 'Arial Narrow', sans-serif"
+    font-weight="900"
+    font-size="38"
+    fill="white"
+    text-anchor="middle"
+    letter-spacing="1"
+  >CAT</text>
+
+  <!-- Wordmark: COACH -->
+  <text
+    x="108"
+    y="58"
+    font-family="'Barlow Condensed', 'Arial Narrow', sans-serif"
+    font-weight="900"
+    font-size="50"
+    fill="#1A1A1A"
+    letter-spacing="2"
+  >COACH</text>
+
+  <!-- AND in olive green -->
+  <text
+    x="113"
+    y="88"
+    font-family="'Barlow Condensed', 'Arial Narrow', sans-serif"
+    font-weight="800"
+    font-size="22"
+    fill="#8FA818"
+    letter-spacing="4"
+  >AND</text>
+
+  <!-- TRACK in dark, same weight as COACH -->
+  <text
+    x="172"
+    y="88"
+    font-family="'Barlow Condensed', 'Arial Narrow', sans-serif"
+    font-weight="900"
+    font-size="38"
+    fill="#1A1A1A"
+    letter-spacing="2"
+  >TRACK</text>
+
+  <!-- Small orange accent line under COACH -->
+  <rect x="108" y="65" width="280" height="3.5" rx="2" fill="#E8621A" opacity="0.18"/>
+
+</svg>

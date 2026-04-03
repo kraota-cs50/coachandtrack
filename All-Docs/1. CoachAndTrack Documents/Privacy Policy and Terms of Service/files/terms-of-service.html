@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — CoachAndTrack</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0A;
+      --surface: #141414;
+      --elevated: #1F1F1F;
+      --border: #2A2A2A;
+      --text-primary: #F5F5F5;
+      --text-muted: #A3A3A3;
+      --accent: #F97316;
+      --accent-hover: #EA580C;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-back {
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .nav-back:hover { background: var(--accent-hover); }
+
+    .page-hero {
+      background: linear-gradient(135deg, #1a0a00 0%, var(--bg) 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .page-hero .badge {
+      display: inline-block;
+      background: rgba(249,115,22,0.15);
+      color: var(--accent);
+      border: 1px solid rgba(249,115,22,0.3);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .content-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .toc h3 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .toc ol { padding-left: 1.2rem; }
+    .toc li { margin-bottom: 0.4rem; }
+    .toc a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--accent); }
+
+    .policy-section {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .policy-section:last-child { border-bottom: none; }
+
+    .policy-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .policy-section h2 .num {
+      background: var(--accent);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .policy-section h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .policy-section p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .policy-section ul, .policy-section ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .policy-section li {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .info-box {
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .info-box p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+    .info-box strong { color: var(--accent); }
+
+    .warning-box {
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-left: 4px solid #EF4444;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .warning-box p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+    .warning-box strong { color: #EF4444; }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .contact-box h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .contact-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; margin: 0 0.5rem; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .content-wrap { padding: 2rem 1.2rem 4rem; }
+      nav { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">COACH<span>AND</span>TRACK</a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="badge">Legal</div>
+    <h1>Terms of Service</h1>
+    <p>Last updated: March 1, 2026 &nbsp;|&nbsp; Effective: March 1, 2026</p>
+  </div>
+
+  <div class="content-wrap">
+
+    <div class="info-box">
+      <p><strong>Summary:</strong> By using CoachAndTrack you agree to these terms. Key points: you must be 18 or older, subscriptions auto-renew, coaches are independent contractors (not employees), and we offer a 7-day free trial with no credit card required.</p>
+    </div>
+
+    <div class="toc">
+      <h3>Contents</h3>
+      <ol>
+        <li><a href="#acceptance">Acceptance of Terms</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#accounts">Accounts & Registration</a></li>
+        <li><a href="#subscriptions">Subscriptions & Billing</a></li>
+        <li><a href="#free-trial">Free Trial</a></li>
+        <li><a href="#coach-relationship">Coach Relationship</a></li>
+        <li><a href="#user-conduct">User Conduct</a></li>
+        <li><a href="#content">User Content</a></li>
+        <li><a href="#ip">Intellectual Property</a></li>
+        <li><a href="#health-disclaimer">Health Disclaimer</a></li>
+        <li><a href="#disclaimers">Disclaimers & Limitation of Liability</a></li>
+        <li><a href="#termination">Termination</a></li>
+        <li><a href="#governing-law">Governing Law</a></li>
+        <li><a href="#changes">Changes to Terms</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="policy-section" id="acceptance">
+      <h2><span class="num">1</span> Acceptance of Terms</h2>
+      <p>These Terms of Service ("Terms") govern your access to and use of the CoachAndTrack platform, website, and services ("Service") operated by TechXcel Partners LLC, doing business as CoachAndTrack ("Company," "we," "us," or "our").</p>
+      <p>By accessing or using CoachAndTrack, you agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, do not use our Service.</p>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="policy-section" id="eligibility">
+      <h2><span class="num">2</span> Eligibility</h2>
+      <p>To use CoachAndTrack you must:</p>
+      <ul>
+        <li>Be at least 18 years of age</li>
+        <li>Have the legal capacity to enter into a binding contract</li>
+        <li>Not be prohibited from using the Service under applicable law</li>
+        <li>Reside in a country where the Service is available</li>
+      </ul>
+      <p>By creating an account, you represent and warrant that you meet all eligibility requirements.</p>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="policy-section" id="accounts">
+      <h2><span class="num">3</span> Accounts & Registration</h2>
+      <p>When you create an account on CoachAndTrack, you agree to:</p>
+      <ul>
+        <li>Provide accurate, current, and complete registration information</li>
+        <li>Maintain and promptly update your account information</li>
+        <li>Keep your password confidential and not share it with others</li>
+        <li>Notify us immediately of any unauthorized use of your account</li>
+        <li>Accept responsibility for all activities that occur under your account</li>
+      </ul>
+      <p>We reserve the right to suspend or terminate accounts that contain false information or violate these Terms.</p>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="policy-section" id="subscriptions">
+      <h2><span class="num">4</span> Subscriptions & Billing</h2>
+
+      <h3>Subscription Plans</h3>
+      <p>CoachAndTrack offers the following paid subscription plans:</p>
+      <ul>
+        <li><strong style="color: var(--text-primary);">Pro Plan</strong> — $14.00/month or $108.00/year</li>
+        <li><strong style="color: var(--text-primary);">Elite Plan</strong> — $29.00/month or $228.00/year</li>
+      </ul>
+
+      <h3>Auto-Renewal</h3>
+      <p>Subscriptions automatically renew at the end of each billing period unless cancelled before the renewal date. By subscribing, you authorize us to charge your payment method on a recurring basis.</p>
+
+      <h3>Cancellation</h3>
+      <p>You may cancel your subscription at any time from your account settings. Cancellation takes effect at the end of the current billing period. You will continue to have access to paid features until the end of the period you have already paid for.</p>
+
+      <h3>Refunds</h3>
+      <p>Subscription fees are non-refundable except where required by applicable law. If you believe you were charged in error, contact us at coachandtrack1@gmail.com within 7 days of the charge.</p>
+
+      <h3>Price Changes</h3>
+      <p>We reserve the right to change subscription prices with 30 days advance notice. Price changes will not affect your current billing period.</p>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="policy-section" id="free-trial">
+      <h2><span class="num">5</span> Free Trial</h2>
+      <p>New users may be eligible for a 7-day free trial of paid features. The following conditions apply:</p>
+      <ul>
+        <li>Free trials are available to new accounts only — one per person</li>
+        <li>No credit card is required to start your free trial</li>
+        <li>At the end of the trial period, you may choose to subscribe to a paid plan</li>
+        <li>We reserve the right to modify or discontinue free trial offers at any time</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="policy-section" id="coach-relationship">
+      <h2><span class="num">6</span> Coach Relationship</h2>
+
+      <div class="warning-box">
+        <p><strong>Important:</strong> Coaches on CoachAndTrack are independent contractors, not employees or agents of TechXcel Partners LLC. CoachAndTrack does not employ, supervise, or control the coaches on our platform.</p>
+      </div>
+
+      <p>By using CoachAndTrack you acknowledge that:</p>
+      <ul>
+        <li>Coaches set their own programs and content independently</li>
+        <li>CoachAndTrack does not guarantee the accuracy, safety, or effectiveness of any coach's content</li>
+        <li>Any disputes between you and a coach should first be directed to our support team</li>
+        <li>CoachAndTrack acts as a marketplace platform only and is not a party to the coach-member relationship</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="policy-section" id="user-conduct">
+      <h2><span class="num">7</span> User Conduct</h2>
+      <p>When using CoachAndTrack, you agree not to:</p>
+      <ul>
+        <li>Violate any applicable local, state, national, or international law</li>
+        <li>Harass, abuse, threaten, or intimidate coaches or other users</li>
+        <li>Post false, misleading, or fraudulent content or reviews</li>
+        <li>Attempt to gain unauthorized access to any part of the Service</li>
+        <li>Use the Service to send spam or unsolicited commercial communications</li>
+        <li>Scrape, copy, or redistribute content from the platform without permission</li>
+        <li>Impersonate any person or entity</li>
+        <li>Use the Service for any purpose that is unlawful or prohibited by these Terms</li>
+      </ul>
+      <p>Violation of these conduct rules may result in immediate account termination.</p>
+    </div>
+
+    <!-- SECTION 8 -->
+    <div class="policy-section" id="content">
+      <h2><span class="num">8</span> User Content</h2>
+      <p>If you submit reviews, comments, or other content to CoachAndTrack, you grant us a non-exclusive, worldwide, royalty-free license to display and use that content in connection with our Service.</p>
+      <p>You represent that you own or have the right to submit any content you post, and that your content does not violate any third-party rights.</p>
+      <p>We reserve the right to remove any user content that violates these Terms or that we find objectionable, at our sole discretion.</p>
+    </div>
+
+    <!-- SECTION 9 -->
+    <div class="policy-section" id="ip">
+      <h2><span class="num">9</span> Intellectual Property</h2>
+      <p>The CoachAndTrack platform, including its design, branding, software, and platform content (excluding coach content), is owned by TechXcel Partners LLC and protected by copyright, trademark, and other intellectual property laws.</p>
+      <p>You may not copy, reproduce, modify, distribute, or create derivative works from our platform content without express written permission.</p>
+      <p>Coach content remains the intellectual property of the individual coaches. Your subscription grants you a personal, non-transferable license to view and use coach content for your own personal fitness purposes only.</p>
+    </div>
+
+    <!-- SECTION 10 -->
+    <div class="policy-section" id="health-disclaimer">
+      <h2><span class="num">10</span> Health Disclaimer</h2>
+
+      <div class="warning-box">
+        <p><strong>Always consult your doctor before starting any new fitness or nutrition program.</strong> CoachAndTrack content is for informational and educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+      </div>
+
+      <p>By using CoachAndTrack you acknowledge that:</p>
+      <ul>
+        <li>Fitness and nutrition activities carry inherent risks of injury</li>
+        <li>You participate in any workout program at your own risk</li>
+        <li>CoachAndTrack and its coaches are not responsible for injuries sustained while following platform content</li>
+        <li>You should stop any exercise that causes pain, discomfort, or distress and consult a medical professional</li>
+        <li>Individual results vary and are not guaranteed</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 11 -->
+    <div class="policy-section" id="disclaimers">
+      <h2><span class="num">11</span> Disclaimers & Limitation of Liability</h2>
+
+      <h3>Disclaimer of Warranties</h3>
+      <p>The Service is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+
+      <h3>Limitation of Liability</h3>
+      <p>To the maximum extent permitted by law, TechXcel Partners LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or goodwill, arising from your use of or inability to use the Service.</p>
+      <p>Our total liability to you for any claims arising from these Terms shall not exceed the amount you paid to CoachAndTrack in the 3 months preceding the claim.</p>
+    </div>
+
+    <!-- SECTION 12 -->
+    <div class="policy-section" id="termination">
+      <h2><span class="num">12</span> Termination</h2>
+      <p>You may terminate your account at any time by contacting us at coachandtrack1@gmail.com or through your account settings.</p>
+      <p>We may suspend or terminate your account immediately and without notice if you:</p>
+      <ul>
+        <li>Violate these Terms of Service</li>
+        <li>Engage in fraudulent or illegal activity</li>
+        <li>Engage in conduct harmful to other users, coaches, or CoachAndTrack</li>
+      </ul>
+      <p>Upon termination, your right to access the Service ceases immediately. Provisions of these Terms that by their nature should survive termination shall survive.</p>
+    </div>
+
+    <!-- SECTION 13 -->
+    <div class="policy-section" id="governing-law">
+      <h2><span class="num">13</span> Governing Law</h2>
+      <p>These Terms are governed by the laws of the United States. Any disputes arising under these Terms shall be resolved through binding arbitration under the rules of the American Arbitration Association, except that either party may seek injunctive relief in a court of competent jurisdiction.</p>
+      <p>You agree to resolve disputes individually and waive any right to participate in class action lawsuits or class-wide arbitration.</p>
+    </div>
+
+    <!-- SECTION 14 -->
+    <div class="policy-section" id="changes">
+      <h2><span class="num">14</span> Changes to Terms</h2>
+      <p>We reserve the right to modify these Terms at any time. When we make significant changes, we will notify you by email or by posting a notice on our website at least 14 days before the changes take effect.</p>
+      <p>Your continued use of CoachAndTrack after changes take effect constitutes your acceptance of the revised Terms.</p>
+    </div>
+
+    <!-- SECTION 15 -->
+    <div class="policy-section" id="contact">
+      <h2><span class="num">15</span> Contact Us</h2>
+      <p>If you have questions about these Terms of Service, please contact us:</p>
+    </div>
+
+    <div class="contact-box">
+      <h3>Get in Touch</h3>
+      <p>TechXcel Partners LLC, d/b/a CoachAndTrack</p>
+      <p>Email: <a href="mailto:coachandtrack1@gmail.com">coachandtrack1@gmail.com</a></p>
+      <p>Website: <a href="https://coachandtrack.com">coachandtrack.com</a></p>
+      <p style="margin-top: 1rem; font-size: 0.8rem;">We aim to respond to all legal inquiries within 14 business days.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 TechXcel Partners LLC, d/b/a CoachAndTrack. All rights reserved.</p>
+    <p style="margin-top: 0.5rem;">
+      <a href="index.html">Home</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+    </p>
+  </footer>
+
+</body>
+</html>

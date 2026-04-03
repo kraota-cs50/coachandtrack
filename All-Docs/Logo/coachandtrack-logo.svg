@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0B0F1A"/>
+      <stop offset="100%" style="stop-color:#121A2A"/>
+    </linearGradient>
+    <linearGradient id="orangeArc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316"/>
+      <stop offset="100%" style="stop-color:#EA580C"/>
+    </linearGradient>
+    <linearGradient id="greenArc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E"/>
+      <stop offset="100%" style="stop-color:#16A34A"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowSm">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Grid -->
+  <g stroke="#161E2E" stroke-width="1" opacity="0.7">
+    <line x1="0" y1="80" x2="800" y2="80"/><line x1="0" y1="160" x2="800" y2="160"/>
+    <line x1="0" y1="240" x2="800" y2="240"/><line x1="0" y1="320" x2="800" y2="320"/>
+    <line x1="0" y1="400" x2="800" y2="400"/><line x1="0" y1="480" x2="800" y2="480"/>
+    <line x1="0" y1="560" x2="800" y2="560"/><line x1="0" y1="640" x2="800" y2="640"/>
+    <line x1="0" y1="720" x2="800" y2="720"/>
+    <line x1="80" y1="0" x2="80" y2="800"/><line x1="160" y1="0" x2="160" y2="800"/>
+    <line x1="240" y1="0" x2="240" y2="800"/><line x1="320" y1="0" x2="320" y2="800"/>
+    <line x1="400" y1="0" x2="400" y2="800"/><line x1="480" y1="0" x2="480" y2="800"/>
+    <line x1="560" y1="0" x2="560" y2="800"/><line x1="640" y1="0" x2="640" y2="800"/>
+    <line x1="720" y1="0" x2="720" y2="800"/>
+  </g>
+
+  <!-- Outer ring background -->
+  <circle cx="400" cy="300" r="200" fill="none" stroke="#1A2535" stroke-width="3"/>
+
+  <!-- Orange arc ~75% (from -90 to 180 deg) -->
+  <circle cx="400" cy="300" r="200"
+    fill="none" stroke="url(#orangeArc)" stroke-width="10"
+    stroke-linecap="round"
+    stroke-dasharray="942 1257"
+    stroke-dashoffset="314"
+    transform="rotate(-90 400 300)"
+    filter="url(#glow)"/>
+
+  <!-- Inner ring background -->
+  <circle cx="400" cy="300" r="155" fill="none" stroke="#1A2535" stroke-width="2"/>
+
+  <!-- Green arc ~35% (from -90 to 36 deg) -->
+  <circle cx="400" cy="300" r="155"
+    fill="none" stroke="url(#greenArc)" stroke-width="7"
+    stroke-linecap="round"
+    stroke-dasharray="339 974"
+    stroke-dashoffset="244"
+    transform="rotate(-90 400 300)"
+    filter="url(#glowSm)"/>
+
+  <!-- CT lettermark — font-based, centred in ring -->
+  <text x="340" y="318"
+    font-family="'Arial Black', 'Impact', sans-serif"
+    font-weight="900"
+    font-size="110"
+    fill="#F97316"
+    letter-spacing="0">C</text>
+  <text x="410" y="318"
+    font-family="'Arial Black', 'Impact', sans-serif"
+    font-weight="900"
+    font-size="110"
+    fill="#F3F4F6"
+    letter-spacing="0">T</text>
+
+  <!-- Green glow dot (top-right accent) -->
+  <circle cx="482" cy="212" r="6" fill="#22C55E" opacity="0.4" filter="url(#glow)"/>
+  <circle cx="482" cy="212" r="12" fill="#22C55E" opacity="0.15" filter="url(#glow)"/>
+  <circle cx="482" cy="212" r="12" fill="#22C55E" filter="url(#glowSm)"/>
+
+  <!-- Orange dot at arc end (left side) -->
+  <circle cx="200" cy="300" r="6" fill="#F97316" opacity="0.4" filter="url(#glow)"/>
+  <circle cx="200" cy="300" r="9" fill="#F97316" filter="url(#glowSm)"/>
+
+  <!-- WORDMARK -->
+  <text x="400" y="590"
+    font-family="'Arial Black', 'Impact', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="64"
+    letter-spacing="1"
+    text-anchor="middle">
+    <tspan fill="#F3F4F6">COACH</tspan><tspan fill="#F97316">AND</tspan><tspan fill="#F3F4F6">TRACK</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="400" y="638"
+    font-family="'Courier New', monospace"
+    font-size="18"
+    letter-spacing="3"
+    fill="#9CA3AF"
+    text-anchor="middle">CONNECT · TRAIN · TRACK</text>
+
+  <!-- Rule -->
+  <line x1="270" y1="658" x2="530" y2="658" stroke="#1A2535" stroke-width="1"/>
+</svg>

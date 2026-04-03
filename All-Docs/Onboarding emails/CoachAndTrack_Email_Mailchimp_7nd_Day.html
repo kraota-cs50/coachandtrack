@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CoachAndTrack is launching soon</title>
+  <style type="text/css">
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0A0A12; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #F3F4F6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; }
+    img { display: block; border: 0; }
+    .wrapper { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+    .header { background: #0D0D1A; border: 1px solid #2A2A3E; border-bottom: 3px solid #F97316; border-radius: 16px 16px 0 0; padding: 32px 40px 28px; text-align: center; }
+    .logo-wrap { display: inline-flex; align-items: center; gap: 10px; }
+    .logo-box { background: #F97316; border-radius: 8px; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+    .logo-box span { color: white; font-weight: 900; font-size: 14px; }
+    .logo-text { font-size: 20px; font-weight: 800; letter-spacing: 2px; color: #F3F4F6; }
+    .logo-text em { color: #F97316; font-style: normal; }
+    .body-card { background: #13131E; border: 1px solid #2A2A3E; border-top: none; padding: 40px; }
+    .greeting { font-size: 13px; font-weight: 700; color: #F97316; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .headline { font-size: 28px; font-weight: 800; color: #F3F4F6; line-height: 1.2; margin-bottom: 8px; }
+    .headline em { color: #F97316; font-style: normal; }
+    .sub-headline { font-size: 16px; color: #94A3B8; margin-bottom: 24px; font-style: italic; }
+    .body-text { font-size: 16px; color: #94A3B8; line-height: 1.7; margin-bottom: 24px; }
+    .divider { height: 1px; background: #2A2A3E; margin: 28px 0; }
+    .benefits-title { font-size: 14px; font-weight: 700; color: #F3F4F6; margin-bottom: 16px; }
+    .benefit-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+    .benefit-check { color: #22C55E; font-size: 18px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .benefit-content { }
+    .benefit-title { font-size: 15px; font-weight: 700; color: #F3F4F6; margin-bottom: 2px; }
+    .benefit-desc { font-size: 13px; color: #64748B; line-height: 1.5; }
+    .coaches-title { font-size: 14px; font-weight: 700; color: #F3F4F6; margin-bottom: 14px; }
+    .coach-row { background: #1A1A2E; border: 1px solid #2A2A3E; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; display: block; }
+    .coach-name { font-size: 15px; font-weight: 700; color: #F3F4F6; margin-bottom: 2px; }
+    .coach-title-txt { font-size: 13px; color: #F97316; margin-bottom: 6px; }
+    .coach-tags { font-size: 12px; color: #64748B; }
+    .coach-link { font-size: 13px; font-weight: 700; color: #F97316; margin-top: 8px; display: block; }
+    .launch-box { background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(249,115,22,0.02)); border: 1px solid rgba(249,115,22,0.25); border-radius: 12px; padding: 24px; margin-top: 28px; text-align: center; }
+    .launch-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #F97316; margin-bottom: 8px; }
+    .launch-text { font-size: 16px; color: #94A3B8; line-height: 1.7; margin-bottom: 16px; }
+    .launch-btn { display: inline-block; background: #F97316; color: white; padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; }
+    .ps-box { margin-top: 28px; padding: 16px 20px; background: #0D0D1A; border-radius: 8px; border: 1px solid #2A2A3E; }
+    .ps-text { font-size: 13px; color: #64748B; line-height: 1.6; font-style: italic; }
+    .ps-text em { color: #94A3B8; font-style: normal; }
+    .signature { margin-top: 28px; }
+    .sig-name { font-size: 15px; font-weight: 700; color: #F3F4F6; margin-bottom: 2px; }
+    .sig-title { font-size: 13px; color: #94A3B8; }
+    .footer { background: #0A0A12; border: 1px solid #2A2A3E; border-top: none; border-radius: 0 0 16px 16px; padding: 24px 40px; text-align: center; }
+    .footer-text { font-size: 12px; color: #64748B; line-height: 1.7; }
+    .footer-link { color: #F97316; }
+    @media only screen and (max-width: 600px) {
+      .wrapper { padding: 20px 12px; }
+      .header { padding: 24px 20px 20px; }
+      .body-card { padding: 24px 20px; }
+      .footer { padding: 20px; }
+      .headline { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-box"><span>CT</span></div>
+      <div class="logo-text">COACH<em>AND</em>TRACK</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-card">
+    <div class="greeting">Launching Soon</div>
+    <h1 class="headline">Your spot is <em>reserved.</em></h1>
+    <p class="sub-headline">Founding member pricing. Locked in forever.</p>
+
+    <p class="body-text">Hi *|FNAME|*,<br><br>
+    We're getting close. CoachAndTrack is launching within the next few weeks — and you're already on the inside.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="benefits-title">Here's what founding member status means for you:</div>
+
+    <div class="benefit-row">
+      <div class="benefit-check">✓</div>
+      <div class="benefit-content">
+        <div class="benefit-title">Founding member pricing — locked in forever</div>
+        <div class="benefit-desc">You'll pay less than anyone who joins after launch. That rate never changes, no matter how much we grow.</div>
+      </div>
+    </div>
+
+    <div class="benefit-row">
+      <div class="benefit-check">✓</div>
+      <div class="benefit-content">
+        <div class="benefit-title">First access to new coaches</div>
+        <div class="benefit-desc">We have coaches onboarding right now. Waitlist members see their profiles before anyone else.</div>
+      </div>
+    </div>
+
+    <div class="benefit-row">
+      <div class="benefit-check">✓</div>
+      <div class="benefit-content">
+        <div class="benefit-title">Priority support</div>
+        <div class="benefit-desc">As a founding member you get direct access to our team. We respond within 24 hours, always.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="coaches-title">Your coaches are already on the platform:</div>
+
+    <a href="https://coachandtrack.com/coaches/veronica-mosquera.html" class="coach-row">
+      <div class="coach-name">Veronica M.</div>
+      <div class="coach-title-txt">Strength &amp; Nutrition Coach · 5 Years</div>
+      <div class="coach-tags">Strength Training · Nutrition · Fat Loss · EN/ES</div>
+      <span class="coach-link">View Profile + Free Day 1 Workout →</span>
+    </a>
+
+    <a href="https://coachandtrack.com/coaches/rolando-corzo.html" class="coach-row">
+      <div class="coach-name">Rolando C.</div>
+      <div class="coach-title-txt">Strength &amp; Performance Coach · 10 Years</div>
+      <div class="coach-tags">Weight Loss · Bodybuilding · Sports Performance · EN/ES</div>
+      <span class="coach-link">View Profile →</span>
+    </a>
+
+    <div class="launch-box">
+      <div class="launch-label">🚀 Early Access</div>
+      <p class="launch-text">We built CoachAndTrack because finding a great fitness coach online was harder than it should be. You believed in that vision early — and we won't let you down.</p>
+      <a href="https://coachandtrack.com/programs/strength-foundation-day1.html" class="launch-btn">Try Day 1 Free While You Wait →</a>
+    </div>
+
+    <div class="ps-box">
+      <div class="ps-text"><em>P.S.</em> Have a question before launch? Reply to this email — I read every one personally.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="signature">
+      <div class="sig-name">Carlos Blanco</div>
+      <div class="sig-title">Founder, CoachAndTrack</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p class="footer-text">
+      <a href="https://coachandtrack.com" class="footer-link">coachandtrack.com</a><br><br>
+      You're receiving this because you joined the CoachAndTrack waitlist.<br>
+      <a href="*|UNSUB|*" class="footer-link">Unsubscribe</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3840 2160" width="3840" height="2160">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0B0F1A"/>
+      <stop offset="60%" style="stop-color:#0F1520"/>
+      <stop offset="100%" style="stop-color:#121A2A"/>
+    </linearGradient>
+    <linearGradient id="oG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316"/>
+      <stop offset="100%" style="stop-color:#EA580C"/>
+    </linearGradient>
+    <linearGradient id="gG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E"/>
+      <stop offset="100%" style="stop-color:#16A34A"/>
+    </linearGradient>
+    <radialGradient id="cGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:0.07"/>
+      <stop offset="100%" style="stop-color:#0B0F1A;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glowSm"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="3840" height="2160" fill="url(#bg)"/>
+  <ellipse cx="1920" cy="1050" rx="1400" ry="900" fill="url(#cGlow)"/>
+
+  <!-- Grid -->
+  <g stroke="#161E2E" stroke-width="1" opacity="0.7">
+    <line x1="0" y1="432" x2="3840" y2="432"/><line x1="0" y1="864" x2="3840" y2="864"/>
+    <line x1="0" y1="1296" x2="3840" y2="1296"/><line x1="0" y1="1728" x2="3840" y2="1728"/>
+    <line x1="480" y1="0" x2="480" y2="2160"/><line x1="960" y1="0" x2="960" y2="2160"/>
+    <line x1="1440" y1="0" x2="1440" y2="2160"/><line x1="1920" y1="0" x2="1920" y2="2160"/>
+    <line x1="2400" y1="0" x2="2400" y2="2160"/><line x1="2880" y1="0" x2="2880" y2="2160"/>
+    <line x1="3360" y1="0" x2="3360" y2="2160"/>
+  </g>
+
+  <!-- Diagonal accents -->
+  <line x1="0" y1="2160" x2="1050" y2="0" stroke="#1A2535" stroke-width="2" opacity="0.5"/>
+  <line x1="375" y1="2160" x2="1425" y2="0" stroke="#1A253A" stroke-width="1" opacity="0.3"/>
+  <line x1="3840" y1="0" x2="2790" y2="2160" stroke="#1A2535" stroke-width="2" opacity="0.5"/>
+  <line x1="3465" y1="0" x2="2415" y2="2160" stroke="#1A253A" stroke-width="1" opacity="0.3"/>
+
+  <!-- LEFT RING -->
+  <circle cx="450" cy="1080" r="390" fill="none" stroke="#1A2535" stroke-width="2"/>
+  <circle cx="450" cy="1080" r="300" fill="none" stroke="#1A2535" stroke-width="1"/>
+  <circle cx="450" cy="1080" r="390" fill="none" stroke="url(#oG)" stroke-width="10"
+    stroke-linecap="round" stroke-dasharray="1837 2450" stroke-dashoffset="613"
+    transform="rotate(-90 450 1080)" filter="url(#glow)"/>
+  <circle cx="450" cy="1080" r="300" fill="none" stroke="url(#gG)" stroke-width="6"
+    stroke-linecap="round" stroke-dasharray="654 1885" stroke-dashoffset="471"
+    transform="rotate(-90 450 1080)" filter="url(#glowSm)"/>
+
+  <!-- RIGHT RING -->
+  <circle cx="3390" cy="1080" r="390" fill="none" stroke="#1A2535" stroke-width="2"/>
+  <circle cx="3390" cy="1080" r="300" fill="none" stroke="#1A2535" stroke-width="1"/>
+  <circle cx="3390" cy="1080" r="390" fill="none" stroke="#F97316" stroke-width="8" opacity="0.4"
+    stroke-linecap="round" stroke-dasharray="919 2450" stroke-dashoffset="1838"
+    transform="rotate(-90 3390 1080)" filter="url(#glow)"/>
+  <circle cx="3390" cy="1080" r="300" fill="none" stroke="#22C55E" stroke-width="5" opacity="0.35"
+    stroke-linecap="round" stroke-dasharray="471 1885" stroke-dashoffset="1414"
+    transform="rotate(-90 3390 1080)" filter="url(#glowSm)"/>
+
+  <!-- CENTER RING -->
+  <circle cx="1920" cy="780" r="270" fill="none" stroke="#1A2535" stroke-width="3"/>
+  <circle cx="1920" cy="780" r="270" fill="none" stroke="url(#oG)" stroke-width="18"
+    stroke-linecap="round" stroke-dasharray="1272 1696" stroke-dashoffset="424"
+    transform="rotate(-90 1920 780)" filter="url(#glow)"/>
+  <circle cx="1920" cy="780" r="212" fill="none" stroke="url(#gG)" stroke-width="10"
+    stroke-linecap="round" stroke-dasharray="465 1332" stroke-dashoffset="332"
+    transform="rotate(-90 1920 780)" filter="url(#glowSm)"/>
+
+  <!-- CT mark — font-based, centred in ring -->
+  <text x="1760" y="870"
+    font-family="'Arial Black', 'Impact', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="180"
+    fill="#F97316"
+    filter="url(#glowSm)">C</text>
+  <text x="1880" y="870"
+    font-family="'Arial Black', 'Impact', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="180"
+    fill="#F3F4F6">T</text>
+
+  <!-- Green dot accent (top ring) -->
+  <circle cx="2050" cy="560" r="10" fill="#22C55E" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="2050" cy="560" r="18" fill="#22C55E" filter="url(#glowSm)"/>
+
+  <!-- Orange dot (arc end) -->
+  <circle cx="1920" cy="510" r="8" fill="#F97316" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="1650" cy="780" r="14" fill="#F97316" filter="url(#glowSm)"/>
+
+  <!-- WORDMARK — single tspan block, centred -->
+  <text x="1920" y="1340"
+    font-family="'Arial Black', 'Impact', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="220"
+    letter-spacing="2"
+    text-anchor="middle">
+    <tspan fill="#F3F4F6">COACH</tspan><tspan fill="#F97316">AND</tspan><tspan fill="#F3F4F6">TRACK</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="1920" y="1480"
+    font-family="'Courier New', monospace"
+    font-size="52"
+    letter-spacing="14"
+    fill="#9CA3AF"
+    text-anchor="middle">CONNECT · TRAIN · TRACK · ACHIEVE</text>
+
+  <!-- Dividers -->
+  <line x1="700" y1="1360" x2="1200" y2="1360" stroke="#1A2535" stroke-width="1"/>
+  <line x1="2640" y1="1360" x2="3140" y2="1360" stroke="#1A2535" stroke-width="1"/>
+
+  <!-- PROGRESS BAR -->
+  <rect x="750" y="1688" width="2340" height="8" rx="4" fill="#1A2535"/>
+  <rect x="750" y="1688" width="1685" height="8" rx="4" fill="url(#oG)" filter="url(#glowSm)"/>
+  <!-- Green checkpoint -->
+  <circle cx="2435" cy="1692" r="9" fill="#0B0F1A"/>
+  <circle cx="2435" cy="1692" r="16" fill="#22C55E" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="2435" cy="1692" r="16" fill="#22C55E" filter="url(#glowSm)"/>
+  <!-- Start dot -->
+  <circle cx="750" cy="1692" r="10" fill="#F97316" opacity="0.5" filter="url(#glowSm)"/>
+  <!-- Labels -->
+  <text x="750"  y="1660" font-family="'Courier New',monospace" font-size="34" fill="#6B7280" letter-spacing="2">START</text>
+  <text x="3090" y="1660" font-family="'Courier New',monospace" font-size="34" fill="#6B7280" letter-spacing="2" text-anchor="end">GOAL</text>
+  <text x="2435" y="1660" font-family="'Courier New',monospace" font-size="34" fill="#22C55E" letter-spacing="2" text-anchor="middle" filter="url(#glowSm)">72% COMPLETE</text>
+
+  <!-- STAT CHIPS -->
+  <rect x="750" y="1760" width="480" height="110" rx="16" fill="#0F1520" stroke="#1A2535" stroke-width="1"/>
+  <circle cx="808" cy="815" r="0"/>
+  <circle cx="805" cy="1815" r="14" fill="#F97316" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="805" cy="1815" r="14" fill="#F97316"/>
+  <text x="840" y="1800" font-family="'Arial',sans-serif" font-size="34" font-weight="700" fill="#F3F4F6">FIND YOUR COACH</text>
+  <text x="840" y="1842" font-family="'Arial',sans-serif" font-size="28" fill="#6B7280">Match. Train. Grow.</text>
+
+  <rect x="2610" y="1760" width="480" height="110" rx="16" fill="#0F1520" stroke="#1A2535" stroke-width="1"/>
+  <circle cx="2665" cy="1815" r="14" fill="#22C55E" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="2665" cy="1815" r="14" fill="#22C55E"/>
+  <text x="2700" y="1800" font-family="'Arial',sans-serif" font-size="34" font-weight="700" fill="#F3F4F6">TRACK PROGRESS</text>
+  <text x="2700" y="1842" font-family="'Arial',sans-serif" font-size="28" fill="#6B7280">Log. Share. Achieve.</text>
+
+  <!-- URL -->
+  <text x="1920" y="2080"
+    font-family="'Courier New', monospace"
+    font-size="44" letter-spacing="8"
+    fill="#6B7280" text-anchor="middle">coachandtrack.com</text>
+
+  <!-- Accent dots -->
+  <circle cx="990"  cy="510" r="5" fill="#F97316" opacity="0.45"/>
+  <circle cx="1110" cy="390" r="4" fill="#22C55E" opacity="0.4"/>
+  <circle cx="1230" cy="465" r="6" fill="#F97316" opacity="0.3"/>
+  <circle cx="2850" cy="390" r="5" fill="#22C55E" opacity="0.45"/>
+  <circle cx="2730" cy="495" r="4" fill="#F97316" opacity="0.4"/>
+  <circle cx="2610" cy="420" r="6" fill="#22C55E" opacity="0.3"/>
+</svg>

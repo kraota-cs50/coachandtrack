@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add index.html)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(git add:*)",
+      "Bash(find /c/Users/cblan -name profile_3*)",
+      "Bash(find /c/Users/cblan -name profile_2*)",
+      "Bash(npm install:*)",
+      "Bash(node mux-upload.js \"C:\\\\Users\\\\cblan\\\\fitpro-app\\\\All-Docs\\\\2. Coaches\\\\Veronica Mosquera\\\\Veronica Videos\\\\WK1\\\\Workout_Day2\\\\alternating-front-rack-revese-lunge.mp4\")",
+      "Bash(node mux-upload.js \"C:\\\\Users\\\\cblan\\\\fitpro-app\\\\All-Docs\\\\2. Coaches\\\\Veronica Mosquera\\\\Veronica Videos\\\\WK1\\\\Workout_Day3\\\\single-arm-supported-row.mp4\")",
+      "Bash(node mux-upload.js \"C:\\\\Users\\\\cblan\\\\fitpro-app\\\\All-Docs\\\\2. Coaches\\\\Veronica Mosquera\\\\Veronica Videos\\\\WK1\\\\Workout_Day3\\\\incline-push-up-to-front-raise.mp4\")",
+      "Bash(powershell -Command 'Get-ChildItem -Recurse -Filter '\\\\''*.html'\\\\'' | ForEach-Object { \\(Get-Content $_.FullName\\) -replace '\\\\''Veronica Mosquera'\\\\'', '\\\\''Veronica M.'\\\\'' -replace '\\\\''Rolando Corzo'\\\\'', '\\\\''Rolando C.'\\\\'' -replace '\\\\''Eliana Soto'\\\\'', '\\\\''Eliana S.'\\\\'' | Set-Content $_.FullName }')"
+    ]
+  }
+}
