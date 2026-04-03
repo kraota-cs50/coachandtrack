@@ -506,13 +506,15 @@ function renderCards() {
         <div class="movement-chevron">&#9660;</div>
       </div>
       <div class="movement-body">
-        <div class="video-wrap">
-          <iframe
-            src="https://player.mux.com/${m.playbackId}"
-            title="${m.name}"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+        <div style="background:#0D0D14;border:1px solid #2A2A3E;border-radius:10px;padding:3rem 2rem;text-align:center;margin-bottom:1rem;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">🔒</div>
+          <div style="font-weight:700;font-size:1rem;color:#F3F4F6;margin-bottom:0.4rem;">Members Only</div>
+          <div style="font-size:0.85rem;color:#64748B;margin-bottom:1.2rem;max-width:280px;margin-left:auto;margin-right:auto;">
+            Join CoachAndTrack to unlock all 28 days of Veronica's Strength Foundation program.
+          </div>
+          <a href="/#waitlist" style="display:inline-block;background:#F97316;color:white;padding:0.65rem 1.5rem;border-radius:8px;font-weight:700;font-size:0.85rem;">
+            Join Waitlist →
+          </a>
         </div>
         ${actionsHtml}
       </div>`;
