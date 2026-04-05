@@ -235,6 +235,11 @@
       section { padding: 3rem 0; }
       .navbar { padding: 0.75rem 1rem; }
     }
+  @media (max-width: 768px) {
+    div[style*="grid-template-columns:380px"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
   </style>
 </head>
 <body>
@@ -308,6 +313,111 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div class="section-label">Hear It From Eliana</div>
+    <h2 class="section-title">IN HER <span style="color:var(--orange);">OWN WORDS</span></h2>
+    <div style="
+      display:grid;
+      grid-template-columns:380px 1fr;
+      gap:3rem;
+      align-items:center;">
+
+      <!-- PORTRAIT VIDEO -->
+      <div style="
+        position:relative;
+        width:100%;
+        max-width:340px;
+        margin:0 auto;
+        border-radius:16px;
+        overflow:hidden;
+        box-shadow:0 20px 60px rgba(0,0,0,0.4);
+        border:1px solid var(--border);">
+        <div style="padding-bottom:177.78%;position:relative;height:0;">
+          <iframe
+            src="https://player.mux.com/Ai00aoa2wym85LXtefd8ucOSRqGbHGlpHgpRCCPDe7VY"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- TEXT SIDE -->
+      <div>
+        <p style="
+          font-size:1.05rem;
+          color:var(--text-muted);
+          line-height:1.9;
+          margin-bottom:1.5rem;">
+          Eliana combines hypopressive training,
+          breathwork, and internal healing with
+          strength work and nutrition to help women
+          transform from the inside out — mind,
+          body, and soul.
+        </p>
+        <div style="
+          background:var(--elevated);
+          border-left:4px solid var(--orange);
+          border-radius:0 12px 12px 0;
+          padding:1.2rem 1.5rem;
+          margin-bottom:1.5rem;">
+          <p style="
+            font-size:1rem;
+            color:var(--text);
+            line-height:1.7;
+            font-style:italic;
+            margin-bottom:0.5rem;">
+            "Be your own motivation and transform
+            your body from the inside out."
+          </p>
+          <span style="
+            font-size:0.82rem;
+            color:var(--orange);
+            font-weight:700;">
+            — Eliana S.
+          </span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+          <span style="
+            background:rgba(249,115,22,0.1);
+            border:1px solid rgba(249,115,22,0.25);
+            color:var(--orange);
+            font-size:0.78rem;font-weight:700;
+            padding:0.3rem 0.9rem;border-radius:20px;">
+            🌿 Hypopressive Method
+          </span>
+          <span style="
+            background:rgba(249,115,22,0.1);
+            border:1px solid rgba(249,115,22,0.25);
+            color:var(--orange);
+            font-size:0.78rem;font-weight:700;
+            padding:0.3rem 0.9rem;border-radius:20px;">
+            🧠 Internal Healing
+          </span>
+          <span style="
+            background:rgba(249,115,22,0.1);
+            border:1px solid rgba(249,115,22,0.25);
+            color:var(--orange);
+            font-size:0.78rem;font-weight:700;
+            padding:0.3rem 0.9rem;border-radius:20px;">
+            💪 Strength Training
+          </span>
+          <span style="
+            background:rgba(249,115,22,0.1);
+            border:1px solid rgba(249,115,22,0.25);
+            color:var(--orange);
+            font-size:0.78rem;font-weight:700;
+            padding:0.3rem 0.9rem;border-radius:20px;">
+            🌐 EN / ES
+          </span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
