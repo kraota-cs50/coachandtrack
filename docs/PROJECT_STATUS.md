@@ -36,6 +36,15 @@ Static HTML/CSS/JS fitness coaching marketplace. No framework — pure HTML file
 - **Status:** Live — 2 programs (Strength Foundation, Nutrition Reset)
 - **Languages:** EN / ES
 
+### Eliana Soto
+- **Specialty:** Core & Hypopressive Coach · Inside Out Transformation
+- **Photo:** `/images/eliana-soto.PNG`
+- **Profile:** `/coaches/eliana-soto.html`
+- **Intro video:** Mux — playback ID `Ai00aoa2wym85LXtefd8ucOSRqGbHGlpHgpRCCPDe7VY`
+- **Location:** Geneva, Switzerland
+- **Status:** Live — programs coming soon
+- **Languages:** EN / ES
+
 ### Rolando Corzo
 - **Specialty:** Strength & Performance Coach
 - **Photo:** `/images/rolando-headshot.jpg` (hero card + profile)
