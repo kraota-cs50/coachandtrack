@@ -498,6 +498,7 @@
       .mission-stats { grid-template-columns: 1fr 1fr; }
       .cta-buttons { flex-direction: column; align-items: center; }
       .btn-primary, .btn-secondary { width: 100%; max-width: 320px; text-align: center; }
+      div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -629,18 +630,31 @@
       <h2 class="section-title fade-in">Who's <span style="color:var(--orange)">Building</span> This</h2>
       <p class="section-sub fade-in">A small, focused team obsessed with fitness and technology.</p>
       <div class="team-grid">
-        <div class="team-card fade-in" style="grid-column:1 / -1;display:grid;grid-template-columns:auto 1fr;gap:2rem;text-align:left;max-width:680px;margin:0 auto 1.5rem;padding:2rem;">
-          <!-- Avatar -->
-          <div style="width:88px;height:88px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#F97316,#ea6c0a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:2rem;color:white;border:3px solid rgba(249,115,22,0.35);">CB</div>
-          <!-- Content -->
-          <div>
-            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.25rem;flex-wrap:wrap;">
-              <div style="font-weight:700;font-size:1.05rem;color:#F3F4F6;">Carlos Blanco</div>
-              <span style="background:rgba(249,115,22,0.1);color:#F97316;border:1px solid rgba(249,115,22,0.25);font-size:0.65rem;font-weight:700;padding:0.15rem 0.65rem;border-radius:20px;letter-spacing:1px;text-transform:uppercase;">Founder &amp; CEO</span>
-            </div>
-            <div style="color:#F97316;font-size:0.82rem;margin-bottom:0.9rem;">CoachAndTrack</div>
-            <p style="color:#94A3B8;font-size:0.92rem;line-height:1.75;margin-bottom:1rem;">I built CoachAndTrack because finding a great fitness coach online was harder than it should be. Platforms were cluttered, pricing was unclear, and there was no good way to track real progress. I wanted to fix that — for coaches and for members.</p>
-            <div style="border-left:3px solid #F97316;padding-left:1rem;color:#F3F4F6;font-size:0.88rem;font-style:italic;line-height:1.6;">"We're building CoachAndTrack to make trusted fitness coaching more accessible for everyone."</div>
+        <div class="team-card fade-in">
+          <div class="team-avatar" style="
+            background:var(--elevated);
+            border:2px solid var(--orange);
+            font-size:1.1rem;
+            font-weight:800;
+            color:var(--orange);">
+            CB
+          </div>
+          <div class="team-name">Carlos Blanco</div>
+          <div class="team-role">Founder &amp; CEO</div>
+          <div class="team-bio">
+            I built CoachAndTrack because finding a
+            great fitness coach online was harder than
+            it should be. As a tech founder passionate
+            about fitness, I saw an opportunity to build
+            something that actually works — a marketplace
+            where certified coaches and motivated people
+            find each other, track real progress, and get
+            real results. Based in Los Angeles.
+            Building in public, one coach at a time.
+          </div>
+          <div style="margin-top:0.75rem;font-size:0.78rem;
+            color:var(--orange);font-weight:600;">
+            📍 Los Angeles, CA · TechXcel Partners LLC
           </div>
         </div>
         <div class="team-card fade-in">
@@ -656,6 +670,75 @@
           <div class="team-bio">By joining the waitlist today, you become part of the founding community that shapes CoachAndTrack from day one. Your feedback matters.</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- SAFETY DISCLAIMER -->
+  <section style="
+    padding:3rem 2rem;
+    background:var(--dark-card);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);">
+    <div style="max-width:800px;margin:0 auto;">
+      <div style="font-size:0.68rem;font-weight:700;
+        letter-spacing:3px;text-transform:uppercase;
+        color:var(--orange);margin-bottom:0.75rem;">
+        Safety First
+      </div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;
+        font-size:1.8rem;letter-spacing:1px;
+        margin-bottom:1rem;">
+        WHO THIS IS FOR
+      </h3>
+      <div style="display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:1.5rem;">
+        <div style="background:var(--elevated);
+          border:1px solid var(--border);
+          border-left:4px solid #22C55E;
+          border-radius:0 12px 12px 0;
+          padding:1.2rem 1.5rem;">
+          <div style="font-weight:700;font-size:0.9rem;
+            color:#22C55E;margin-bottom:0.5rem;">
+            ✓ Great for you if:
+          </div>
+          <ul style="list-style:none;display:flex;
+            flex-direction:column;gap:0.4rem;
+            font-size:0.85rem;color:#94A3B8;">
+            <li>• You want structured programs with guidance</li>
+            <li>• You are a beginner or returning to fitness</li>
+            <li>• You want bilingual EN/ES coaching</li>
+            <li>• You prefer online flexible training</li>
+            <li>• You want real certified coaches</li>
+          </ul>
+        </div>
+        <div style="background:var(--elevated);
+          border:1px solid var(--border);
+          border-left:4px solid #F97316;
+          border-radius:0 12px 12px 0;
+          padding:1.2rem 1.5rem;">
+          <div style="font-weight:700;font-size:0.9rem;
+            color:#F97316;margin-bottom:0.5rem;">
+            ⚕️ Consult your doctor first if:
+          </div>
+          <ul style="list-style:none;display:flex;
+            flex-direction:column;gap:0.4rem;
+            font-size:0.85rem;color:#94A3B8;">
+            <li>• You have recent injuries or surgery</li>
+            <li>• You have a chronic health condition</li>
+            <li>• You are pregnant or postpartum</li>
+            <li>• You experience pain during exercise</li>
+            <li>• Your doctor has restricted physical activity</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:0.78rem;color:#64748B;
+        margin-top:1rem;text-align:center;">
+        All programs include beginner modifications.
+        Our coaches are certified professionals —
+        not medical providers. When in doubt,
+        consult your physician before starting.
+      </p>
     </div>
   </section>
 
