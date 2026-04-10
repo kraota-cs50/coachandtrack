@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 4 — Strength Foundation | CoachAndTrack</title>
+  <title>Day 5 — Strength Foundation | CoachAndTrack</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <style>
@@ -102,17 +102,17 @@
 
 <!-- HERO -->
 <div class="program-hero">
-  <div class="program-label">Strength Foundation &middot; Day 4 of 28</div>
-  <h1 class="program-title">LOWER<br>BODY</h1>
+  <div class="program-label">Strength Foundation &middot; Day 5 of 28</div>
+  <h1 class="program-title">CORE<br>&amp; ABS</h1>
   <div class="program-meta">
     <div class="coach-chip">
       <div class="coach-avatar">VM</div>
       Veronica M.
     </div>
-    <div class="meta-chip"><strong>9</strong>&nbsp;Movements</div>
+    <div class="meta-chip"><strong>5</strong>&nbsp;Movements</div>
     <div class="meta-chip"><strong>Intermediate</strong></div>
-    <div class="meta-chip">&#9201; ~50 min</div>
-    <div class="meta-chip">&#127947; Lower Body</div>
+    <div class="meta-chip">&#9201; ~35 min</div>
+    <div class="meta-chip">&#127947; Core</div>
   </div>
 </div>
 
@@ -120,7 +120,7 @@
 <div class="progress-section">
   <div class="progress-header">
     <span class="progress-label">Today's Progress</span>
-    <span class="progress-count" id="progress-count">0 / 9 complete</span>
+    <span class="progress-count" id="progress-count">0 / 5 complete</span>
   </div>
   <div class="progress-track">
     <div class="progress-fill" id="progress-fill"></div>
@@ -130,14 +130,14 @@
 
 <!-- DAY NAV -->
 <div style="max-width:860px;margin:0 auto 1rem;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
-  <a href="/programs/strength-foundation-day3.html"
+  <a href="/programs/strength-foundation-day4.html"
     style="display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:#94A3B8;border:1px solid #2A2A3E;padding:0.6rem 1.2rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;">
-    &#8592; Day 3: Upper Body
+    &#8592; Day 4: Lower Body
   </a>
-  <div style="color:#64748B;font-size:0.85rem;">Day 4 of 28</div>
-  <a href="/programs/strength-foundation-day5.html"
-    style="display:inline-flex;align-items:center;gap:0.5rem;background:#F97316;color:white;padding:0.6rem 1.2rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;">
-    Day 5: Core &amp; Abs &#8594;
+  <div style="color:#64748B;font-size:0.85rem;">Day 5 of 28</div>
+  <a href="#"
+    style="display:inline-flex;align-items:center;gap:0.5rem;background:#F97316;color:white;padding:0.6rem 1.2rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;opacity:0.4;pointer-events:none;">
+    Day 6: Coming Soon &#8594;
   </a>
 </div>
 
@@ -145,8 +145,8 @@
 <div class="completion-banner" id="completion-banner">
   <div class="completion-inner">
     <div style="font-size:2.5rem;margin-bottom:0.5rem;">&#127881;</div>
-    <h2>Day 4 Complete!</h2>
-    <p>Lower body done. Veronica is proud of you.<br>Rest up and come back for Day 5.</p>
+    <h2>Day 5 Complete!</h2>
+    <p>Core work done. Veronica is proud of you.<br>Rest up and come back for Day 6.</p>
   </div>
 </div>
 
@@ -155,15 +155,11 @@
 
 <script>
 const movements = [
-  { id: 1, name: "Prisoner Hinge",                        reps: "4 rounds &times; 12 reps",            playbackId: "8a202pjf02Rm3007gDxPw11ZZPxTF021aRKefbqwM3cvcX00" },
-  { id: 2, name: "Alternating Lateral Squat",             reps: "4 rounds &times; 12 reps each side",  playbackId: "LHfE8RsXpxSAGguEJSZOPiUZ02J7Fc8USjxDHVoGIx5A" },
-  { id: 3, name: "Side Step with Band",                   reps: "4 rounds &times; 15 reps each side",  playbackId: "7Mo9PRfZ3Gq98oaKvc402Wdcd1h3CW7R2baOfhM600K02U" },
-  { id: 4, name: "Banded RDL to Squat",                   reps: "4 rounds &times; 12 reps",            playbackId: "ccEcKiRSRky7yabX5O5sRX02U85pWvg6Gbb00c9TenXx8" },
-  { id: 5, name: "Alternating Split Squat",               reps: "4 rounds &times; 10 reps each leg",   playbackId: "f02Q600BwAGo3l601mjUrkjxEE02ovdypJPd46PapGuR4Yw" },
-  { id: 6, name: "Single Leg RDL",                        reps: "4 rounds &times; 10 reps each leg",   playbackId: "yUXVjbqF4IVXsDy5bewWE01202Rv02j7UVWrLbm9LW8Da4" },
-  { id: 7, name: "Globe Bulgarian Split Squat",           reps: "4 rounds &times; 10 reps each leg",   playbackId: "HR2zH02pV33pnpOUenzrnalCAGStX3cnJbWfNmAQCZIc" },
-  { id: 8, name: "Eccentric Glute Bridge Slide",          reps: "4 rounds &times; 12 reps",            playbackId: "Uv72MOmwENFluRCADJgA004ifMHoLIf02CX6vfUIzL9Mw" },
-  { id: 9, name: "Low Plank with Alternating Glute Raise",reps: "4 rounds &times; 10 reps each side",  playbackId: "zXzFfhA6ZfQ4kolws2HPAbjJACf302CADvKkXXwe7s01I" },
+  { id: 1, name: "Ankle Taps",                                          reps: "4 rounds &times; 20 reps",       playbackId: "p7C7r9vOEkkSKCVVUOtgMkn4YAaOa782gQMqhybn5N00" },
+  { id: 2, name: "Flutter Kicks",                                        reps: "4 rounds &times; 20 reps",       playbackId: "9AOGr002CEwHY004CqE00mgCbmy402qozUfE9XMkHT5Ao02U" },
+  { id: 3, name: "High Plank with Alternating Thigh Press",             reps: "4 rounds &times; 20 reps",       playbackId: "700uBHgHBHsmw9A9wmUV32CBAjoH4nZO8Z01kvDBMjOYY" },
+  { id: 4, name: "Low Plank with Alternating Extended Arm Reach",       reps: "4 rounds &times; 20 reps",       playbackId: "oJ02X6HOHe9BvKQQZr1kh1qbsiV1rng8P3a5urhdTHxo" },
+  { id: 5, name: "Supported V-Sit with Alternating Knee Tuck",         reps: "4 rounds &times; 20 reps",       playbackId: "ZBsXKfmnimp01DEWTYzQ7ngZYZVliqBHAkUizPw64V7U" },
 ];
 
 const TOTAL = movements.length;
@@ -176,6 +172,7 @@ function updateProgress() {
   const pct  = Math.round((done / TOTAL) * 100);
   document.getElementById('progress-fill').style.width = pct + '%';
   document.getElementById('progress-count').textContent = done + ' / ' + TOTAL + ' complete';
+
   const stepsEl = document.getElementById('progress-steps');
   stepsEl.innerHTML = '';
   const firstNull = state.indexOf(null);
@@ -188,6 +185,7 @@ function updateProgress() {
     else if (i === firstNull)        dot.classList.add('active');
     stepsEl.appendChild(dot);
   });
+
   const banner = document.getElementById('completion-banner');
   if (done === TOTAL) {
     banner.classList.add('show');
@@ -202,7 +200,8 @@ function openNext() {
   if (next !== -1) {
     document.querySelectorAll('.movement-card')[next].classList.add('open', 'active');
     setTimeout(() => {
-      document.querySelectorAll('.movement-card')[next].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.querySelectorAll('.movement-card')[next]
+        .scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 120);
   }
 }
@@ -222,14 +221,17 @@ function toggleCard(i) {
 function renderCards() {
   const list = document.getElementById('movements-list');
   list.innerHTML = '';
+
   movements.forEach((m, i) => {
     const card = document.createElement('div');
     card.className = 'movement-card';
     if (state[i] === 'done')    card.classList.add('done');
     if (state[i] === 'skipped') card.classList.add('skipped');
+
     let statusHtml = '';
     if (state[i] === 'done')    statusHtml = `<span class="movement-status status-done">&#10003; Done</span>`;
     if (state[i] === 'skipped') statusHtml = `<span class="movement-status status-skipped">Skipped</span>`;
+
     const actionsHtml = state[i] === null
       ? `<div class="movement-actions">
            <button class="btn-done" onclick="markDone(${i});event.stopPropagation()">&#10003; Mark as Done</button>
@@ -238,6 +240,7 @@ function renderCards() {
       : `<div class="movement-actions">
            <button class="btn-undo" onclick="markUndo(${i});event.stopPropagation()">&#8617; Undo</button>
          </div>`;
+
     card.innerHTML = `
       <div class="movement-header" onclick="toggleCard(${i})">
         <div class="movement-number">${m.id}</div>
@@ -255,14 +258,16 @@ function renderCards() {
           <div style="font-size:0.85rem;color:#64748B;margin-bottom:1.2rem;max-width:280px;margin-left:auto;margin-right:auto;">
             Join CoachAndTrack to unlock all 28 days of Veronica's Strength Foundation program.
           </div>
-          <a href="/#waitlist" style="display:inline-block;background:#F97316;color:white;padding:0.65rem 1.5rem;border-radius:8px;font-weight:700;font-size:0.85rem;">
-            Join Waitlist →
+          <a href="/#waitlist" style="display:inline-block;background:#F97316;color:white;padding:0.65rem 1.5rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;">
+            Join Waitlist &rarr;
           </a>
         </div>
         ${actionsHtml}
       </div>`;
+
     list.appendChild(card);
   });
+
   const firstNull = state.indexOf(null);
   if (firstNull !== -1) {
     document.querySelectorAll('.movement-card')[firstNull].classList.add('open', 'active');
