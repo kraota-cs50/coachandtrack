@@ -87,6 +87,12 @@
     .btn-skip:hover { border-color: var(--text-dim); color: var(--text); }
     .btn-undo { flex: 1; background: var(--dark-elevated); color: var(--text-muted); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; }
     .btn-undo:hover { color: var(--text); border-color: var(--text-dim); }
+    .paywall-card { background:var(--dark-elevated); border:1px solid var(--border); border-radius:12px; padding:2.5rem 2rem; text-align:center; margin-bottom:1rem; }
+    .paywall-card .lock-emoji { font-size:2rem; margin-bottom:0.75rem; }
+    .paywall-card h4 { font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.4rem; }
+    .paywall-card p { font-size:0.85rem; color:var(--text-dim); margin-bottom:1.2rem; max-width:280px; margin-left:auto; margin-right:auto; }
+    .btn-primary { display:inline-block; background:var(--orange); color:white; padding:0.65rem 1.5rem; border-radius:8px; font-family:'DM Sans',sans-serif; font-weight:700; font-size:0.85rem; text-decoration:none; }
+    .btn-primary:hover { background:#ea6c0a; }
     @media (max-width: 600px) {
       .navbar { padding: 0.75rem 1rem; }
       .program-hero, .progress-section, .movements { padding-left: 1rem; padding-right: 1rem; }
@@ -153,6 +159,21 @@
 <div class="movements" id="movements-list"></div>
 
 <script>
+// ── Member access ────────────────────────────────────────────────────────────
+const MEMBER_PASSWORD = 'CoachAndTrack2026';
+const ACCESS_KEY      = 'cat_member_access';
+function isUnlocked()       { return sessionStorage.getItem(ACCESS_KEY) === 'granted'; }
+function promptForPassword() {
+  const pw = prompt('Enter your member password to unlock this workout:');
+  if (pw && pw.trim() === MEMBER_PASSWORD) {
+    sessionStorage.setItem(ACCESS_KEY, 'granted');
+    return true;
+  }
+  if (pw !== null) alert('Incorrect password. Please check your welcome email.');
+  return false;
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 const movements = [
   { id: 1, name: "Contralateral Single-Leg Glute Bridge Crunch", reps: "3 rounds &times; 10 reps each side", playbackId: "y9Kos2YFy1P3uxykE2WksFzelS2GYusbE6nQHsrOQYg",  free: true },
   { id: 2, name: "Reverse Plank Hip Thrust",                     reps: "3 rounds &times; 12 reps",           playbackId: "XBDOduiyi02TX2eeZfAL57GIaAMInzFM39I00fW1i3geY", free: true },
@@ -243,7 +264,8 @@ function renderCards() {
            <button class="btn-undo" onclick="markUndo(${i});event.stopPropagation()">&#8617; Undo</button>
          </div>`;
 
-    const videoHtml = m.free
+    const isAccessGranted = isUnlocked();
+    const videoHtml = (m.free || isAccessGranted)
       ? `<div class="video-wrap">
            <iframe
              src="https://player.mux.com/${m.playbackId}?loop=true&muted=1"
@@ -252,15 +274,14 @@ function renderCards() {
              allowfullscreen>
            </iframe>
          </div>`
-      : `<div style="background:#0D0D14;border:1px solid #2A2A3E;border-radius:10px;padding:3rem 2rem;text-align:center;margin-bottom:1rem;">
-           <div style="font-size:2rem;margin-bottom:0.75rem;">🔒</div>
-           <div style="font-weight:700;font-size:1rem;color:#F3F4F6;margin-bottom:0.4rem;">Members Only</div>
-           <div style="font-size:0.85rem;color:#64748B;margin-bottom:1.2rem;max-width:280px;margin-left:auto;margin-right:auto;">
-             Join CoachAndTrack to unlock all 8 movements of Eliana's Core Reset program.
-           </div>
-           <a href="/#waitlist" style="display:inline-block;background:#F97316;color:white;padding:0.65rem 1.5rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;">
-             Join Waitlist &rarr;
-           </a>
+      : `<div class="paywall-card">
+           <div class="lock-emoji">🔒</div>
+           <h4>Members Only</h4>
+           <p>Enter your member password to unlock this workout.</p>
+           <button onclick="if(promptForPassword()){renderCards();updateProgress();}"
+             class="btn-primary" style="border:none;cursor:pointer;">
+             Enter Password &rarr;
+           </button>
          </div>`;
 
     card.innerHTML = `
