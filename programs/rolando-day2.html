@@ -72,6 +72,11 @@
       .program-hero, .progress-section, .movements { padding-left:1rem; padding-right:1rem; }
       .program-title { font-size:2.6rem; }
     }
+    .paywall-card { background:#0D0D14; border:1px solid #2A2A3E; border-radius:10px; padding:3rem 2rem; text-align:center; margin:1rem 0; }
+    .paywall-card .lock-emoji { font-size:2rem; margin-bottom:0.75rem; }
+    .paywall-card h4 { font-weight:700; font-size:1rem; color:#F3F4F6; margin-bottom:0.4rem; margin-top:0; }
+    .paywall-card p { font-size:0.85rem; color:#64748B; margin-bottom:1.2rem; max-width:280px; margin-left:auto; margin-right:auto; }
+    .btn-primary { display:inline-block; background:#F97316; color:white; padding:0.65rem 1.5rem; border-radius:8px; font-weight:700; font-size:0.85rem; font-family:'DM Sans',sans-serif; }
   </style>
 </head>
 <body>
@@ -119,6 +124,30 @@
 <div class="movements" id="movements-list"></div>
 
 <script>
+// ── MEMBER ACCESS ──────────────────────────
+const MEMBER_PASSWORD = 'CoachAndTrack2026';
+const ACCESS_KEY = 'cat_member_access';
+
+function isUnlocked() {
+  return sessionStorage.getItem(ACCESS_KEY) === 'granted';
+}
+
+function promptForPassword() {
+  const input = prompt(
+    '🔒 CoachAndTrack Members Only\n\n' +
+    'Enter your member password to unlock this workout.\n\n' +
+    '(Check your welcome email for your password)'
+  );
+  if (input && input.trim() === MEMBER_PASSWORD) {
+    sessionStorage.setItem(ACCESS_KEY, 'granted');
+    return true;
+  } else if (input !== null) {
+    alert('Incorrect password. Please check your welcome email.');
+  }
+  return false;
+}
+// ────────────────────────────────────────────
+
 const movements = [
   { id:1, name:"Incline Alternating Shoulder Press",         reps:"3 rounds &times; 10&ndash;12 reps each" },
   { id:2, name:"Alternating Bench Shoulder Press",          reps:"3 rounds &times; 10&ndash;12 reps each" },
@@ -183,6 +212,19 @@ function renderCards() {
     const actionsHtml = state[i]===null
       ? `<div class="movement-actions"><button class="btn-done" onclick="markDone(${i});event.stopPropagation()">&#10003; Mark as Done</button><button class="btn-skip" onclick="markSkipped(${i});event.stopPropagation()">Skip</button></div>`
       : `<div class="movement-actions"><button class="btn-undo" onclick="markUndo(${i});event.stopPropagation()">&#8617; Undo</button></div>`;
+    const isAccessGranted = isUnlocked();
+    const bodyContent = isAccessGranted
+      ? actionsHtml
+      : `<div class="paywall-card">
+           <div class="lock-emoji">🔒</div>
+           <h4>Members Only</h4>
+           <p>Enter your member password to unlock this workout.</p>
+           <button onclick="if(promptForPassword()){renderCards();updateProgress();}"
+             class="btn-primary" style="border:none;cursor:pointer;">
+             Enter Password →
+           </button>
+         </div>`;
+
     card.innerHTML = `
       <div class="movement-header" onclick="toggleCard(${i})">
         <div class="movement-number">${m.id}</div>
@@ -194,15 +236,7 @@ function renderCards() {
         <div class="movement-chevron">&#9660;</div>
       </div>
       <div class="movement-body">
-        <div style="background:#0D0D14;border:1px solid #2A2A3E;border-radius:10px;padding:3rem 2rem;text-align:center;margin-bottom:1rem;">
-          <div style="font-size:2rem;margin-bottom:0.75rem;">🔒</div>
-          <div style="font-weight:700;font-size:1rem;color:#F3F4F6;margin-bottom:0.4rem;">Members Only</div>
-          <div style="font-size:0.85rem;color:#64748B;margin-bottom:1.2rem;max-width:280px;margin-left:auto;margin-right:auto;">
-            Join CoachAndTrack to unlock all 6 days of Rolando's Barbell Fundamentals program.
-          </div>
-          <a href="/#waitlist" style="display:inline-block;background:#F97316;color:white;padding:0.65rem 1.5rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;">Join Waitlist &rarr;</a>
-        </div>
-        ${actionsHtml}
+        ${bodyContent}
       </div>`;
     list.appendChild(card);
   });
