@@ -72,6 +72,8 @@
       .program-hero, .progress-section, .movements { padding-left:1rem; padding-right:1rem; }
       .program-title { font-size:2.6rem; }
     }
+    .video-wrap { position:relative; padding-bottom:88.75%; height:0; overflow:hidden; border-radius:10px; background:#000; margin-bottom:1rem; }
+    .video-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius:10px; }
     .paywall-card { background:#0D0D14; border:1px solid #2A2A3E; border-radius:10px; padding:3rem 2rem; text-align:center; margin:1rem 0; }
     .paywall-card .lock-emoji { font-size:2rem; margin-bottom:0.75rem; }
     .paywall-card h4 { font-weight:700; font-size:1rem; color:#F3F4F6; margin-bottom:0.4rem; margin-top:0; }
@@ -214,7 +216,22 @@ function renderCards() {
       : `<div class="movement-actions"><button class="btn-undo" onclick="markUndo(${i});event.stopPropagation()">&#8617; Undo</button></div>`;
     const isAccessGranted = isUnlocked();
     const bodyContent = isAccessGranted
-      ? actionsHtml
+      ? `<div class="video-wrap">
+           <iframe
+             src="https://player.mux.com/${m.playbackId}?muted=1&loop=true"
+             allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+             allowfullscreen>
+           </iframe>
+         </div>
+         ${state[i] === null
+           ? `<div class="movement-actions">
+                <button class="btn-done" onclick="markDone(${i});event.stopPropagation()">✓ Mark as Done</button>
+                <button class="btn-skip" onclick="markSkipped(${i});event.stopPropagation()">Skip</button>
+              </div>`
+           : `<div class="movement-actions">
+                <button class="btn-undo" onclick="markUndo(${i});event.stopPropagation()">↩ Undo</button>
+              </div>`
+         }`
       : `<div class="paywall-card">
            <div class="lock-emoji">🔒</div>
            <h4>Members Only</h4>

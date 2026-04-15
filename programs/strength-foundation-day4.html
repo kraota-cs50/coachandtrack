@@ -269,7 +269,22 @@ function renderCards() {
          </div>`;
     const isAccessGranted = isUnlocked();
     const bodyContent = isAccessGranted
-      ? actionsHtml
+      ? `<div class="video-wrap">
+           <iframe
+             src="https://player.mux.com/${m.playbackId}?muted=1&loop=true"
+             allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+             allowfullscreen>
+           </iframe>
+         </div>
+         ${state[i] === null
+           ? `<div class="movement-actions">
+                <button class="btn-done" onclick="markDone(${i});event.stopPropagation()">✓ Mark as Done</button>
+                <button class="btn-skip" onclick="markSkipped(${i});event.stopPropagation()">Skip</button>
+              </div>`
+           : `<div class="movement-actions">
+                <button class="btn-undo" onclick="markUndo(${i});event.stopPropagation()">↩ Undo</button>
+              </div>`
+         }`
       : `<div class="paywall-card">
            <div class="lock-emoji">🔒</div>
            <h4>Members Only</h4>
