@@ -79,6 +79,89 @@
     .paywall-card h4 { font-weight:700; font-size:1rem; color:#F3F4F6; margin-bottom:0.4rem; margin-top:0; }
     .paywall-card p { font-size:0.85rem; color:#64748B; margin-bottom:1.2rem; max-width:280px; margin-left:auto; margin-right:auto; }
     .btn-primary { display:inline-block; background:#F97316; color:white; padding:0.65rem 1.5rem; border-radius:8px; font-weight:700; font-size:0.85rem; font-family:'DM Sans',sans-serif; }
+  
+    /* REST TIMER */
+    .timer-wrap { margin-top: 0.75rem; }
+    .timer-btns { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.75rem; }
+    .timer-preset {
+      background: var(--dark-elevated, #1A1A2E);
+      border: 1px solid var(--border, #2A2A3E);
+      color: var(--text-muted, #94A3B8);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .timer-preset:hover,
+    .timer-preset.active {
+      background: var(--orange, #F97316);
+      border-color: var(--orange, #F97316);
+      color: white;
+    }
+    .timer-display {
+      display: none;
+      align-items: center;
+      gap: 1rem;
+      background: var(--dark-elevated, #1A1A2E);
+      border: 1px solid var(--border, #2A2A3E);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+    }
+    .timer-display.running { display: flex; }
+    .timer-ring {
+      position: relative;
+      width: 56px; height: 56px;
+      flex-shrink: 0;
+    }
+    .timer-ring svg { transform: rotate(-90deg); }
+    .timer-ring circle {
+      fill: none;
+      stroke-width: 4;
+    }
+    .timer-ring .bg { stroke: var(--border, #2A2A3E); }
+    .timer-ring .fg {
+      stroke: var(--orange, #F97316);
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s linear;
+    }
+    .timer-count {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text, #F3F4F6);
+    }
+    .timer-info { flex: 1; }
+    .timer-info-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange, #F97316);
+      margin-bottom: 2px;
+    }
+    .timer-info-text {
+      font-size: 0.85rem;
+      color: var(--text-muted, #94A3B8);
+    }
+    .timer-stop {
+      background: transparent;
+      border: 1px solid var(--border, #2A2A3E);
+      color: var(--text-dim, #64748B);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .timer-stop:hover { border-color: var(--orange, #F97316); color: var(--orange, #F97316); }
+
   </style>
 </head>
 <body>
@@ -115,6 +198,21 @@
   <a href="/programs/rolando-day3.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:#F97316;color:white;padding:0.6rem 1.2rem;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;">Day 3: Back &#8594;</a>
 </div>
 
+<div id="rest-timer-display" class="timer-display" style="max-width:800px;margin:0 auto 1rem;padding:0 2rem;">
+  <div class="timer-ring">
+    <svg width="56" height="56" viewBox="0 0 56 56">
+      <circle class="bg" cx="28" cy="28" r="24"/>
+      <circle class="fg" id="timer-fg" cx="28" cy="28" r="24"
+        style="stroke-dasharray:150.8;stroke-dashoffset:0;"/>
+    </svg>
+    <div class="timer-count" id="timer-count">0</div>
+  </div>
+  <div class="timer-info">
+    <div class="timer-info-label">⏱ Rest Timer</div>
+    <div class="timer-info-text" id="timer-info-text">Rest up — next movement starts soon</div>
+  </div>
+  <button class="timer-stop" onclick="stopTimer()">Skip Rest</button>
+</div>
 <div class="completion-banner" id="completion-banner">
   <div class="completion-inner">
     <div style="font-size:2.5rem;margin-bottom:0.5rem;">&#127881;</div>
@@ -191,7 +289,55 @@ function openNext() {
     setTimeout(() => document.querySelectorAll('.movement-card')[next].scrollIntoView({behavior:'smooth',block:'center'}), 120);
   }
 }
-function markDone(i)    { state[i]='done';    renderCards(); updateProgress(); openNext(); }
+function markDone(i)    { state[i]='done';    // ── REST TIMER ─────────────────────────────
+let timerInterval = null;
+let timerSeconds = 0;
+let timerTotal = 0;
+
+function startTimer(seconds, nextIndex) {
+  if (timerInterval) clearInterval(timerInterval);
+  timerSeconds = seconds;
+  timerTotal = seconds;
+
+  const display = document.getElementById('rest-timer-display');
+  const count = document.getElementById('timer-count');
+  const fg = document.getElementById('timer-fg');
+  const infoText = document.getElementById('timer-info-text');
+  const circumference = 2 * Math.PI * 24;
+
+  fg.style.strokeDasharray = circumference;
+  display.classList.add('running');
+  infoText.textContent = 'Rest up — next movement starts soon';
+
+  function tick() {
+    count.textContent = timerSeconds;
+    const progress = timerSeconds / timerTotal;
+    fg.style.strokeDashoffset = circumference * (1 - progress);
+    if (timerSeconds <= 0) {
+      clearInterval(timerInterval);
+      display.classList.remove('running');
+      if (nextIndex !== null && nextIndex < movements.length) {
+        const cards = document.querySelectorAll('.movement-card');
+        cards.forEach(c => c.classList.remove('open'));
+        cards[nextIndex].classList.add('open');
+        cards[nextIndex].scrollIntoView({ behavior:'smooth', block:'center' });
+      }
+      return;
+    }
+    timerSeconds--;
+  }
+  tick();
+  timerInterval = setInterval(tick, 1000);
+}
+
+function stopTimer() {
+  if (timerInterval) clearInterval(timerInterval);
+  const display = document.getElementById('rest-timer-display');
+  display.classList.remove('running');
+}
+// ────────────────────────────────────────────
+
+renderCards(); updateProgress(); openNext(); }
 function markSkipped(i) { state[i]='skipped'; renderCards(); updateProgress(); openNext(); }
 function markUndo(i)    { state[i]=null;       renderCards(); updateProgress(); }
 function toggleCard(i) {
