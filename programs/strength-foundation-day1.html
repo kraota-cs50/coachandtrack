@@ -366,6 +366,26 @@
       .program-hero, .progress-section, .movements { padding-left: 1rem; padding-right: 1rem; }
       .program-title { font-size: 2.6rem; }
     }
+    /* REST TIMER */
+    .timer-wrap { margin-top: 0.75rem; }
+    .timer-btns { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.5rem; }
+    .timer-preset {
+      background: var(--dark-elevated, #1A1A2E);
+      border: 1px solid var(--border, #2A2A3E);
+      color: var(--text-muted, #94A3B8);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .timer-preset:hover,
+    .timer-preset.active {
+      background: var(--orange, #F97316);
+      border-color: var(--orange, #F97316);
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -516,6 +536,32 @@ function renderCards() {
       ? `<div class="movement-actions">
            <button class="btn-done" onclick="markDone(${i});event.stopPropagation()">&#10003; Mark as Done</button>
            <button class="btn-skip" onclick="markSkipped(${i});event.stopPropagation()">Skip</button>
+         </div>
+         <div class="timer-wrap" id="timer-wrap-${i}">
+           <div class="timer-btns">
+             <span style="font-size:0.75rem;color:#64748B;align-self:center;margin-right:4px;">Rest:</span>
+             <button class="timer-preset" onclick="runTimer(${i},30)">30s</button>
+             <button class="timer-preset" onclick="runTimer(${i},45)">45s</button>
+             <button class="timer-preset" onclick="runTimer(${i},60)">60s</button>
+             <button class="timer-preset" onclick="runTimer(${i},90)">90s</button>
+           </div>
+           <div id="timer-display-${i}" style="display:none;align-items:center;gap:1rem;background:#1A1A2E;border:1px solid #2A2A3E;border-radius:12px;padding:1rem 1.2rem;margin-top:0.5rem;">
+             <div style="position:relative;width:56px;height:56px;flex-shrink:0;">
+               <svg width="56" height="56" viewBox="0 0 56 56" style="transform:rotate(-90deg);">
+                 <circle cx="28" cy="28" r="24" fill="none" stroke="#2A2A3E" stroke-width="4"/>
+                 <circle id="timer-ring-${i}" cx="28" cy="28" r="24" fill="none"
+                   stroke="#F97316" stroke-width="4" stroke-linecap="round"
+                   stroke-dasharray="150.8" stroke-dashoffset="0"
+                   style="transition:stroke-dashoffset 1s linear;"/>
+               </svg>
+               <div id="timer-count-${i}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.95rem;font-weight:800;color:#F3F4F6;">0</div>
+             </div>
+             <div style="flex:1;">
+               <div style="font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F97316;margin-bottom:2px;">⏱ Rest Timer</div>
+               <div style="font-size:0.85rem;color:#94A3B8;">Rest up — next movement starts soon</div>
+             </div>
+             <button onclick="stopTimer(${i})" style="background:transparent;border:1px solid #2A2A3E;color:#64748B;padding:0.4rem 0.8rem;border-radius:8px;font-size:0.78rem;font-weight:600;cursor:pointer;">Skip Rest</button>
+           </div>
          </div>`
       : `<div class="movement-actions">
            <button class="btn-undo" onclick="markUndo(${i});event.stopPropagation()">&#8617; Undo</button>
@@ -552,6 +598,59 @@ function renderCards() {
     document.querySelectorAll('.movement-card')[firstNull].classList.add('open', 'active');
   }
 }
+
+// ── REST TIMER ──────────────────────────────
+const timerIntervals = {};
+
+function runTimer(cardIndex, seconds) {
+  if (timerIntervals[cardIndex]) {
+    clearInterval(timerIntervals[cardIndex]);
+  }
+  const display = document.getElementById('timer-display-' + cardIndex);
+  const count = document.getElementById('timer-count-' + cardIndex);
+  const ring = document.getElementById('timer-ring-' + cardIndex);
+  const wrap = document.getElementById('timer-wrap-' + cardIndex);
+  if (!display || !count || !ring) return;
+  wrap.querySelectorAll('.timer-preset').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  let remaining = seconds;
+  const total = seconds;
+  const circumference = 150.8;
+  display.style.display = 'flex';
+  count.textContent = remaining;
+  ring.style.strokeDashoffset = '0';
+  timerIntervals[cardIndex] = setInterval(() => {
+    remaining--;
+    count.textContent = remaining;
+    const progress = remaining / total;
+    ring.style.strokeDashoffset = circumference * (1 - progress);
+    if (remaining <= 0) {
+      clearInterval(timerIntervals[cardIndex]);
+      delete timerIntervals[cardIndex];
+      display.style.display = 'none';
+      wrap.querySelectorAll('.timer-preset').forEach(b => b.classList.remove('active'));
+      const nextIndex = cardIndex + 1;
+      if (nextIndex < movements.length) {
+        const cards = document.querySelectorAll('.movement-card');
+        cards.forEach(c => c.classList.remove('open'));
+        cards[nextIndex].classList.add('open');
+        cards[nextIndex].scrollIntoView({ behavior:'smooth', block:'center' });
+      }
+    }
+  }, 1000);
+}
+
+function stopTimer(cardIndex) {
+  if (timerIntervals[cardIndex]) {
+    clearInterval(timerIntervals[cardIndex]);
+    delete timerIntervals[cardIndex];
+  }
+  const display = document.getElementById('timer-display-' + cardIndex);
+  if (display) display.style.display = 'none';
+  const wrap = document.getElementById('timer-wrap-' + cardIndex);
+  if (wrap) wrap.querySelectorAll('.timer-preset').forEach(b => b.classList.remove('active'));
+}
+// ────────────────────────────────────────────
 
 renderCards();
 updateProgress();
