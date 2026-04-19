@@ -440,6 +440,15 @@ function renderCards() {
            ? `<div class="movement-actions">
                 <button class="btn-done" onclick="markDone(${i});event.stopPropagation()">✓ Mark as Done</button>
                 <button class="btn-skip" onclick="markSkipped(${i});event.stopPropagation()">Skip</button>
+              </div>
+              <div class="timer-wrap">
+                <div class="timer-btns">
+                  <span style="font-size:0.75rem;color:var(--text-dim,#64748B);align-self:center;margin-right:4px;">Rest:</span>
+                  <button class="timer-preset" onclick="startTimer(30,${i+1});this.closest('.timer-btns').querySelectorAll('.timer-preset').forEach(b=>b.classList.remove('active'));this.classList.add('active')">30s</button>
+                  <button class="timer-preset" onclick="startTimer(45,${i+1});this.closest('.timer-btns').querySelectorAll('.timer-preset').forEach(b=>b.classList.remove('active'));this.classList.add('active')">45s</button>
+                  <button class="timer-preset" onclick="startTimer(60,${i+1});this.closest('.timer-btns').querySelectorAll('.timer-preset').forEach(b=>b.classList.remove('active'));this.classList.add('active')">60s</button>
+                  <button class="timer-preset" onclick="startTimer(90,${i+1});this.closest('.timer-btns').querySelectorAll('.timer-preset').forEach(b=>b.classList.remove('active'));this.classList.add('active')">90s</button>
+                </div>
               </div>`
            : `<div class="movement-actions">
                 <button class="btn-undo" onclick="markUndo(${i});event.stopPropagation()">↩ Undo</button>
