@@ -668,6 +668,53 @@ function renderCards() {
   }
 }
 
+// ── REST TIMER ──────────────────────────────
+const timerIntervals = {};
+
+function runTimer(cardIndex, seconds) {
+  if (timerIntervals[cardIndex]) clearInterval(timerIntervals[cardIndex]);
+  const display = document.getElementById('timer-display-' + cardIndex);
+  const count   = document.getElementById('timer-count-'   + cardIndex);
+  const ring    = document.getElementById('timer-ring-'    + cardIndex);
+  const wrap    = document.getElementById('timer-wrap-'    + cardIndex);
+  if (!display || !count || !ring) return;
+  wrap.querySelectorAll('.timer-preset').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  let remaining = seconds;
+  const total = seconds;
+  const circumference = 150.8;
+  display.style.display = 'flex';
+  count.textContent = remaining;
+  ring.style.strokeDashoffset = '0';
+  timerIntervals[cardIndex] = setInterval(() => {
+    remaining--;
+    count.textContent = remaining;
+    ring.style.strokeDashoffset = circumference * (1 - remaining / total);
+    if (remaining <= 0) {
+      clearInterval(timerIntervals[cardIndex]);
+      delete timerIntervals[cardIndex];
+      display.style.display = 'none';
+      wrap.querySelectorAll('.timer-preset').forEach(b => b.classList.remove('active'));
+      const nextIndex = cardIndex + 1;
+      if (nextIndex < movements.length) {
+        const cards = document.querySelectorAll('.movement-card');
+        cards.forEach(c => c.classList.remove('open'));
+        cards[nextIndex].classList.add('open');
+        cards[nextIndex].scrollIntoView({ behavior:'smooth', block:'center' });
+      }
+    }
+  }, 1000);
+}
+
+function stopTimer(cardIndex) {
+  if (timerIntervals[cardIndex]) { clearInterval(timerIntervals[cardIndex]); delete timerIntervals[cardIndex]; }
+  const display = document.getElementById('timer-display-' + cardIndex);
+  if (display) display.style.display = 'none';
+  const wrap = document.getElementById('timer-wrap-' + cardIndex);
+  if (wrap) wrap.querySelectorAll('.timer-preset').forEach(b => b.classList.remove('active'));
+}
+// ────────────────────────────────────────────
+
 renderCards();
 updateProgress();
 </script>
