@@ -341,7 +341,7 @@ function openNext() {
 function markDone(i)    { state[i] = 'done';    // ── REST TIMER ──────────────────────────────
 const timerIntervals = {};
 
-function runTimer(cardIndex, seconds) {
+function runTimer(cardIndex, seconds, btn) {
   if (timerIntervals[cardIndex]) {
     clearInterval(timerIntervals[cardIndex]);
   }
@@ -354,7 +354,7 @@ function runTimer(cardIndex, seconds) {
   if (!display || !count || !ring) return;
 
   wrap.querySelectorAll('.timer-preset').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
 
   let remaining = seconds;
   const total = seconds;
@@ -451,10 +451,10 @@ function renderCards() {
               <div class="timer-wrap" id="timer-wrap-${i}">
                 <div class="timer-btns">
                   <span style="font-size:0.75rem;color:var(--text-dim,#64748B);align-self:center;margin-right:4px;">Rest:</span>
-                  <button class="timer-preset" onclick="runTimer(${i},30)">30s</button>
-                  <button class="timer-preset" onclick="runTimer(${i},45)">45s</button>
-                  <button class="timer-preset" onclick="runTimer(${i},60)">60s</button>
-                  <button class="timer-preset" onclick="runTimer(${i},90)">90s</button>
+                  <button class="timer-preset" onclick="runTimer(${i},30,this)">30s</button>
+                  <button class="timer-preset" onclick="runTimer(${i},45,this)">45s</button>
+                  <button class="timer-preset" onclick="runTimer(${i},60,this)">60s</button>
+                  <button class="timer-preset" onclick="runTimer(${i},90,this)">90s</button>
                 </div>
                 <div id="timer-display-${i}" style="display:none;align-items:center;gap:1rem;background:var(--dark-elevated,#1A1A2E);border:1px solid var(--border,#2A2A3E);border-radius:12px;padding:1rem 1.2rem;margin-top:0.5rem;">
                   <div style="position:relative;width:56px;height:56px;flex-shrink:0;">

@@ -624,10 +624,10 @@ function renderCards() {
               <div class="timer-wrap" id="timer-wrap-${i}">
                 <div class="timer-btns">
                   <span style="font-size:0.75rem;color:var(--text-dim,#64748B);align-self:center;margin-right:4px;">Rest:</span>
-                  <button class="timer-preset" onclick="runTimer(${i},30)">30s</button>
-                  <button class="timer-preset" onclick="runTimer(${i},45)">45s</button>
-                  <button class="timer-preset" onclick="runTimer(${i},60)">60s</button>
-                  <button class="timer-preset" onclick="runTimer(${i},90)">90s</button>
+                  <button class="timer-preset" onclick="runTimer(${i},30,this)">30s</button>
+                  <button class="timer-preset" onclick="runTimer(${i},45,this)">45s</button>
+                  <button class="timer-preset" onclick="runTimer(${i},60,this)">60s</button>
+                  <button class="timer-preset" onclick="runTimer(${i},90,this)">90s</button>
                 </div>
                 <div id="timer-display-${i}" style="display:none;align-items:center;gap:1rem;background:var(--dark-elevated,#1A1A2E);border:1px solid var(--border,#2A2A3E);border-radius:12px;padding:1rem 1.2rem;margin-top:0.5rem;"><div style="position:relative;width:56px;height:56px;flex-shrink:0;"><svg width="56" height="56" viewBox="0 0 56 56" style="transform:rotate(-90deg);"><circle cx="28" cy="28" r="24" fill="none" stroke="#2A2A3E" stroke-width="4"/><circle id="timer-ring-${i}" cx="28" cy="28" r="24" fill="none" stroke="#F97316" stroke-width="4" stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="0" style="transition:stroke-dashoffset 1s linear;"/></svg><div id="timer-count-${i}" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.95rem;font-weight:800;color:#F3F4F6;">0</div></div><div style="flex:1;"><div style="font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F97316;margin-bottom:2px;">⏱ Rest Timer</div><div style="font-size:0.85rem;color:#94A3B8;">Rest up — next movement starts soon</div></div><button onclick="stopTimer(${i})" style="background:transparent;border:1px solid #2A2A3E;color:#64748B;padding:0.4rem 0.8rem;border-radius:8px;font-size:0.78rem;font-weight:600;cursor:pointer;">Skip Rest</button></div>
               </div>`
@@ -671,7 +671,7 @@ function renderCards() {
 // ── REST TIMER ──────────────────────────────
 const timerIntervals = {};
 
-function runTimer(cardIndex, seconds) {
+function runTimer(cardIndex, seconds, btn) {
   if (timerIntervals[cardIndex]) clearInterval(timerIntervals[cardIndex]);
   const display = document.getElementById('timer-display-' + cardIndex);
   const count   = document.getElementById('timer-count-'   + cardIndex);
@@ -679,7 +679,7 @@ function runTimer(cardIndex, seconds) {
   const wrap    = document.getElementById('timer-wrap-'    + cardIndex);
   if (!display || !count || !ring) return;
   wrap.querySelectorAll('.timer-preset').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
   let remaining = seconds;
   const total = seconds;
   const circumference = 150.8;
