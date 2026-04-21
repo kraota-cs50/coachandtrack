@@ -29,7 +29,7 @@
     .form-input{width:100%;background:var(--elevated);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.95rem;transition:border-color 0.2s;outline:none;}
     .form-input:focus{border-color:var(--orange);}
     .form-input::placeholder{color:var(--dim);}
-    .coach-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-top:0.5rem;}
+    .coach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.75rem;margin-top:0.5rem;}
     .coach-option{position:relative;}
     .coach-option input[type=radio]{position:absolute;opacity:0;width:0;height:0;}
     .coach-card{display:flex;flex-direction:column;align-items:center;gap:0.4rem;background:var(--elevated);border:2px solid var(--border);border-radius:12px;padding:1rem 0.75rem;cursor:pointer;transition:all 0.2s;text-align:center;}
@@ -38,7 +38,7 @@
     .coach-avatar{width:36px;height:36px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;color:white;}
     .coach-name{font-size:0.8rem;font-weight:700;color:var(--text);}
     .coach-specialty{font-size:0.68rem;color:var(--muted);line-height:1.3;}
-    .plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0.5rem;}
+    .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:0.5rem;}
     .plan-option{position:relative;}
     .plan-option input[type=radio]{position:absolute;opacity:0;width:0;height:0;}
     .plan-card{display:flex;flex-direction:column;gap:0.25rem;background:var(--elevated);border:2px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer;transition:all 0.2s;}
@@ -67,7 +67,7 @@
 <body>
 <div class="auth-wrap">
   <div class="auth-logo">
-    <a href="/"><div class="logo-icon">CT</div><div class="logo-text">COACH<span>AND</span>TRACK</div></a>
+    <a href="/"><div class="logo-icon" style="font-size:0.85rem;letter-spacing:-1px;">CAT</div><div class="logo-text">COACH<span>AND</span>TRACK</div></a>
   </div>
   <div class="auth-card">
     <h1 class="auth-title">START <span>TRAINING</span></h1>
@@ -114,6 +114,10 @@
             <input type="radio" name="plan" value="pro" />
             <div class="plan-card"><div class="plan-name">Pro</div><div class="plan-price">$14 / month</div><div class="plan-desc">Full access · All programs</div></div>
           </label>
+          <label class="plan-option">
+            <input type="radio" name="plan" value="elite" />
+            <div class="plan-card"><div class="plan-name">Elite</div><div class="plan-price">$29 / month</div><div class="plan-desc">Pro + direct coach access via Email &amp; WhatsApp</div></div>
+          </label>
         </div>
       </div>
       <div class="terms-note">By creating an account you agree to our <a href="/terms-of-service.html">Terms of Service</a> and <a href="/privacy-policy.html">Privacy Policy</a>.</div>
@@ -149,6 +153,7 @@
       await db.from('members').insert({ id: authData.user.id, email, full_name: fullname, plan, coach_id: coachId, active: true });
     }
     if (plan === 'pro') { window.location.href = 'https://buy.stripe.com/fZu4gz6ji8fj0wXfHmcEw01'; return; }
+    if (plan === 'elite') { window.location.href = 'https://buy.stripe.com/4gM7sL0YY537enNcvacEw00'; return; }
     window.location.href = '/dashboard.html?welcome=1';
   });
 </script>
