@@ -138,6 +138,8 @@
   const errorMsg = document.getElementById('error-msg');
   function showError(msg) { errorMsg.textContent = msg; errorMsg.classList.add('show'); }
   db.auth.getSession().then(({ data: { session } }) => { if (session) window.location.href = '/dashboard.html'; });
+  const preselect = new URLSearchParams(window.location.search).get('plan');
+  if (preselect) { const r = document.querySelector(`input[name=plan][value="${preselect}"]`); if (r) r.checked = true; }
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const fullname = document.getElementById('fullname').value.trim();
