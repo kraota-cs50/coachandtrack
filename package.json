@@ -1,6 +1,30 @@
 {
   "dependencies": {
     "@mux/mux-node": "^12.8.1",
-    "dotenv": "^17.3.1"
-  }
+    "@supabase/supabase-js": "^2.104.0",
+    "dotenv": "^17.3.1",
+    "stripe": "^22.0.2"
+  },
+  "name": "fitpro-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "add-captions.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kraota-cs50/coachandtrack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kraota-cs50/coachandtrack/issues"
+  },
+  "homepage": "https://github.com/kraota-cs50/coachandtrack#readme"
 }
