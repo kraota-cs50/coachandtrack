@@ -155,6 +155,7 @@
     .timer-stop:hover { border-color: var(--orange, #F97316); color: var(--orange, #F97316); }
 
   </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -203,27 +204,55 @@
 
 <script>
 // ── MEMBER ACCESS ──────────────────────────
-const MEMBER_PASSWORD = 'CoachAndTrack2026';
-const ACCESS_KEY = 'cat_member_access';
+const SUPABASE_URL = 'https://zmkhinakvsemoxglbwrf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpta2hpbmFrdnNlbW94Z2xid3JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MTM5NjUsImV4cCI6MjA5MjI4OTk2NX0.tw4J0QWOcOdTmRqC8rG7HIV1d4iAfkuny6MlK5RGKa4';
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let _memberPlan = null;
+
+async function checkAccess() {
+  // Keep password as fallback during transition
+  if (sessionStorage.getItem('cat_member_access') === 'granted') return true;
+  const { data: { session } } = await db.auth.getSession();
+  if (!session) return false;
+  const { data: member } = await db
+    .from('members')
+    .select('plan, active')
+    .eq('id', session.user.id)
+    .single();
+  if (!member || !member.active) return false;
+  _memberPlan = member.plan;
+  return member.plan === 'pro' || member.plan === 'elite';
+}
 
 function isUnlocked() {
-  return sessionStorage.getItem(ACCESS_KEY) === 'granted';
+  return sessionStorage.getItem('cat_member_access') === 'granted' || _memberPlan === 'pro' || _memberPlan === 'elite';
 }
 
 function promptForPassword() {
   const input = prompt(
-    '🔒 CoachAndTrack Members Only\n\n' +
-    'Enter your member password to unlock this workout.\n\n' +
-    '(Check your welcome email for your password)'
+    '🔒 CoachAndTrack Members Only\n\nSign in at coachandtrack.com/login.html\nor enter your member password below:\n'
   );
-  if (input && input.trim() === MEMBER_PASSWORD) {
-    sessionStorage.setItem(ACCESS_KEY, 'granted');
+  if (input && input.trim() === 'CoachAndTrack2026') {
+    sessionStorage.setItem('cat_member_access', 'granted');
     return true;
   } else if (input !== null) {
-    alert('Incorrect password. Please check your welcome email.');
+    alert('Incorrect password. Please sign in at coachandtrack.com/login.html');
   }
   return false;
 }
+
+// Check Supabase session on page load
+checkAccess().then(hasAccess => {
+  if (hasAccess) {
+    renderCards();
+    updateProgress();
+  } else {
+    renderCards();
+    updateProgress();
+  }
+});
 // ────────────────────────────────────────────
 
 const movements = [
