@@ -61,7 +61,19 @@ exports.handler = async (event) => {
     } else {
       console.log('✅ Supabase result:', JSON.stringify(data));
       if (!data || data.length === 0) {
-        console.log('⚠️ No member found with email:', email);
+        console.log('⚠️ No member found — creating new member for:', email);
+        const { data: newMember, error: insertError } = await db
+          .from('members')
+          .insert({
+            email,
+            full_name: stripeEvent.data.object.customer_details?.name || '',
+            plan,
+            active: true,
+            updated_at: new Date().toISOString()
+          })
+          .select();
+        console.log('✅ New member created:', JSON.stringify(newMember));
+        console.log('❌ Insert error:', JSON.stringify(insertError));
       }
     }
   }
