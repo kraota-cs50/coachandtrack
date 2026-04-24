@@ -24,6 +24,11 @@ exports.handler = async (event) => {
   }
 
   console.log('✅ Event type:', stripeEvent.type);
+  console.log('🔑 Session keys:', Object.keys(stripeEvent.data.object).join(', '));
+  console.log('📧 customer_details:', JSON.stringify(stripeEvent.data.object.customer_details));
+  console.log('📧 customer_email field:', stripeEvent.data.object.customer_email);
+  console.log('💰 amount_total:', stripeEvent.data.object.amount_total);
+  console.log('🔑 payment_status:', stripeEvent.data.object.payment_status);
 
   const db = createClient(
     'https://zmkhinakvsemoxglbwrf.supabase.co',
