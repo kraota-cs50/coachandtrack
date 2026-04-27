@@ -21,6 +21,7 @@
       --orange-glow:   rgba(249,115,22,0.10);
       --orange-border: rgba(249,115,22,0.25);
       --green:         #22C55E;
+      --red:           #EF4444;
       --text:          #F3F4F6;
       --text-muted:    #94A3B8;
       --text-dim:      #64748B;
@@ -140,7 +141,8 @@
       font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700;
       cursor: pointer; transition: opacity 0.2s; margin-top: 0.5rem;
     }
-    .btn-submit:hover { opacity: 0.88; }
+    .btn-submit:hover:not(:disabled) { opacity: 0.88; }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
     .success-msg {
       display: none;
@@ -154,6 +156,20 @@
       text-align: center;
       font-weight: 600;
     }
+
+    .error-msg {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.25);
+      border-radius: 10px;
+      color: var(--red);
+      font-size: 0.9rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    .error-msg a { color: var(--red); text-decoration: underline; }
 
     /* ── FOOTER ── */
     .site-footer {
@@ -236,7 +252,21 @@
     <!-- RIGHT: FORM -->
     <div class="form-card">
       <h2>Send a Message</h2>
-      <form id="contact-form" onsubmit="submitForm(event)">
+      <form
+        id="contact-form"
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        onsubmit="submitForm(event)"
+      >
+        <!-- Required by Netlify Forms -->
+        <input type="hidden" name="form-name" value="contact" />
+        <!-- Honeypot field (hidden from real users, traps bots) -->
+        <p hidden>
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
         <div class="form-row">
           <div class="form-group">
             <label for="first-name">First Name</label>
@@ -268,10 +298,13 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Tell us what's on your mind…" required></textarea>
         </div>
-        <button type="submit" class="btn-submit">Send Message →</button>
+        <button type="submit" class="btn-submit" id="submit-btn">Send Message →</button>
       </form>
       <div class="success-msg" id="success-msg">
         ✓ Message sent! We'll get back to you within 1–2 business days.
+      </div>
+      <div class="error-msg" id="error-msg">
+        Something went wrong. Please email <a href="mailto:support@coachandtrack.com">support@coachandtrack.com</a> directly.
       </div>
     </div>
 
@@ -290,22 +323,44 @@
 </footer>
 
 <script>
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
   const form = document.getElementById('contact-form');
-  const firstName = document.getElementById('first-name').value.trim();
-  const lastName  = document.getElementById('last-name').value.trim();
-  const email     = document.getElementById('email').value.trim();
-  const subject   = document.getElementById('subject').value;
-  const message   = document.getElementById('message').value.trim();
+  const btn = document.getElementById('submit-btn');
+  const successEl = document.getElementById('success-msg');
+  const errorEl = document.getElementById('error-msg');
 
-  const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nTopic: ${subject}\n\n${message}`;
-  const mailtoLink = `mailto:support@coachandtrack.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  // Hide any previous messages
+  successEl.style.display = 'none';
+  errorEl.style.display = 'none';
 
-  window.location.href = mailtoLink;
+  // Disable button while submitting
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
 
-  form.style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
+  try {
+    const formData = new FormData(form);
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    });
+
+    if (response.ok) {
+      form.style.display = 'none';
+      successEl.style.display = 'block';
+      // Track conversion in GA
+      if (typeof gtag === 'function') {
+        gtag('event', 'contact_form_submit', { event_category: 'engagement' });
+      }
+    } else {
+      throw new Error('Network response was not ok');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Send Message →';
+    errorEl.style.display = 'block';
+  }
 }
 </script>
 
