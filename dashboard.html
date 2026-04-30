@@ -55,6 +55,15 @@
     .btn-upgrade:hover{opacity:0.9;}
     @media(max-width:640px){.navbar{padding:0.75rem 1rem;}.main{padding:1.5rem 1rem 3rem;}.programs-grid{grid-template-columns:1fr;}.welcome-banner{padding:1.2rem;}}
   </style>
+<!-- PWA Manifest -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1A1A1A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CoachAndTrack">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 </head>
 <body>
   <nav class="navbar">
@@ -156,6 +165,16 @@
     document.getElementById('main').style.display = 'block';
   }
   init();
+</script>
+<!-- PWA Service Worker Registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => console.log('[PWA] Service worker registered:', reg.scope))
+        .catch((err) => console.log('[PWA] Service worker registration failed:', err));
+    });
+  }
 </script>
 </body>
 </html>
